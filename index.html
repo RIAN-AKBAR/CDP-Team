@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>CDP Team Store | Official Apparel & Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* RESET & DASAR */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0f;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* BACKGROUND ANIMASI */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at 30% 40%, #12002b, #000000);
+        }
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(157, 78, 221, 0.03) 0px,
+                rgba(157, 78, 221, 0.03) 2px,
+                transparent 2px,
+                transparent 12px
+            );
+            animation: bgMove 40s linear infinite;
+        }
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(157,78,221,0.15) 0%, transparent 60%);
+            animation: bgPulse 6s ease-in-out infinite alternate;
+        }
+        @keyframes bgMove {
+            0% { transform: translate(0,0) rotate(0deg); }
+            100% { transform: translate(-5%, -5%) rotate(2deg); }
+        }
+        @keyframes bgPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+
+        /* PARTIKEL BERGERAK */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(157, 78, 221, 0.4);
+            border-radius: 50%;
+            filter: blur(4px);
+            animation: floatParticle 12s infinite alternate ease-in-out;
+        }
+        @keyframes floatParticle {
+            0% { transform: translateY(0) translateX(0); opacity: 0.1; }
+            100% { transform: translateY(-60px) translateX(30px); opacity: 0.5; }
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0f0f1a; }
+        ::-webkit-scrollbar-thumb { background: #9D4EDD; border-radius: 10px; }
+
+        /* ============================================ */
+        /* LOGO FIXED DI ATAS - TIDAK AKAN PERNAH BERGERAK */
+        /* ============================================ */
+        .fixed-logo {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(20px);
+            padding: 12px 35px;
+            border-radius: 60px;
+            border: 1px solid rgba(157, 78, 221, 0.7);
+            box-shadow: 0 0 30px rgba(157, 78, 221, 0.4), 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 99999;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .fixed-logo span {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 5px;
+            background: linear-gradient(135deg, #fff, #c084fc, #9D4EDD);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(157,78,221,0.5);
+        }
+        .fixed-logo .bolt {
+            font-size: 28px;
+            color: #c084fc;
+            text-shadow: 0 0 10px #9D4EDD;
+        }
+
+        /* KONTEN UTAMA - DIBERI PADDING TOP AGAR TIDAK KETUTUP LOGO */
+        .main-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 110px 24px 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HEADER MENU */
+        .glass-header {
+            background: rgba(15, 15, 25, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 50px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid rgba(157, 78, 221, 0.4);
+            margin-bottom: 50px;
+            transition: 0.3s;
+        }
+        .glass-header a {
+            color: #d6aaff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            margin: 0 25px;
+            display: inline-block;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+        .glass-header a:hover {
+            color: white;
+            border-bottom-color: #9D4EDD;
+            text-shadow: 0 0 8px #9D4EDD;
+            transform: translateY(-2px);
+        }
+
+        /* SECTION TITLE */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin: 40px 0 30px;
+            background: linear-gradient(120deg, #fff, #ce9eff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* TOMBOL JOIN */
+        .join-group {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0 45px;
+            flex-wrap: wrap;
+        }
+        .btn-wa, .btn-dc {
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+        .btn-wa { background: #25D366; color: #000; box-shadow: 0 5px 15px rgba(37,211,102,0.3); }
+        .btn-dc { background: #5865F2; color: #fff; box-shadow: 0 5px 15px rgba(88,101,242,0.3); }
+        .btn-wa:hover, .btn-dc:hover { transform: scale(1.05); filter: brightness(1.05); }
+
+        /* GRID PRODUK */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin: 30px 0;
+        }
+        .product-card {
+            background: rgba(10, 10, 18, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 35px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid rgba(157, 78, 221, 0.4);
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: #c084fc;
+            box-shadow: 0 25px 35px -15px rgba(157,78,221,0.3);
+        }
+        .product-img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px -5px #000;
+            background: #1a1a2a;
+            padding: 5px;
+        }
+        .product-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        .btn-buy {
+            background: linear-gradient(95deg, #9D4EDD, #6a1faf);
+            padding: 12px 35px;
+            border-radius: 40px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.2s;
+            box-shadow: 0 5px 15px rgba(157,78,221,0.4);
+        }
+        .btn-buy:hover {
+            transform: scale(1.03);
+            background: linear-gradient(95deg, #b15eff, #8535d4);
+            box-shadow: 0 8px 20px rgba(157,78,221,0.6);
+        }
+
+        /* RULES BOX */
+        .rules-box {
+            background: rgba(10, 10, 20, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #9D4EDD;
+            border-radius: 35px;
+            padding: 30px 35px;
+            margin: 50px auto;
+            max-width: 800px;
+        }
+        .rules-box h3 {
+            font-size: 1.8rem;
+            color: #dcb5ff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .rules-box ol {
+            padding-left: 25px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .rules-box li { margin: 8px 0; }
+
+        /* TEAM SECTION */
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+        .team-card {
+            background: rgba(10, 10, 18, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 45px;
+            padding: 35px 25px;
+            text-align: center;
+            flex: 1;
+            min-width: 270px;
+            border: 1px solid rgba(157,78,221,0.5);
+            transition: 0.3s;
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+            border-color: #c68eff;
+        }
+        .avatar-owner {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid #ff5577;
+            box-shadow: 0 0 25px #ff5577aa;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: #1f0030;
+        }
+        .avatar-admin {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid #0ef;
+            box-shadow: 0 0 25px #0efaaa;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: #002233;
+        }
+        .role-main {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        .role-sub {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ff7788;
+            margin-bottom: 10px;
+        }
+        .role-sub-adm {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6efff0;
+            margin-bottom: 10px;
+        }
+        .username-tag {
+            background: #1d1d2a;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            margin-top: 12px;
+            font-size: 1.1rem;
+        }
+
+        /* TIKTOK LINK */
+        .tiktok-link {
+            display: block;
+            background: linear-gradient(145deg, #0e0e18, #030308);
+            border: 1px solid #9D4EDD;
+            text-align: center;
+            max-width: 450px;
+            margin: 25px auto;
+            padding: 14px 20px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .tiktok-link:hover {
+            background: #9D4EDD;
+            color: black;
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px 30px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            border-top: 1px solid #2a2a2a;
+            margin-top: 30px;
+        }
+
+        /* PRELOADER */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999999;
+            transition: opacity 0.7s ease, visibility 0.7s;
+        }
+        .preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .wheel {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 0 auto;
+            animation: wheelRotate 2s linear infinite;
+        }
+        .wheel .tire {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #070707;
+            border: 12px solid #111;
+            position: absolute;
+            box-shadow: 0 0 20px #9D4EDD;
+        }
+        .wheel .ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 70%;
+            height: 70%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 6px solid #fff;
+            box-shadow: 0 0 12px #fff;
+        }
+        .wheel .hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 32%;
+            height: 32%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(circle, #e3b0ff, #9D4EDD);
+            box-shadow: 0 0 25px #bf7eff;
+        }
+        .wheel .spokes div {
+            position: absolute;
+            background: #fff;
+            box-shadow: 0 0 8px #fff;
+        }
+        .wheel .spokes div:nth-child(1) { width: 6px; height: 58%; top: 21%; left: 50%; transform: translateX(-50%); }
+        .wheel .spokes div:nth-child(2) { width: 58%; height: 6px; top: 50%; left: 21%; transform: translateY(-50%); }
+        .wheel .spokes div:nth-child(3) { width: 6px; height: 58%; top: 21%; left: 50%; transform: translateX(-50%) rotate(45deg); }
+        .wheel .spokes div:nth-child(4) { width: 6px; height: 58%; top: 21%; left: 50%; transform: translateX(-50%) rotate(-45deg); }
+        @keyframes wheelRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .preloader-text {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #fff, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 3px;
+        }
+
+        @media (max-width: 650px) {
+            .fixed-logo span { font-size: 18px; letter-spacing: 2px; }
+            .fixed-logo .bolt { font-size: 18px; }
+            .fixed-logo { padding: 8px 20px; top: 12px; }
+            .main-content { padding: 95px 16px 40px; }
+            .section-title { font-size: 1.8rem; }
+            .glass-header a { font-size: 1.2rem; margin: 0 12px; }
+            .product-name { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg-animation"></div>
+<div class="particles" id="particles"></div>
+
+<!-- PRELOADER -->
+<div id="preloader" class="preloader">
+    <div>
+        <div class="wheel">
+            <div class="tire"></div>
+            <div class="ring"></div>
+            <div class="hub"></div>
+            <div class="spokes">
+                <div></div><div></div><div></div><div></div>
+            </div>
+        </div>
+        <div class="preloader-text">WELCOME TO CDP</div>
+        <div style="color:#888; font-size:12px; margin-top:12px;">loading experience...</div>
+    </div>
+</div>
+
+<!-- ============================================= -->
+<!-- LOGO FIXED - SELAMANYA DI ATAS, TIDAK SCROLL -->
+<!-- ============================================= -->
+<div class="fixed-logo">
+    <span class="bolt">⚡</span>
+    <span>CDP TEAM</span>
+    <span class="bolt">⚡</span>
+</div>
+
+<!-- KONTEN UTAMA -->
+<div class="main-content">
+    <div class="glass-header">
+        <a href="#shop">✨ BELI BAJU CDP</a>
+        <a href="#team">👥 VIEW TEAM</a>
+    </div>
+
+    <!-- SHOP SECTION -->
+    <section id="shop">
+        <h2 class="section-title">🔥 CDP OFFICIAL STORE 🔥</h2>
+        <div class="join-group">
+            <a href="https://chat.whatsapp.com/J6KhcHHx2QTGFmHDmmtogu?mode=gi_t" target="_blank" class="btn-wa">💬 JOIN GROUP WA CDP</a>
+            <a href="https://discord.gg/sFZU3J487" target="_blank" class="btn-dc">🎮 JOIN DISCORD</a>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img class="product-img" src="https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter" alt="V1" onerror="this.src='https://placehold.co/500x500/1a1a2e/bf7eff?text=CDP+V1'">
+                <div class="product-name">Kaos CDP Member V1</div>
+                <a href="https://www.roblox.com/catalog/138018016357035" target="_blank" class="btn-buy">BUY NOW →</a>
+            </div>
+            <div class="product-card">
+                <img class="product-img" src="https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter" alt="V2" onerror="this.src='https://placehold.co/500x500/1a1a2e/bf7eff?text=CDP+V2'">
+                <div class="product-name">Kaos CDP Member V2</div>
+                <a href="https://www.roblox.com/catalog/93778780901295" target="_blank" class="btn-buy">BUY NOW →</a>
+            </div>
+            <div class="product-card">
+                <img class="product-img" src="https://tr.rbxcdn.com/180DAY-78c7e320b7a876d02aa0efb5609eac49/420/420/Shirt/Webp/noFilter" alt="V3" onerror="this.src='https://placehold.co/500x500/1a1a2e/bf7eff?text=CDP+V3'">
+                <div class="product-name">Kaos CDP Member V3</div>
+                <a href="https://www.roblox.com/catalog/114313073714304" target="_blank" class="btn-buy">BUY NOW →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RULES -->
+    <div class="rules-box">
+        <h3>📜 PERSYARATAN JOIN TEAM</h3>
+        <ol>
+            <li>🚫 Dilarang ngemis GP (nanti ada waktu Mimin bagi bagi GP)</li>
+            <li>🚫 Dilarang ngemis minta jadi admin</li>
+            <li>🔞 No share link 18+ / konten dewasa</li>
+            <li>📵 No kirim foto/vidio 18+</li>
+            <li>⚠️ No kirim link phising / mencurigakan</li>
+            <li>💬 Toxic sewajarnya (tetap santun)</li>
+            <li>📅 Cinem setiap hari minggu (wajib aktif)</li>
+            <li>🚷 No share link GB lain</li>
+            <li>🎭 No kirim stiker 18+ / offensive</li>
+        </ol>
+    </div>
+
+    <!-- TEAM -->
+    <section id="team">
+        <h2 class="section-title">👑 MEET THE ELITE TEAM 👑</h2>
+        <div class="team-container">
+            <div class="team-card">
+                <div class="avatar-owner">👑</div>
+                <div class="role-main">OWNER</div>
+                <div class="role-sub">Founder & Leader</div>
+                <div class="username-tag">@Dzuhh_ | CDP</div>
+                <div style="margin-top:10px; font-size:13px; color:#cfaaff;">☆ visioner ☆</div>
+            </div>
+            <div class="team-card">
+                <div class="avatar-admin">🛡️</div>
+                <div class="role-main">HEAD ADMIN</div>
+                <div class="role-sub-adm">Senior Manager</div>
+                <div class="username-tag">@CDP_Admin</div>
+                <div style="margin-top:10px; font-size:13px; color:#8dd0ff;">⚡ menjaga ketertiban ⚡</div>
+            </div>
+        </div>
+        <p style="text-align:center; color:#aaa;">+ support team aktif setiap hari</p>
+    </section>
+
+    <a href="https://tiktok.com/@cdp.team4" target="_blank" class="tiktok-link">📱 TIKTOK OWNER CDP — FOLLOW & SUPPORT</a>
+
+    <footer>
+        <p>© 2025 CDP TEAM | Roblox Community | Official Apparel</p>
+        <p>#RiseWithCDP #UnguBerkibar</p>
+    </footer>
+</div>
+
+<script>
+    (function() {
+        // PRELOADER dengan delay lebih lama
+        const preloader = document.getElementById('preloader');
+        let hidden = false;
+        
+        function hidePreloader() {
+            if (preloader && !hidden) {
+                hidden = true;
+                preloader.classList.add('hide');
+                setTimeout(() => {
+                    if (preloader && preloader.parentNode) preloader.style.display = 'none';
+                }, 800);
+            }
+        }
+        
+        // Minimal tampil 2.5 detik
+        const minTimer = setTimeout(() => {
+            if (!hidden) {
+                if (document.readyState === 'complete') hidePreloader();
+                else window.addEventListener('load', hidePreloader);
+            }
+        }, 2500);
+        
+        window.addEventListener('load', function() {
+            clearTimeout(minTimer);
+            setTimeout(hidePreloader, 600);
+        });
+        
+        setTimeout(() => { if (!hidden) hidePreloader(); }, 4000);
+        
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === "#" || targetId === "") return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // PARTIKEL BACKGROUND
+        const particlesContainer = document.getElementById('particles');
+        if (particlesContainer) {
+            for (let i = 0; i < 70; i++) {
+                const p = document.createElement('div');
+                p.classList.add('particle');
+                const size = Math.random() * 10 + 2;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = Math.random() * 100 + '%';
+                p.style.animationDuration = 10 + Math.random() * 20 + 's';
+                p.style.animationDelay = Math.random() * 5 + 's';
+                p.style.opacity = 0.1 + Math.random() * 0.5;
+                particlesContainer.appendChild(p);
+            }
+        }
+        
+        // FALLBACK IMAGE
+        const imgs = document.querySelectorAll('.product-img');
+        imgs.forEach(img => {
+            img.addEventListener('error', function() {
+                if (!this.src.includes('placehold')) {
+                    this.src = 'https://placehold.co/500x500/1a1a2e/bf7eff?text=CDP';
+                }
+            });
+        });
+    })();
+</script>
+</body>
+</html>
