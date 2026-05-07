@@ -485,22 +485,20 @@
                 <div></div><div></div><div></div><div></div>
             </div>
         </div>
-        <div class="preloader-text">WELCOME TO CDP</div>
+        <div class="preloader-text" id="preloaderText">WELCOME TO CDP</div>
         <div style="color:#888; font-size:12px; margin-top:12px;">loading experience...</div>
     </div>
 </div>
 
-<!-- ============================================= -->
-<!-- LOGO FIXED - SELAMANYA DI ATAS, TIDAK SCROLL -->
-<!-- ============================================= -->
+<!-- LOGO FIXED -->
 <div class="fixed-logo">
     <span class="bolt">⚡</span>
-    <span>CDP TEAM</span>
+    <span id="teamName">CDP TEAM</span>
     <span class="bolt">⚡</span>
 </div>
 
 <!-- KONTEN UTAMA -->
-<div class="main-content">
+<div class="main-content" id="mainContent">
     <div class="glass-header">
         <a href="#shop">✨ BELI BAJU CDP</a>
         <a href="#team">👥 VIEW TEAM</a>
@@ -510,78 +508,153 @@
     <section id="shop">
         <h2 class="section-title">🔥 CDP OFFICIAL STORE 🔥</h2>
         <div class="join-group">
-            <a href="https://chat.whatsapp.com/J6KhcHHx2QTGFmHDmmtogu?mode=gi_t" target="_blank" class="btn-wa">💬 JOIN GROUP WA CDP</a>
-            <a href="https://discord.gg/sFZU3J487" target="_blank" class="btn-dc">🎮 JOIN DISCORD</a>
+            <a href="#" id="waLink" target="_blank" class="btn-wa">💬 JOIN GROUP WA CDP</a>
+            <a href="#" id="dcLink" target="_blank" class="btn-dc">🎮 JOIN DISCORD</a>
         </div>
-
-        <div class="product-grid">
-            <div class="product-card">
-                <img class="product-img" src="https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter" alt="V1" onerror="this.src='https://placehold.co/500x500/1a1a2e/bf7eff?text=CDP+V1'">
-                <div class="product-name">Kaos CDP Member V1</div>
-                <a href="https://www.roblox.com/catalog/138018016357035" target="_blank" class="btn-buy">BUY NOW →</a>
-            </div>
-            <div class="product-card">
-                <img class="product-img" src="https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter" alt="V2" onerror="this.src='https://placehold.co/500x500/1a1a2e/bf7eff?text=CDP+V2'">
-                <div class="product-name">Kaos CDP Member V2</div>
-                <a href="https://www.roblox.com/catalog/93778780901295" target="_blank" class="btn-buy">BUY NOW →</a>
-            </div>
-            <div class="product-card">
-                <img class="product-img" src="https://tr.rbxcdn.com/180DAY-78c7e320b7a876d02aa0efb5609eac49/420/420/Shirt/Webp/noFilter" alt="V3" onerror="this.src='https://placehold.co/500x500/1a1a2e/bf7eff?text=CDP+V3'">
-                <div class="product-name">Kaos CDP Member V3</div>
-                <a href="https://www.roblox.com/catalog/114313073714304" target="_blank" class="btn-buy">BUY NOW →</a>
-            </div>
-        </div>
+        <div class="product-grid" id="productGrid"></div>
     </section>
 
     <!-- RULES -->
     <div class="rules-box">
         <h3>📜 PERSYARATAN JOIN TEAM</h3>
-        <ol>
-            <li>🚫 Dilarang ngemis GP (nanti ada waktu Mimin bagi bagi GP)</li>
-            <li>🚫 Dilarang ngemis minta jadi admin</li>
-            <li>🔞 No share link 18+ / konten dewasa</li>
-            <li>📵 No kirim foto/vidio 18+</li>
-            <li>⚠️ No kirim link phising / mencurigakan</li>
-            <li>💬 Toxic sewajarnya (tetap santun)</li>
-            <li>📅 Cinem setiap hari minggu (wajib aktif)</li>
-            <li>🚷 No share link GB lain</li>
-            <li>🎭 No kirim stiker 18+ / offensive</li>
-        </ol>
+        <ol id="rulesList"></ol>
     </div>
 
     <!-- TEAM -->
     <section id="team">
         <h2 class="section-title">👑 MEET THE ELITE TEAM 👑</h2>
-        <div class="team-container">
-            <div class="team-card">
-                <div class="avatar-owner">👑</div>
-                <div class="role-main">OWNER</div>
-                <div class="role-sub">Founder & Leader</div>
-                <div class="username-tag">@Dzuhh_ | CDP</div>
-                <div style="margin-top:10px; font-size:13px; color:#cfaaff;">☆ visioner ☆</div>
-            </div>
-            <div class="team-card">
-                <div class="avatar-admin">🛡️</div>
-                <div class="role-main">HEAD ADMIN</div>
-                <div class="role-sub-adm">Senior Manager</div>
-                <div class="username-tag">@CDP_Admin</div>
-                <div style="margin-top:10px; font-size:13px; color:#8dd0ff;">⚡ menjaga ketertiban ⚡</div>
-            </div>
-        </div>
+        <div class="team-container" id="teamContainer"></div>
         <p style="text-align:center; color:#aaa;">+ support team aktif setiap hari</p>
     </section>
 
-    <a href="https://tiktok.com/@cdp.team4" target="_blank" class="tiktok-link">📱 TIKTOK OWNER CDP — FOLLOW & SUPPORT</a>
+    <a href="#" id="tiktokLink" target="_blank" class="tiktok-link">📱 TIKTOK OWNER CDP — FOLLOW & SUPPORT</a>
 
     <footer>
-        <p>© 2025 CDP TEAM | Roblox Community | Official Apparel</p>
-        <p>#RiseWithCDP #UnguBerkibar</p>
+        <p id="copyright"></p>
+        <p id="tagline"></p>
     </footer>
 </div>
 
+<!-- Load Config.js -->
+<script src="config.js"></script>
+
+<!-- Main Script -->
 <script>
     (function() {
-        // PRELOADER dengan delay lebih lama
+        // ============================================
+        // CEK APAKAH CONFIG SUDAH LOAD
+        // ============================================
+        function loadFromConfig() {
+            if (typeof CDP_CONFIG === 'undefined') {
+                console.error('Config.js not loaded! Using fallback data.');
+                return false;
+            }
+            return true;
+        }
+
+        // ============================================
+        // RENDER PRODUK DARI CONFIG
+        // ============================================
+        function renderProducts() {
+            const productGrid = document.getElementById('productGrid');
+            if (!productGrid) return;
+            
+            const products = CDP_CONFIG.products;
+            productGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img class="product-img" src="${product.image}" alt="${product.name}" onerror="this.src='https://placehold.co/500x500/1a1a2e/bf7eff?text=CDP+${product.version}'">
+                    <div class="product-name">${product.name}</div>
+                    <a href="${product.robloxLink}" target="_blank" class="btn-buy">BUY NOW →</a>
+                `;
+                productGrid.appendChild(card);
+            });
+        }
+
+        // ============================================
+        // RENDER RULES DARI CONFIG
+        // ============================================
+        function renderRules() {
+            const rulesList = document.getElementById('rulesList');
+            if (!rulesList) return;
+            
+            const rules = CDP_CONFIG.rules;
+            rulesList.innerHTML = '';
+            
+            rules.forEach(rule => {
+                const li = document.createElement('li');
+                li.textContent = rule;
+                rulesList.appendChild(li);
+            });
+        }
+
+        // ============================================
+        // RENDER TEAM DARI CONFIG
+        // ============================================
+        function renderTeam() {
+            const teamContainer = document.getElementById('teamContainer');
+            if (!teamContainer) return;
+            
+            const config = CDP_CONFIG;
+            teamContainer.innerHTML = `
+                <div class="team-card">
+                    <div class="avatar-owner">${config.team.owner.avatar}</div>
+                    <div class="role-main">OWNER</div>
+                    <div class="role-sub">${config.team.owner.role}</div>
+                    <div class="username-tag">${config.team.owner.name}</div>
+                    <div style="margin-top:10px; font-size:13px; color:#cfaaff;">☆ visioner ☆</div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar-admin">${config.team.admin.avatar}</div>
+                    <div class="role-main">HEAD ADMIN</div>
+                    <div class="role-sub-adm">${config.team.admin.role}</div>
+                    <div class="username-tag">${config.team.admin.name}</div>
+                    <div style="margin-top:10px; font-size:13px; color:#8dd0ff;">⚡ menjaga ketertiban ⚡</div>
+                </div>
+            `;
+        }
+
+        // ============================================
+        // SET SOCIAL LINKS DARI CONFIG
+        // ============================================
+        function setSocialLinks() {
+            const waBtn = document.getElementById('waLink');
+            const dcBtn = document.getElementById('dcLink');
+            const tiktokBtn = document.getElementById('tiktokLink');
+            
+            if (waBtn) waBtn.href = CDP_CONFIG.socialLinks.whatsapp;
+            if (dcBtn) dcBtn.href = CDP_CONFIG.socialLinks.discord;
+            if (tiktokBtn) tiktokBtn.href = CDP_CONFIG.socialLinks.tiktok;
+        }
+
+        // ============================================
+        // SET FOOTER DARI CONFIG
+        // ============================================
+        function setFooter() {
+            const copyright = document.getElementById('copyright');
+            const tagline = document.getElementById('tagline');
+            
+            if (copyright) copyright.textContent = CDP_CONFIG.footer.copyright;
+            if (tagline) tagline.textContent = CDP_CONFIG.footer.tagline;
+        }
+
+        // ============================================
+        // SET TEAM NAME
+        // ============================================
+        function setTeamName() {
+            const teamNameSpan = document.getElementById('teamName');
+            if (teamNameSpan) teamNameSpan.textContent = CDP_CONFIG.team.name;
+            
+            const preloaderText = document.getElementById('preloaderText');
+            if (preloaderText) preloaderText.textContent = CDP_CONFIG.preloader.welcomeText;
+        }
+
+        // ============================================
+        // PRELOADER
+        // ============================================
         const preloader = document.getElementById('preloader');
         let hidden = false;
         
@@ -595,22 +668,36 @@
             }
         }
         
-        // Minimal tampil 2.5 detik
-        const minTimer = setTimeout(() => {
-            if (!hidden) {
-                if (document.readyState === 'complete') hidePreloader();
-                else window.addEventListener('load', hidePreloader);
+        function initPage() {
+            if (loadFromConfig()) {
+                renderProducts();
+                renderRules();
+                renderTeam();
+                setSocialLinks();
+                setFooter();
+                setTeamName();
             }
-        }, 2500);
+            
+            // Preloader delay dari config
+            const minDelay = CDP_CONFIG?.preloader?.minDisplayTime || 2500;
+            const minTimer = setTimeout(() => {
+                if (!hidden) {
+                    if (document.readyState === 'complete') hidePreloader();
+                    else window.addEventListener('load', hidePreloader);
+                }
+            }, minDelay);
+            
+            window.addEventListener('load', function() {
+                clearTimeout(minTimer);
+                setTimeout(hidePreloader, 600);
+            });
+            
+            setTimeout(() => { if (!hidden) hidePreloader(); }, 4000);
+        }
         
-        window.addEventListener('load', function() {
-            clearTimeout(minTimer);
-            setTimeout(hidePreloader, 600);
-        });
-        
-        setTimeout(() => { if (!hidden) hidePreloader(); }, 4000);
-        
+        // ============================================
         // SMOOTH SCROLL
+        // ============================================
         document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
@@ -623,7 +710,9 @@
             });
         });
         
+        // ============================================
         // PARTIKEL BACKGROUND
+        // ============================================
         const particlesContainer = document.getElementById('particles');
         if (particlesContainer) {
             for (let i = 0; i < 70; i++) {
@@ -641,15 +730,8 @@
             }
         }
         
-        // FALLBACK IMAGE
-        const imgs = document.querySelectorAll('.product-img');
-        imgs.forEach(img => {
-            img.addEventListener('error', function() {
-                if (!this.src.includes('placehold')) {
-                    this.src = 'https://placehold.co/500x500/1a1a2e/bf7eff?text=CDP';
-                }
-            });
-        });
+        // Jalankan init
+        initPage();
     })();
 </script>
 </body>
