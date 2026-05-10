@@ -20,7 +20,7 @@
             min-height: 100vh;
         }
 
-        /* ✨ BACKGROUND WALLPAPER + BINTIK-BINTIK UNGU TERANG ✨ */
+        /* BACKGROUND WALLPAPER - UNGU TUA CAMPUR HITAM ABU-ABU */
         .bg-wallpaper {
             position: fixed;
             top: 0;
@@ -32,44 +32,6 @@
             background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
             background-blend-mode: overlay;
         }
-        
-        /* 🔥 EFEK BINTIK-BINTIK UNGU TERANG (OPTIMAL PERFORMANCE) 🔥 */
-        .stars-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .star {
-            position: absolute;
-            background: radial-gradient(circle, rgba(202, 132, 252, 0.95) 0%, rgba(168, 85, 247, 0.7) 40%, rgba(106, 13, 173, 0.4) 100%);
-            border-radius: 50%;
-            animation: twinkle 2.5s ease-in-out infinite alternate;
-            will-change: transform, opacity;
-            box-shadow: 0 0 6px rgba(168, 85, 247, 0.6);
-        }
-        @keyframes twinkle {
-            0% { 
-                opacity: 0.7; 
-                transform: scale(0.9) rotate(0deg);
-                box-shadow: 0 0 8px rgba(168,85,247,0.7), 0 0 16px rgba(202,132,252,0.4);
-            }
-            50% {
-                opacity: 0.9;
-                transform: scale(1.1) rotate(90deg);
-                box-shadow: 0 0 12px rgba(168,85,247,0.9), 0 0 24px rgba(202,132,252,0.6);
-            }
-            100% { 
-                opacity: 1; 
-                transform: scale(1.4) rotate(180deg);
-                box-shadow: 0 0 16px rgba(168,85,247,1), 0 0 28px rgba(202,132,252,0.8), 0 0 40px rgba(106,13,173,0.5);
-            }
-        }
-        
         .bg-wallpaper::before {
             content: '';
             position: absolute;
@@ -90,6 +52,28 @@
         }
         @keyframes bgMove { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(-5%, -5%) rotate(2deg); } }
         @keyframes bgPulse { 0% { opacity: 0.3; } 100% { opacity: 0.9; } }
+
+        /* PARTIKEL - UNGU */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(106, 13, 173, 0.4);
+            border-radius: 50%;
+            filter: blur(4px);
+            animation: floatParticle 14s infinite alternate ease-in-out;
+        }
+        @keyframes floatParticle {
+            0% { transform: translateY(0) translateX(0); opacity: 0.1; }
+            100% { transform: translateY(-70px) translateX(40px); opacity: 0.5; }
+        }
 
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #1a1a1f; }
@@ -549,12 +533,12 @@
 <body>
 
 <div class="bg-wallpaper"></div>
-<!-- ✨ BINTIK-BINTIK UNGU TERANG ✨ -->
-<div class="stars-bg" id="starsBg"></div>
+<div class="particles" id="particles"></div>
 
-<!-- PRELOADER dengan EFEK BAN -->
+<!-- PRELOADER dengan EFEK BAN dari kode yang diminta -->
 <div id="preloader" class="preloader">
     <div class="preloader-content">
+        <!-- 🔥 RODA SAMA PERSIS CONTOH 🔥 -->
         <div class="wheel-container">
             <div class="tire"></div>
             <div class="white-ring"></div>
@@ -566,6 +550,7 @@
                 <div class="spoke-line"></div>
             </div>
         </div>
+        <!-- 🔥 TULISAN WELCOME 🔥 -->
         <div class="welcome-text">WELCOME TO CDP</div>
         <div class="preloader-subtext">⚡ CIRCLE DRAG PEMULA ⚡</div>
         <div class="glowing-line"></div>
@@ -669,6 +654,12 @@
                 <div class="role-title">Moderator</div>
                 <a href="https://www.roblox.com/users/10867023249/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
             </div>
+              <div class="team-card">
+                <img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A9BFE9E1E8ADA3D68B3A1A1B21229A9C-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="rafly" onerror="this.src='https://placehold.co/100x100/1a1a2e/8b5cf6?text=rafly'">
+                <div class="role-name">Bipos19</div>
+                <div class="role-title">Moderator Suport</div>
+                <a href="https://www.roblox.com/users/8519693761/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
+            </div>
         </div>
         <p style="text-align:center; color:#999; margin-top:15px; font-size:0.8rem;">+ support team aktif setiap hari</p>
     </section>
@@ -688,35 +679,6 @@
 
 <script>
     (function() {
-        // 🔥 OPTIMIZED STARS GENERATOR (BINTIK TERANG) 🔥
-        function createStars() {
-            const starsBg = document.getElementById('starsBg');
-            const starCount = window.innerWidth < 768 ? 25 : 40; // Responsive
-            
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                
-                // Ukuran bintik bervariasi (1-4px)
-                const size = (Math.random() * 3 + 1).toFixed(1);
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                
-                // Posisi random full screen
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                
-                // Animasi duration & delay random
-                star.style.animationDuration = (2 + Math.random() * 1.5) + 's';
-                star.style.animationDelay = Math.random() * 5 + 's';
-                
-                // Opacity TERANG (0.7-1.0)
-                star.style.opacity = 0.7 + Math.random() * 0.3;
-                
-                starsBg.appendChild(star);
-            }
-        }
-
         const products = [
             { id: 1, name: "Kaos CDP Member V1", image: "https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter", link: "https://www.roblox.com/catalog/138018016357035", keywords: "v1" },
             { id: 2, name: "Kaos CDP Member V2", image: "https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter", link: "https://www.roblox.com/catalog/93778780901295", keywords: "v2" },
@@ -760,11 +722,7 @@
             if (preloader && !hidden) {
                 hidden = true;
                 preloader.classList.add('hide');
-                setTimeout(() => { 
-                    if (preloader.parentNode) preloader.style.display = 'none'; 
-                    // Stars muncul setelah preloader hilang
-                    setTimeout(createStars, 200);
-                }, 800);
+                setTimeout(() => { if (preloader.parentNode) preloader.style.display = 'none'; }, 800);
             }
         }
         setTimeout(() => { if (!hidden) { if (document.readyState === 'complete') hidePreloader(); else window.addEventListener('load', hidePreloader); } }, 2500);
@@ -813,16 +771,20 @@
             }, 2000);
         });
 
-        // Responsive stars untuk resize window
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                document.getElementById('starsBg').innerHTML = '';
-                createStars();
-            }, 250);
-        });
-
+        // Particles
+        const container = document.getElementById('particles');
+        for (let i = 0; i < 60; i++) {
+            let p = document.createElement('div');
+            p.classList.add('particle');
+            let size = Math.random() * 8 + 2;
+            p.style.width = size + 'px'; p.style.height = size + 'px';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            p.style.animationDuration = 10 + Math.random() * 20 + 's';
+            p.style.animationDelay = Math.random() * 5 + 's';
+            p.style.opacity = 0.1 + Math.random() * 0.4;
+            container.appendChild(p);
+        }
     })();
 </script>
 </body>
