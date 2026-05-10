@@ -53,7 +53,60 @@
         @keyframes bgMove { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(-5%, -5%) rotate(2deg); } }
         @keyframes bgPulse { 0% { opacity: 0.3; } 100% { opacity: 0.9; } }
 
-        /* PARTIKEL - UNGU */
+        /* BINTIK-BINTIK UNGU BERGERAK (DOTS EFFECT) */
+        .dot-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .dot {
+            position: absolute;
+            background: rgba(157, 78, 221, 0.6);
+            border-radius: 50%;
+            box-shadow: 0 0 8px #9D4EDD;
+            animation: floatDot 8s infinite alternate ease-in-out;
+        }
+        @keyframes floatDot {
+            0% {
+                transform: translateY(0px) translateX(0px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-120px) translateX(40px);
+                opacity: 0;
+            }
+        }
+
+        /* PARTIKEL BINTIK KECIL STATIS DENGAN BLINK */
+        .static-dots {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .static-dot {
+            position: absolute;
+            background: rgba(157, 78, 221, 0.4);
+            border-radius: 50%;
+            animation: twinkle 3s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.1; transform: scale(0.8); }
+            100% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 6px #9D4EDD; }
+        }
+
+        /* PARTIKEL - UNGU BERGERAK */
         .particles {
             position: fixed;
             top: 0;
@@ -533,6 +586,8 @@
 <body>
 
 <div class="bg-wallpaper"></div>
+<div class="dot-particles" id="dotParticles"></div>
+<div class="static-dots" id="staticDots"></div>
 <div class="particles" id="particles"></div>
 
 <!-- PRELOADER dengan EFEK BAN dari kode yang diminta -->
@@ -580,7 +635,7 @@
     </div>
 
     <section id="shop">
-        <h2 class="section-title">🔥 CDP OFFICIAL 🔥</h2>
+        <h2 class="section-title">🔥 CDP OFFICIAL STORE 🔥</h2>
         <div class="product-grid" id="productGrid"></div>
     </section>
 
@@ -765,16 +820,52 @@
             }, 2000);
         });
 
+        // ============================================
+        // BINTIK-BINTIK UNGU BERGERAK (DOT EFFECT)
+        // ============================================
+        const dotContainer = document.getElementById('dotParticles');
+        for (let i = 0; i < 120; i++) {
+            let dot = document.createElement('div');
+            dot.classList.add('dot');
+            let size = Math.random() * 6 + 2;
+            dot.style.width = size + 'px';
+            dot.style.height = size + 'px';
+            dot.style.left = Math.random() * 100 + '%';
+            dot.style.top = Math.random() * 100 + '%';
+            dot.style.animationDuration = 6 + Math.random() * 10 + 's';
+            dot.style.animationDelay = Math.random() * 5 + 's';
+            dot.style.backgroundColor = `rgba(157, 78, 221, ${0.3 + Math.random() * 0.5})`;
+            dotContainer.appendChild(dot);
+        }
+
+        // ============================================
+        // BINTIK STATIS YANG BERKEDIP
+        // ============================================
+        const staticContainer = document.getElementById('staticDots');
+        for (let i = 0; i < 200; i++) {
+            let sdot = document.createElement('div');
+            sdot.classList.add('static-dot');
+            let size = Math.random() * 4 + 1;
+            sdot.style.width = size + 'px';
+            sdot.style.height = size + 'px';
+            sdot.style.left = Math.random() * 100 + '%';
+            sdot.style.top = Math.random() * 100 + '%';
+            sdot.style.animationDuration = 2 + Math.random() * 4 + 's';
+            sdot.style.animationDelay = Math.random() * 3 + 's';
+            sdot.style.backgroundColor = `rgba(157, 78, 221, ${0.2 + Math.random() * 0.6})`;
+            staticContainer.appendChild(sdot);
+        }
+
         // Particles
         const container = document.getElementById('particles');
-        for (let i = 0; i < 60; i++) {
+        for (let i = 0; i < 50; i++) {
             let p = document.createElement('div');
             p.classList.add('particle');
-            let size = Math.random() * 8 + 2;
+            let size = Math.random() * 12 + 4;
             p.style.width = size + 'px'; p.style.height = size + 'px';
             p.style.left = Math.random() * 100 + '%';
             p.style.top = Math.random() * 100 + '%';
-            p.style.animationDuration = 10 + Math.random() * 20 + 's';
+            p.style.animationDuration = 12 + Math.random() * 20 + 's';
             p.style.animationDelay = Math.random() * 5 + 's';
             p.style.opacity = 0.1 + Math.random() * 0.4;
             container.appendChild(p);
