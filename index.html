@@ -20,7 +20,7 @@
             min-height: 100vh;
         }
 
-        /* ✨ BACKGROUND WALLPAPER + BINTIK-BINTIK UNGU ✨ */
+        /* ✨ BACKGROUND WALLPAPER + BINTIK-BINTIK UNGU TERANG ✨ */
         .bg-wallpaper {
             position: fixed;
             top: 0;
@@ -33,7 +33,7 @@
             background-blend-mode: overlay;
         }
         
-        /* 🔥 EFEK BINTIK-BINTIK UNGU (OPTIMAL PERFORMANCE) 🔥 */
+        /* 🔥 EFEK BINTIK-BINTIK UNGU TERANG (OPTIMAL PERFORMANCE) 🔥 */
         .stars-bg {
             position: fixed;
             top: 0;
@@ -46,21 +46,27 @@
         }
         .star {
             position: absolute;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.8) 0%, rgba(106, 13, 173, 0.3) 70%, transparent 100%);
+            background: radial-gradient(circle, rgba(202, 132, 252, 0.95) 0%, rgba(168, 85, 247, 0.7) 40%, rgba(106, 13, 173, 0.4) 100%);
             border-radius: 50%;
-            animation: twinkle 3s ease-in-out infinite alternate;
+            animation: twinkle 2.5s ease-in-out infinite alternate;
             will-change: transform, opacity;
+            box-shadow: 0 0 6px rgba(168, 85, 247, 0.6);
         }
         @keyframes twinkle {
             0% { 
-                opacity: 0.3; 
-                transform: scale(0.8) rotate(0deg);
-                box-shadow: 0 0 4px rgba(168,85,247,0.4);
+                opacity: 0.7; 
+                transform: scale(0.9) rotate(0deg);
+                box-shadow: 0 0 8px rgba(168,85,247,0.7), 0 0 16px rgba(202,132,252,0.4);
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.1) rotate(90deg);
+                box-shadow: 0 0 12px rgba(168,85,247,0.9), 0 0 24px rgba(202,132,252,0.6);
             }
             100% { 
-                opacity: 0.9; 
-                transform: scale(1.2) rotate(180deg);
-                box-shadow: 0 0 12px rgba(168,85,247,0.8), 0 0 20px rgba(106,13,173,0.4);
+                opacity: 1; 
+                transform: scale(1.4) rotate(180deg);
+                box-shadow: 0 0 16px rgba(168,85,247,1), 0 0 28px rgba(202,132,252,0.8), 0 0 40px rgba(106,13,173,0.5);
             }
         }
         
@@ -543,13 +549,12 @@
 <body>
 
 <div class="bg-wallpaper"></div>
-<!-- ✨ BINTIK-BINTIK UNGU BARU ✨ -->
+<!-- ✨ BINTIK-BINTIK UNGU TERANG ✨ -->
 <div class="stars-bg" id="starsBg"></div>
 
-<!-- PRELOADER dengan EFEK BAN dari kode yang diminta -->
+<!-- PRELOADER dengan EFEK BAN -->
 <div id="preloader" class="preloader">
     <div class="preloader-content">
-        <!-- 🔥 RODA SAMA PERSIS CONTOH 🔥 -->
         <div class="wheel-container">
             <div class="tire"></div>
             <div class="white-ring"></div>
@@ -561,7 +566,6 @@
                 <div class="spoke-line"></div>
             </div>
         </div>
-        <!-- 🔥 TULISAN WELCOME 🔥 -->
         <div class="welcome-text">WELCOME TO CDP</div>
         <div class="preloader-subtext">⚡ CIRCLE DRAG PEMULA ⚡</div>
         <div class="glowing-line"></div>
@@ -684,16 +688,16 @@
 
 <script>
     (function() {
-        // 🔥 OPTIMIZED STARS GENERATOR (JUMLAH SEDIKIT, PERFORMANCE TINGGI) 🔥
+        // 🔥 OPTIMIZED STARS GENERATOR (BINTIK TERANG) 🔥
         function createStars() {
             const starsBg = document.getElementById('starsBg');
-            const starCount = window.innerWidth < 768 ? 25 : 40; // Responsive: mobile 25, desktop 40
+            const starCount = window.innerWidth < 768 ? 25 : 40; // Responsive
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 
-                // Ukuran bintik bervariasi (sangat kecil untuk performance)
+                // Ukuran bintik bervariasi (1-4px)
                 const size = (Math.random() * 3 + 1).toFixed(1);
                 star.style.width = size + 'px';
                 star.style.height = size + 'px';
@@ -702,12 +706,12 @@
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
                 
-                // Animasi duration & delay random (ringan)
-                star.style.animationDuration = (2 + Math.random() * 3) + 's';
+                // Animasi duration & delay random
+                star.style.animationDuration = (2 + Math.random() * 1.5) + 's';
                 star.style.animationDelay = Math.random() * 5 + 's';
                 
-                // Opacity rendah untuk efek subtle
-                star.style.opacity = 0.4 + Math.random() * 0.3;
+                // Opacity TERANG (0.7-1.0)
+                star.style.opacity = 0.7 + Math.random() * 0.3;
                 
                 starsBg.appendChild(star);
             }
@@ -756,7 +760,11 @@
             if (preloader && !hidden) {
                 hidden = true;
                 preloader.classList.add('hide');
-                setTimeout(() => { if (preloader.parentNode) preloader.style.display = 'none'; }, 800);
+                setTimeout(() => { 
+                    if (preloader.parentNode) preloader.style.display = 'none'; 
+                    // Stars muncul setelah preloader hilang
+                    setTimeout(createStars, 200);
+                }, 800);
             }
         }
         setTimeout(() => { if (!hidden) { if (document.readyState === 'complete') hidePreloader(); else window.addEventListener('load', hidePreloader); } }, 2500);
@@ -803,11 +811,6 @@
                 registerForm.reset();
                 setTimeout(() => { registerMessage.innerHTML = ''; }, 3000);
             }, 2000);
-        });
-
-        // 🚀 INIT STARS SAAT HALAMAN LOADING (AFTER PRELOADER)
-        window.addEventListener('load', () => {
-            setTimeout(createStars, 100);
         });
 
         // Responsive stars untuk resize window
