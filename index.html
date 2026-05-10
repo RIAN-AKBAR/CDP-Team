@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>CDP Team Store | Official Apparel & Community</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -79,7 +79,7 @@
         ::-webkit-scrollbar-track { background: #1a1a1f; }
         ::-webkit-scrollbar-thumb { background: #6a0dad; border-radius: 10px; }
 
-        /* FIXED TOP BAR - HITAM KEUNGUAN */
+        /* FIXED TOP BAR - HITAM KEUNGUAN - RESPONSIVE */
         .top-bar {
             position: fixed;
             top: 0;
@@ -95,47 +95,55 @@
         .top-bar .container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 15px;
         }
         .logo-img {
-            height: 50px;
+            height: 45px;
             width: auto;
             filter: drop-shadow(0 0 8px #6a0dad);
             transition: 0.2s;
+            max-width: 180px;
+            object-fit: contain;
         }
         .nav-menu {
             display: flex;
-            gap: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .nav-menu a {
             color: #c9a5ff;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             text-decoration: none;
             transition: 0.2s;
-            padding: 5px 0;
+            padding: 5px 8px;
             border-bottom: 2px solid transparent;
+            white-space: nowrap;
         }
         .nav-menu a:hover {
             color: #e8d0ff;
             border-bottom-color: #6a0dad;
             text-shadow: 0 0 8px rgba(106,13,173,0.5);
         }
-        @media (max-width: 650px) {
-            .top-bar .container { flex-direction: column; gap: 12px; padding: 10px 16px; }
-            .logo-img { height: 40px; }
-            .nav-menu { gap: 20px; }
+        @media (max-width: 550px) {
+            .top-bar .container { flex-direction: column; padding: 8px 16px; gap: 10px; }
+            .logo-img { height: 38px; }
+            .nav-menu { gap: 15px; }
+            .nav-menu a { font-size: 0.8rem; padding: 4px 6px; white-space: nowrap; }
         }
 
-        /* SEARCH BAR */
+        /* SEARCH BAR - RESPONSIVE */
         .search-section {
             margin: 30px auto 20px;
             max-width: 500px;
             padding: 0 16px;
+            width: 100%;
         }
         .search-box {
             display: flex;
@@ -143,7 +151,7 @@
             backdrop-filter: blur(8px);
             border-radius: 60px;
             border: 1px solid rgba(106, 13, 173, 0.5);
-            padding: 5px 5px 5px 20px;
+            padding: 4px 4px 4px 18px;
             align-items: center;
         }
         .search-box input {
@@ -152,254 +160,236 @@
             border: none;
             padding: 12px 0;
             color: #e0e0e0;
-            font-size: 1rem;
+            font-size: 0.9rem;
             outline: none;
+            min-width: 0;
         }
-        .search-box input::placeholder { color: #888; }
+        .search-box input::placeholder { color: #888; font-size: 0.85rem; }
         .search-box button {
             background: #6a0dad;
             border: none;
-            padding: 8px 20px;
+            padding: 8px 18px;
             border-radius: 40px;
             color: white;
             font-weight: bold;
             cursor: pointer;
             transition: 0.2s;
+            font-size: 0.85rem;
+            white-space: nowrap;
         }
         .search-box button:hover { background: #8b2be0; transform: scale(1.02); }
+        @media (max-width: 480px) {
+            .search-box input { font-size: 0.8rem; padding: 10px 0; }
+            .search-box button { padding: 6px 14px; font-size: 0.75rem; }
+        }
 
         .main-content {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 110px 24px 50px;
+            padding: 110px 20px 50px;
             position: relative;
             z-index: 1;
         }
+        @media (max-width: 650px) {
+            .main-content { padding: 130px 16px 40px; }
+        }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             text-align: center;
-            margin: 40px 0 30px;
+            margin: 30px 0 25px;
             background: linear-gradient(120deg, #e0e0e0, #c9a5ff, #a855f7);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            padding: 0 10px;
+        }
+        @media (max-width: 550px) {
+            .section-title { font-size: 1.6rem; margin: 25px 0 20px; }
         }
 
-        /* GRID PRODUK */
+        /* GRID PRODUK - RESPONSIVE */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
         }
         .product-card {
             background: rgba(15, 15, 22, 0.85);
             backdrop-filter: blur(10px);
-            border-radius: 35px;
-            padding: 25px 20px;
+            border-radius: 30px;
+            padding: 20px 15px;
             text-align: center;
             border: 1px solid rgba(106, 13, 173, 0.4);
             transition: 0.3s;
         }
-        .product-card:hover { transform: translateY(-8px); border-color: #a855f7; box-shadow: 0 10px 30px rgba(106,13,173,0.2); }
+        .product-card:hover { transform: translateY(-5px); border-color: #a855f7; box-shadow: 0 10px 25px rgba(106,13,173,0.2); }
         .product-img {
             width: 100%;
-            max-width: 220px;
-            border-radius: 25px;
-            margin-bottom: 20px;
+            max-width: 180px;
+            border-radius: 20px;
+            margin-bottom: 15px;
             background: #1a1a2a;
             padding: 5px;
         }
-        .product-name { font-size: 1.5rem; font-weight: 700; margin: 10px 0; color: #e0e0e0; }
+        .product-name { font-size: 1.2rem; font-weight: 700; margin: 8px 0; color: #e0e0e0; }
         .btn-buy {
             background: linear-gradient(95deg, #6a0dad, #3b0764);
-            padding: 10px 30px;
+            padding: 8px 20px;
             border-radius: 40px;
             color: white;
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
             transition: 0.2s;
+            font-size: 0.85rem;
         }
-        .btn-buy:hover { transform: scale(1.03); background: linear-gradient(95deg, #8b2be0, #4c1d95); box-shadow: 0 0 15px rgba(106,13,173,0.5); }
+        .btn-buy:hover { transform: scale(1.03); background: linear-gradient(95deg, #8b2be0, #4c1d95); box-shadow: 0 0 12px rgba(106,13,173,0.5); }
 
-        /* FORM DAFTAR OTOMATIS KE GMAIL */
+        /* FORM DAFTAR - RESPONSIVE */
         .register-section {
             background: rgba(10, 10, 18, 0.85);
             backdrop-filter: blur(12px);
             border: 1px solid #6a0dad;
-            border-radius: 35px;
-            padding: 35px;
-            margin: 50px auto;
-            max-width: 550px;
+            border-radius: 30px;
+            padding: 25px 20px;
+            margin: 40px auto;
+            max-width: 500px;
             text-align: center;
         }
-        .register-section h3 {
-            font-size: 1.8rem;
-            color: #c9a5ff;
-            margin-bottom: 10px;
-        }
-        .register-section p {
-            color: #aaa;
-            margin-bottom: 25px;
-            font-size: 0.9rem;
-        }
-        .register-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        .register-section h3 { font-size: 1.5rem; color: #c9a5ff; margin-bottom: 8px; }
+        .register-section p { color: #aaa; margin-bottom: 20px; font-size: 0.85rem; }
+        .register-form { display: flex; flex-direction: column; gap: 12px; }
         .register-form input {
             background: rgba(20, 20, 30, 0.9);
             border: 1px solid rgba(106, 13, 173, 0.5);
             border-radius: 50px;
-            padding: 14px 20px;
+            padding: 12px 18px;
             color: #e0e0e0;
-            font-size: 1rem;
+            font-size: 0.9rem;
             outline: none;
-            transition: 0.2s;
         }
-        .register-form input:focus {
-            border-color: #a855f7;
-            box-shadow: 0 0 10px rgba(106,13,173,0.3);
-        }
-        .register-form input::placeholder { color: #777; }
         .btn-register {
             background: linear-gradient(95deg, #6a0dad, #3b0764);
             border: none;
-            padding: 14px;
+            padding: 12px;
             border-radius: 50px;
             color: white;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
-            transition: 0.2s;
         }
-        .btn-register:hover {
-            transform: scale(1.02);
-            background: linear-gradient(95deg, #8b2be0, #4c1d95);
-            box-shadow: 0 0 15px rgba(106,13,173,0.5);
-        }
-        .register-note {
-            margin-top: 15px;
-            font-size: 0.75rem;
-            color: #a855f7;
-        }
+        .register-note { margin-top: 12px; font-size: 0.7rem; color: #a855f7; }
 
-        /* RULES */
+        /* RULES - RESPONSIVE */
         .rules-box {
             background: rgba(10, 10, 18, 0.85);
             backdrop-filter: blur(12px);
             border: 1px solid #6a0dad;
-            border-radius: 35px;
-            padding: 30px 35px;
-            margin: 50px auto;
+            border-radius: 30px;
+            padding: 20px 25px;
+            margin: 40px auto;
             max-width: 800px;
         }
-        .rules-box h3 { font-size: 1.8rem; color: #c9a5ff; text-align: center; margin-bottom: 20px; }
-        .rules-box ol { padding-left: 25px; line-height: 1.8; color: #ccc; }
-        .rules-box li { margin: 8px 0; }
+        .rules-box h3 { font-size: 1.4rem; color: #c9a5ff; text-align: center; margin-bottom: 15px; }
+        .rules-box ol { padding-left: 20px; line-height: 1.6; color: #ccc; font-size: 0.85rem; }
+        .rules-box li { margin: 6px 0; }
+        @media (max-width: 550px) {
+            .rules-box { padding: 15px 18px; }
+            .rules-box ol { padding-left: 18px; font-size: 0.75rem; }
+        }
 
-        /* TEAM */
+        /* TEAM GRID - RESPONSIVE */
         .team-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 35px;
-            margin: 30px 0;
+            gap: 25px;
+            margin: 25px 0;
         }
         .team-card {
             background: rgba(15, 15, 22, 0.85);
             backdrop-filter: blur(10px);
-            border-radius: 45px;
-            padding: 30px 20px;
+            border-radius: 35px;
+            padding: 20px 15px;
             text-align: center;
-            width: 260px;
+            width: 230px;
             border: 1px solid rgba(106, 13, 173, 0.5);
             transition: 0.3s;
         }
-        .team-card:hover { transform: translateY(-5px); border-color: #a855f7; box-shadow: 0 8px 25px rgba(106,13,173,0.2); }
+        .team-card:hover { transform: translateY(-5px); border-color: #a855f7; }
         .team-avatar-img {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            margin: 0 auto 20px;
+            margin: 0 auto 15px;
             display: block;
             object-fit: cover;
             background: #1a1a2a;
             border: 3px solid;
-            transition: 0.2s;
         }
-        .avatar-owner-border { border-color: #a855f7; box-shadow: 0 0 20px rgba(168,85,247,0.4); }
-        .avatar-ceo-border { border-color: #c084fc; box-shadow: 0 0 20px rgba(192,132,252,0.4); }
-        .avatar-contributor-border { border-color: #8b5cf6; box-shadow: 0 0 15px rgba(139,92,246,0.3); }
-        .role-name { font-size: 1.5rem; font-weight: 800; margin: 10px 0 5px; color: #e0e0e0; }
-        .role-title { font-size: 0.85rem; font-weight: 600; color: #a855f7; margin-bottom: 12px; }
+        .avatar-owner-border { border-color: #a855f7; box-shadow: 0 0 15px rgba(168,85,247,0.4); }
+        .avatar-ceo-border { border-color: #c084fc; box-shadow: 0 0 15px rgba(192,132,252,0.4); }
+        .avatar-contributor-border { border-color: #8b5cf6; box-shadow: 0 0 12px rgba(139,92,246,0.3); }
+        .role-name { font-size: 1.2rem; font-weight: 800; margin: 8px 0 3px; color: #e0e0e0; }
+        .role-title { font-size: 0.7rem; font-weight: 600; color: #a855f7; margin-bottom: 10px; }
         .btn-view-profile {
             display: inline-block;
             margin-top: 8px;
-            padding: 8px 20px;
+            padding: 6px 16px;
             background: rgba(106, 13, 173, 0.2);
             border: 1px solid #6a0dad;
             border-radius: 40px;
             color: #c9a5ff;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 600;
             transition: 0.2s;
         }
-        .btn-view-profile:hover {
-            background: #6a0dad;
-            color: white;
-            transform: scale(1.02);
-            box-shadow: 0 0 12px rgba(106,13,173,0.5);
+        @media (max-width: 550px) {
+            .team-card { width: 200px; padding: 15px 12px; }
+            .team-avatar-img { width: 85px; height: 85px; }
+            .role-name { font-size: 1rem; }
+            .role-title { font-size: 0.65rem; }
+            .btn-view-profile { font-size: 0.65rem; padding: 5px 12px; }
         }
 
-        /* FOOTER dengan TikTok */
+        /* FOOTER - RESPONSIVE */
         footer {
             text-align: center;
-            padding: 40px 20px 30px;
-            font-size: 0.8rem;
+            padding: 30px 20px 25px;
+            font-size: 0.75rem;
             border-top: 1px solid rgba(106, 13, 173, 0.3);
             margin-top: 30px;
-        }
-        .footer-social {
-            margin-bottom: 15px;
         }
         .btn-tiktok-footer {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: linear-gradient(135deg, #00f2ea, #ff0050);
-            padding: 10px 25px;
+            padding: 8px 20px;
             border-radius: 50px;
             text-decoration: none;
             color: white;
             font-weight: bold;
+            font-size: 0.85rem;
             transition: 0.2s;
-            margin: 10px 0;
+            margin: 8px 0;
         }
-        .btn-tiktok-footer:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0,242,234,0.5);
-        }
-        .footer-copyright {
-            margin-top: 15px;
-            opacity: 0.6;
-            font-size: 0.7rem;
-            color: #888;
-        }
+        .footer-copyright { margin-top: 12px; opacity: 0.6; font-size: 0.65rem; color: #888; }
 
-        /* PRELOADER dengan Teks Baru dan Garis Ungu Kelap-Kelip */
+        /* ============================================ */
+        /* PRELOADER - EFEK BAN DARI KODE YANG DIMINTA */
+        /* ============================================ */
         .preloader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: #050508;
+            background: #000000;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -411,46 +401,96 @@
         .preloader-content {
             text-align: center;
         }
-        .wheel {
-            width: 200px;
-            height: 200px;
+
+        /* 🔥 RODA SAMA PERSIS CONTOH DARI KODE YANG DIMINTA 🔥 */
+        .wheel-container {
+            width: 220px;
+            height: 220px;
             position: relative;
+            animation: spin 0.8s linear infinite;
             margin: 0 auto;
-            animation: wheelRotate 2s linear infinite;
         }
-        .wheel .tire {
-            width: 100%; height: 100%; border-radius: 50%; background: #0a0a0f;
-            border: 12px solid #1a1a1f; position: absolute; box-shadow: 0 0 20px #6a0dad;
+
+        /* BAN LUAR HITAM */
+        .tire {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #000000;
+            border: 15px solid #111111;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-shadow: 0 0 25px #9D4EDD;
         }
-        .wheel .ring {
-            position: absolute; top: 50%; left: 50%; width: 70%; height: 70%;
-            transform: translate(-50%,-50%); border-radius: 50%; border: 6px solid #e0e0e0;
+
+        /* LINGKARAN PUTIH DI TENGAH */
+        .white-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 70%;
+            height: 70%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 8px solid #FFFFFF;
+            box-shadow: 0 0 10px #fff, inset 0 0 10px #fff;
+            z-index: 2;
         }
-        .wheel .hub {
-            position: absolute; top: 50%; left: 50%; width: 32%; height: 32%;
-            transform: translate(-50%,-50()); border-radius: 50%;
-            background: radial-gradient(circle, #a855f7, #6a0dad); box-shadow: 0 0 25px #a855f7;
+
+        /* TENGAH BOLA UNGU */
+        .hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 35%;
+            height: 35%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(circle, #E0AFFF 0%, #9D4EDD 70%, #5a1f99 100%);
+            box-shadow: 0 0 20px #fff, 0 0 30px #9D4EDD;
+            z-index: 3;
         }
-        .wheel .spokes div {
-            position: absolute; background: #e0e0e0; box-shadow: 0 0 8px #a855f7;
+
+        /* JARI-JARI LURUS KEK CONTOH */
+        .spokes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
-        .wheel .spokes div:nth-child(1) { width: 6px; height: 58%; top: 21%; left: 50%; transform: translateX(-50%); }
-        .wheel .spokes div:nth-child(2) { width: 58%; height: 6px; top: 50%; left: 21%; transform: translateY(-50%); }
-        .wheel .spokes div:nth-child(3) { width: 6px; height: 58%; top: 21%; left: 50%; transform: translateX(-50%) rotate(45deg); }
-        .wheel .spokes div:nth-child(4) { width: 6px; height: 58%; top: 21%; left: 50%; transform: translateX(-50%) rotate(-45deg); }
-        @keyframes wheelRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        
-        .preloader-text {
-            text-align: center;
+        .spoke-line {
+            position: absolute;
+            background-color: #FFFFFF;
+            box-shadow: 0 0 8px #fff;
+        }
+
+        /* Garis lurus atas-bawah */
+        .spoke-line:nth-child(1) { width: 8px; height: 65%; top: 17%; left: 50%; transform: translateX(-50%); }
+        /* Garis lurus kiri-kanan */
+        .spoke-line:nth-child(2) { width: 65%; height: 8px; top: 50%; left: 17%; transform: translateY(-50%); }
+        /* Garis miring kiri atas - kanan bawah */
+        .spoke-line:nth-child(3) { width: 8px; height: 65%; top: 17%; left: 50%; transform: translateX(-50%) rotate(45deg); }
+        /* Garis miring kanan atas - kiri bawah */
+        .spoke-line:nth-child(4) { width: 8px; height: 65%; top: 17%; left: 50%; transform: translateX(-50%) rotate(-45deg); }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* 🔥 TULISAN DI BAWAH RODA 🔥 */
+        .welcome-text {
             margin-top: 25px;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            background: linear-gradient(135deg, #e0e0e0, #a855f7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 3px;
+            color: #FFFFFF;
+            text-shadow: 0 0 10px #9D4EDD, 0 0 20px #9D4EDD;
+            letter-spacing: 5px;
         }
+
         /* Teks tambahan di bawah roda */
         .preloader-subtext {
             margin-top: 15px;
@@ -462,27 +502,31 @@
             animation: fadeText 1.5s ease-in-out infinite alternate;
         }
         @keyframes fadeText {
-            0% { opacity: 0.5; text-shadow: 0 0 5px #6a0dad; }
-            100% { opacity: 1; text-shadow: 0 0 15px #a855f7; }
+            0% { opacity: 0.5; text-shadow: 0 0 5px #9D4EDD; }
+            100% { opacity: 1; text-shadow: 0 0 15px #9D4EDD; }
         }
+
         /* GARIS UNGU KELAP-KELIP */
         .glowing-line {
             width: 180px;
             height: 3px;
-            background: linear-gradient(90deg, transparent, #6a0dad, #a855f7, #6a0dad, transparent);
+            background: linear-gradient(90deg, transparent, #9D4EDD, #c084fc, #9D4EDD, transparent);
             margin: 15px auto 0;
             border-radius: 4px;
             animation: blinkLine 0.8s infinite alternate;
-            box-shadow: 0 0 8px #a855f7;
+            box-shadow: 0 0 8px #9D4EDD;
         }
         @keyframes blinkLine {
             0% { opacity: 0.3; width: 120px; }
-            100% { opacity: 1; width: 220px; box-shadow: 0 0 15px #a855f7; }
+            100% { opacity: 1; width: 220px; box-shadow: 0 0 15px #9D4EDD; }
         }
 
-        @media (max-width: 650px) {
-            .main-content { padding-top: 140px; }
-            .section-title { font-size: 1.8rem; }
+        @media (max-width: 480px) {
+            .wheel-container { width: 160px; height: 160px; }
+            .welcome-text { font-size: 20px; margin-top: 18px; letter-spacing: 3px; }
+            .preloader-subtext { font-size: 11px; }
+            .glowing-line { width: 130px; }
+            @keyframes blinkLine { 0% { width: 90px; } 100% { width: 160px; } }
         }
     </style>
 </head>
@@ -491,26 +535,33 @@
 <div class="bg-wallpaper"></div>
 <div class="particles" id="particles"></div>
 
-<!-- PRELOADER dengan teks baru dan garis ungu -->
+<!-- PRELOADER dengan EFEK BAN dari kode yang diminta -->
 <div id="preloader" class="preloader">
     <div class="preloader-content">
-        <div class="wheel">
+        <!-- 🔥 RODA SAMA PERSIS CONTOH 🔥 -->
+        <div class="wheel-container">
             <div class="tire"></div>
-            <div class="ring"></div>
+            <div class="white-ring"></div>
             <div class="hub"></div>
-            <div class="spokes"><div></div><div></div><div></div><div></div></div>
+            <div class="spokes">
+                <div class="spoke-line"></div>
+                <div class="spoke-line"></div>
+                <div class="spoke-line"></div>
+                <div class="spoke-line"></div>
+            </div>
         </div>
-        <div class="preloader-text">WELCOME TO CDP</div>
-        <div class="preloader-subtext">⚡ CIRCLE DRAG PÉMULA ⚡</div>
+        <!-- 🔥 TULISAN WELCOME 🔥 -->
+        <div class="welcome-text">WELCOME TO CDP</div>
+        <div class="preloader-subtext">⚡ CIRCLE DRAG PEMULA ⚡</div>
         <div class="glowing-line"></div>
         <div style="color:#888; font-size:12px; margin-top:12px;">loading experience...</div>
     </div>
 </div>
 
-<!-- TOP BAR dengan logo dari link -->
+<!-- TOP BAR -->
 <div class="top-bar">
     <div class="container">
-        <img class="logo-img" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Team Logo" onerror="this.src='https://placehold.co/200x60/1a1a2e/6a0dad?text=CDP+TEAM'">
+        <img class="logo-img" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Team Logo" onerror="this.src='https://placehold.co/180x45/1a1a2e/6a0dad?text=CDP+TEAM'">
         <div class="nav-menu">
             <a href="#shop">✨ BELI BAJU</a>
             <a href="#team">👥 TEAM</a>
@@ -529,12 +580,11 @@
     </div>
 
     <section id="shop">
-        <h2 class="section-title">🔥 CDP OFFICIAL STORE 🔥</h2>
-
+        <h2 class="section-title">🔥 CDP OFFICIAL 🔥</h2>
         <div class="product-grid" id="productGrid"></div>
     </section>
 
-    <!-- FORM DAFTAR OTOMATIS KE GMAIL BARU -->
+    <!-- FORM DAFTAR -->
     <section id="daftar">
         <div class="register-section">
             <h3>📝 DAFTAR MENJADI MEMBER</h3>
@@ -568,50 +618,44 @@
     <section id="team">
         <h2 class="section-title">👑 MEET THE ELITE TEAM 👑</h2>
         <div class="team-grid">
-            <!-- Owner: AKANGMV0649 (Role OWNER) -->
             <div class="team-card">
-                <img class="team-avatar-img avatar-owner-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8F43D31BAC0846156F7CDC85E6BF4793-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="AKANGMV0649" onerror="this.src='https://placehold.co/120x120/1a1a2e/a855f7?text=OWNER'">
+                <img class="team-avatar-img avatar-owner-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8F43D31BAC0846156F7CDC85E6BF4793-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="AKANGMV0649" onerror="this.src='https://placehold.co/100x100/1a1a2e/a855f7?text=AKANG'">
                 <div class="role-name">AKANGMV0649</div>
                 <div class="role-title">OWNER</div>
-                <a href="https://www.roblox.com/users/9597142392/profile?friendshipSourceType=PlayerSearch" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
+                <a href="https://www.roblox.com/users/9597142392/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
             </div>
-            <!-- CEO-OWNER: Lanosavi73 -->
             <div class="team-card">
-                <img class="team-avatar-img avatar-ceo-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D7636D6FD9862C55D08F5E0CA3DE4723-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Lanosavi73" onerror="this.src='https://placehold.co/120x120/1a1a2e/c084fc?text=CEO'">
+                <img class="team-avatar-img avatar-ceo-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D7636D6FD9862C55D08F5E0CA3DE4723-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Lanosavi73" onerror="this.src='https://placehold.co/100x100/1a1a2e/c084fc?text=CEO'">
                 <div class="role-name">Lanosavi73</div>
                 <div class="role-title">CEO-OWNER & Web Developer</div>
-                <a href="https://www.roblox.com/users/8429909641/profile?friendshipSourceType=PlayerSearch" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
+                <a href="https://www.roblox.com/users/8429909641/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
             </div>
-            <!-- Contributor: azril -->
             <div class="team-card">
-                <img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-06CC895A17ACBBEC3F62061C7E0B3C8F-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="azril" onerror="this.src='https://placehold.co/120x120/1a1a2e/8b5cf6?text=azril'">
+                <img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-06CC895A17ACBBEC3F62061C7E0B3C8F-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="azril" onerror="this.src='https://placehold.co/100x100/1a1a2e/8b5cf6?text=azril'">
                 <div class="role-name">azril</div>
                 <div class="role-title">Contributor</div>
-                <a href="https://www.roblox.com/users/10736193358/profile?friendshipSourceType=PlayerSearch" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
+                <a href="https://www.roblox.com/users/10736193358/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
             </div>
-            <!-- Donatur: jeje -->
             <div class="team-card">
-                <img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-51F5E352505CDF9E2DCFE377249E31C5-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="jeje" onerror="this.src='https://placehold.co/120x120/1a1a2e/8b5cf6?text=jeje'">
+                <img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-51F5E352505CDF9E2DCFE377249E31C5-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="jeje" onerror="this.src='https://placehold.co/100x100/1a1a2e/8b5cf6?text=jeje'">
                 <div class="role-name">jeje</div>
                 <div class="role-title">Donatur & Support</div>
-                <a href="https://www.roblox.com/users/10783769267/profile?friendshipSourceType=PlayerSearch" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
+                <a href="https://www.roblox.com/users/10783769267/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
             </div>
-            <!-- Contributor: ditz -->
             <div class="team-card">
-                <img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8416A408FDBDF3270EC6FD5AF64E3C0C-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="ditz" onerror="this.src='https://placehold.co/120x120/1a1a2e/8b5cf6?text=ditz'">
+                <img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8416A408FDBDF3270EC6FD5AF64E3C0C-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="ditz" onerror="this.src='https://placehold.co/100x100/1a1a2e/8b5cf6?text=ditz'">
                 <div class="role-name">ditz</div>
                 <div class="role-title">Contributor</div>
-                <a href="https://www.roblox.com/users/6174897216/profile?friendshipSourceType=PlayerSearch" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
+                <a href="https://www.roblox.com/users/6174897216/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
             </div>
-            <!-- Moderator: rafly -->
             <div class="team-card">
-                <img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-32EDB3B534169236DA40F4E7F5369AD0-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="rafly" onerror="this.src='https://placehold.co/120x120/1a1a2e/8b5cf6?text=rafly'">
+                <img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-32EDB3B534169236DA40F4E7F5369AD0-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="rafly" onerror="this.src='https://placehold.co/100x100/1a1a2e/8b5cf6?text=rafly'">
                 <div class="role-name">rafly</div>
                 <div class="role-title">Moderator</div>
-                <a href="https://www.roblox.com/users/10867023249/profile?friendshipSourceType=PlayerSearch" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
+                <a href="https://www.roblox.com/users/10867023249/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a>
             </div>
         </div>
-        <p style="text-align:center; color:#999; margin-top:20px;">+ support team aktif setiap hari</p>
+        <p style="text-align:center; color:#999; margin-top:15px; font-size:0.8rem;">+ support team aktif setiap hari</p>
     </section>
 
     <footer>
@@ -629,7 +673,6 @@
 
 <script>
     (function() {
-        // Produk
         const products = [
             { id: 1, name: "Kaos CDP Member V1", image: "https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter", link: "https://www.roblox.com/catalog/138018016357035", keywords: "v1" },
             { id: 2, name: "Kaos CDP Member V2", image: "https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter", link: "https://www.roblox.com/catalog/93778780901295", keywords: "v2" },
@@ -640,7 +683,7 @@
 
         const productGrid = document.getElementById('productGrid');
         const searchInput = document.getElementById('searchInput');
-        const searchBtn = document.getElementById('searchBtn')
+        const searchBtn = document.getElementById('searchBtn');
 
         function renderProducts(filterText = '') {
             const lowerFilter = filterText.toLowerCase();
@@ -654,7 +697,7 @@
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
-                    <img class="product-img" src="${p.image}" alt="${p.name}" onerror="this.src='https://placehold.co/500x500/1a1a2e/a855f7?text=CDP'">
+                    <img class="product-img" src="${p.image}" alt="${p.name}" onerror="this.src='https://placehold.co/400x400/1a1a2e/a855f7?text=CDP'">
                     <div class="product-name">${p.name}</div>
                     <a href="${p.link}" target="_blank" class="btn-buy">BUY NOW →</a>
                 `;
@@ -688,7 +731,7 @@
             });
         });
 
-        // FORM DAFTAR OTOMATIS KE GMAIL BARU (storeumbu7@gmail.com)
+        // Form daftar
         const registerForm = document.getElementById('registerForm');
         const registerMessage = document.getElementById('registerMessage');
 
@@ -713,23 +756,21 @@
             const mailtoLink = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
             window.location.href = mailtoLink;
             
-            registerMessage.innerHTML = '✅ Pendaftaran terkirim! Silahkan cek email Anda untuk konfirmasi.';
+            registerMessage.innerHTML = '✅ Pendaftaran terkirim! Silahkan cek email Anda.';
             registerMessage.style.color = '#a855f7';
             
             setTimeout(() => {
                 registerForm.reset();
-                setTimeout(() => {
-                    registerMessage.innerHTML = '';
-                }, 3000);
+                setTimeout(() => { registerMessage.innerHTML = ''; }, 3000);
             }, 2000);
         });
 
         // Particles
         const container = document.getElementById('particles');
-        for (let i = 0; i < 70; i++) {
+        for (let i = 0; i < 60; i++) {
             let p = document.createElement('div');
             p.classList.add('particle');
-            let size = Math.random() * 10 + 2;
+            let size = Math.random() * 8 + 2;
             p.style.width = size + 'px'; p.style.height = size + 'px';
             p.style.left = Math.random() * 100 + '%';
             p.style.top = Math.random() * 100 + '%';
