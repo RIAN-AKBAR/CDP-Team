@@ -20,7 +20,7 @@
             min-height: 100vh;
         }
 
-        /* BACKGROUND WALLPAPER - UNGU TUA CAMPUR HITAM ABU-ABU */
+        /* ✨ BACKGROUND WALLPAPER + BINTIK-BINTIK UNGU ✨ */
         .bg-wallpaper {
             position: fixed;
             top: 0;
@@ -32,6 +32,38 @@
             background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
             background-blend-mode: overlay;
         }
+        
+        /* 🔥 EFEK BINTIK-BINTIK UNGU (OPTIMAL PERFORMANCE) 🔥 */
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.8) 0%, rgba(106, 13, 173, 0.3) 70%, transparent 100%);
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite alternate;
+            will-change: transform, opacity;
+        }
+        @keyframes twinkle {
+            0% { 
+                opacity: 0.3; 
+                transform: scale(0.8) rotate(0deg);
+                box-shadow: 0 0 4px rgba(168,85,247,0.4);
+            }
+            100% { 
+                opacity: 0.9; 
+                transform: scale(1.2) rotate(180deg);
+                box-shadow: 0 0 12px rgba(168,85,247,0.8), 0 0 20px rgba(106,13,173,0.4);
+            }
+        }
+        
         .bg-wallpaper::before {
             content: '';
             position: absolute;
@@ -52,28 +84,6 @@
         }
         @keyframes bgMove { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(-5%, -5%) rotate(2deg); } }
         @keyframes bgPulse { 0% { opacity: 0.3; } 100% { opacity: 0.9; } }
-
-        /* PARTIKEL - UNGU */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        .particle {
-            position: absolute;
-            background: rgba(106, 13, 173, 0.4);
-            border-radius: 50%;
-            filter: blur(4px);
-            animation: floatParticle 14s infinite alternate ease-in-out;
-        }
-        @keyframes floatParticle {
-            0% { transform: translateY(0) translateX(0); opacity: 0.1; }
-            100% { transform: translateY(-70px) translateX(40px); opacity: 0.5; }
-        }
 
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #1a1a1f; }
@@ -533,7 +543,8 @@
 <body>
 
 <div class="bg-wallpaper"></div>
-<div class="particles" id="particles"></div>
+<!-- ✨ BINTIK-BINTIK UNGU BARU ✨ -->
+<div class="stars-bg" id="starsBg"></div>
 
 <!-- PRELOADER dengan EFEK BAN dari kode yang diminta -->
 <div id="preloader" class="preloader">
@@ -673,6 +684,35 @@
 
 <script>
     (function() {
+        // 🔥 OPTIMIZED STARS GENERATOR (JUMLAH SEDIKIT, PERFORMANCE TINGGI) 🔥
+        function createStars() {
+            const starsBg = document.getElementById('starsBg');
+            const starCount = window.innerWidth < 768 ? 25 : 40; // Responsive: mobile 25, desktop 40
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Ukuran bintik bervariasi (sangat kecil untuk performance)
+                const size = (Math.random() * 3 + 1).toFixed(1);
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                
+                // Posisi random full screen
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // Animasi duration & delay random (ringan)
+                star.style.animationDuration = (2 + Math.random() * 3) + 's';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                
+                // Opacity rendah untuk efek subtle
+                star.style.opacity = 0.4 + Math.random() * 0.3;
+                
+                starsBg.appendChild(star);
+            }
+        }
+
         const products = [
             { id: 1, name: "Kaos CDP Member V1", image: "https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter", link: "https://www.roblox.com/catalog/138018016357035", keywords: "v1" },
             { id: 2, name: "Kaos CDP Member V2", image: "https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter", link: "https://www.roblox.com/catalog/93778780901295", keywords: "v2" },
@@ -765,20 +805,21 @@
             }, 2000);
         });
 
-        // Particles
-        const container = document.getElementById('particles');
-        for (let i = 0; i < 60; i++) {
-            let p = document.createElement('div');
-            p.classList.add('particle');
-            let size = Math.random() * 8 + 2;
-            p.style.width = size + 'px'; p.style.height = size + 'px';
-            p.style.left = Math.random() * 100 + '%';
-            p.style.top = Math.random() * 100 + '%';
-            p.style.animationDuration = 10 + Math.random() * 20 + 's';
-            p.style.animationDelay = Math.random() * 5 + 's';
-            p.style.opacity = 0.1 + Math.random() * 0.4;
-            container.appendChild(p);
-        }
+        // 🚀 INIT STARS SAAT HALAMAN LOADING (AFTER PRELOADER)
+        window.addEventListener('load', () => {
+            setTimeout(createStars, 100);
+        });
+
+        // Responsive stars untuk resize window
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                document.getElementById('starsBg').innerHTML = '';
+                createStars();
+            }, 250);
+        });
+
     })();
 </script>
 </body>
