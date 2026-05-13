@@ -18,7 +18,7 @@
             overflow-x: hidden;
             min-height: 100vh;
         }
-        /* BACKGROUND WALLPAPER - UNGU TUA CAMPUR HITAM ABU-ABU */
+        /* BACKGROUND WALLPAPER */
         .bg-wallpaper {
             position: fixed;
             top: 0;
@@ -51,7 +51,7 @@
         @keyframes bgMove { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(-5%, -5%) rotate(2deg); } }
         @keyframes bgPulse { 0% { opacity: 0.3; } 100% { opacity: 0.8; } }
 
-        /* PARTIKEL - UNGU */
+        /* PARTIKEL */
         .particles {
             position: fixed;
             top: 0;
@@ -77,7 +77,7 @@
         ::-webkit-scrollbar-track { background: #1a1a1f; }
         ::-webkit-scrollbar-thumb { background: #6a0dad; border-radius: 10px; }
 
-        /* TOP BAR */
+        /* TOP BAR - HAMBURGER MENU */
         .top-bar {
             position: fixed;
             top: 0;
@@ -85,7 +85,7 @@
             width: 100%;
             background: rgba(10, 10, 15, 0.95);
             backdrop-filter: blur(15px);
-            padding: 8px 0;
+            padding: 10px 0;
             z-index: 99999;
             border-bottom: 1px solid rgba(106,13,173,0.3);
             box-shadow: 0 5px 20px rgba(0,0,0,0.5);
@@ -95,16 +95,37 @@
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 30px;
             flex-wrap: wrap;
         }
+        .cdp-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #c9a5ff;
+            letter-spacing: 2px;
+        }
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+            z-index: 100001;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #c9a5ff;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        /* Nav Menu - Desktop */
         .nav-menu {
             display: flex;
             gap: 25px;
-            flex-wrap: wrap;
-            justify-content: center;
+            align-items: center;
         }
         .nav-menu a {
             color: #c9a5ff;
@@ -119,17 +140,52 @@
             color: #e8d0ff;
             border-bottom-color: #6a0dad;
         }
-        .cdp-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #c9a5ff;
-            letter-spacing: 2px;
-            background: transparent;
-        }
-        @media (max-width: 550px) {
-            .top-bar .container { flex-direction: column; gap: 10px; }
-            .nav-menu a { font-size: 0.75rem; padding: 4px 6px; }
-            .cdp-title { font-size: 0.9rem; }
+        /* Mobile styles */
+        @media (max-width: 650px) {
+            .hamburger {
+                display: flex;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 55px;
+                left: -100%;
+                width: 70%;
+                height: calc(100vh - 55px);
+                background: rgba(10, 10, 18, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 30px;
+                gap: 20px;
+                transition: 0.3s ease;
+                z-index: 99998;
+                border-right: 1px solid rgba(106,13,173,0.3);
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-menu a {
+                font-size: 1.1rem;
+                padding: 12px 20px;
+                width: 80%;
+                text-align: center;
+                border-bottom: none;
+                border-radius: 10px;
+            }
+            .nav-menu a:hover {
+                background: rgba(106,13,173,0.2);
+            }
+            /* Hamburger animation */
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
         }
 
         /* MAIN */
@@ -141,7 +197,7 @@
             z-index: 1;
         }
         @media (max-width: 650px) {
-            .main-content { padding: 105px 16px 40px; }
+            .main-content { padding: 80px 16px 40px; }
         }
 
         .section-title {
@@ -224,7 +280,7 @@
             font-size: 0.75rem;
         }
 
-        /* DAFTAR TRIGGER - HITAM PEKAT, TETAP HITAM SAAT DIKLIK */
+        /* DAFTAR TRIGGER */
         .register-trigger {
             background: #000000;
             border-radius: 24px;
@@ -235,15 +291,12 @@
             cursor: pointer;
             transition: 0.2s;
             border: 1px solid rgba(106,13,173,0.25);
-            /* Hilangkan efek klik berubah warna */
-            -webkit-tap-highlight-color: transparent;
         }
         .register-trigger:hover {
             border-color: rgba(106,13,173,0.5);
             background: #080808;
             transform: scale(1.01);
         }
-        /* Saat aktif/diklik tetap hitam pekat */
         .register-trigger:active {
             background: #000000;
             transform: scale(0.99);
@@ -253,7 +306,6 @@
             height: auto;
             margin-bottom: 16px;
             display: inline-block;
-            filter: brightness(1.05);
         }
         .trigger-text h3 {
             font-size: 1.25rem;
@@ -272,7 +324,7 @@
             .trigger-text p { font-size: 0.7rem; }
         }
 
-        /* MODAL FORM */
+        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -357,7 +409,7 @@
         .rules-box ol { padding-left: 20px; line-height: 1.5; color: #ccc; font-size: 0.75rem; }
         .rules-box li { margin: 5px 0; }
 
-        /* TEAM */
+        /* TEAM GRID */
         .team-grid {
             display: flex;
             flex-wrap: wrap;
@@ -479,11 +531,16 @@
     <div style="color:#888;font-size:10px;margin-top:8px;">loading...</div>
 </div>
 
-<!-- TOP BAR -->
+<!-- TOP BAR dengan HAMBURGER MENU -->
 <div class="top-bar">
     <div class="container">
         <div class="cdp-title">⚡ CDP TEAM ⚡</div>
-        <div class="nav-menu">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-menu" id="navMenu">
             <a href="#shop">✨ BELI BAJU</a>
             <a href="#team">👥 TEAM</a>
             <a href="#" id="daftarBtnNav">📝 DAFTAR</a>
@@ -500,7 +557,7 @@
         </div>
     </div>
 
-    <!-- DAFTAR TRIGGER - HITAM PEKAT, TETAP HITAM SAAT DIKLIK -->
+    <!-- DAFTAR TRIGGER -->
     <div id="registerTriggerBlock" class="register-trigger">
         <img class="trigger-logo" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Logo" onerror="this.src='https://placehold.co/100x100/0a0a0a/6a0dad?text=CDP'">
         <div class="trigger-text">
@@ -511,7 +568,7 @@
 
     <!-- SHOP -->
     <section id="shop">
-        <h2 class="section-title">🔥 CDP OFFICIAL 🔥</h2>
+        <h2 class="section-title">🔥 CDP OFFICIAL STORE 🔥</h2>
         <div class="product-grid" id="productGrid"></div>
     </section>
 
@@ -560,13 +617,15 @@
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8416A408FDBDF3270EC6FD5AF64E3C0C-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/80x80/1a1a2e/8b5cf6?text=DITZ'"><div class="role-name">ditz</div><div class="role-title">Contributor</div><a href="https://www.roblox.com/users/6174897216/profile" target="_blank" class="btn-view-profile">👤 VIEW</a></div>
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-32EDB3B534169236DA40F4E7F5369AD0-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/80x80/1a1a2e/8b5cf6?text=RAFLY'"><div class="role-name">rafly</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/users/10867023249/profile" target="_blank" class="btn-view-profile">👤 VIEW</a></div>
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A9BFE9E1E8ADA3D68B3A1A1B21229A9C-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/80x80/1a1a2e/8b5cf6?text=BIPOS'"><div class="role-name">Bipos19</div><div class="role-title">Moderator Support</div><a href="https://www.roblox.com/users/8519693761/profile" target="_blank" class="btn-view-profile">👤 VIEW</a></div>
+            <!-- MEMBER BARU: V4MP -->
+            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-9D7AF5ADF6769107C374C5FBCD5E80E2-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/80x80/1a1a2e/8b5cf6?text=V4MP'"><div class="role-name">V4MP</div><div class="role-title">Moderator Support</div><a href="https://www.roblox.com/users/10933734314/profile" target="_blank" class="btn-view-profile">👤 VIEW</a></div>
         </div>
         <p style="text-align:center; color:#999; margin-top:12px; font-size:0.7rem;">+ support team aktif setiap hari</p>
     </section>
 
     <footer>
         <div class="footer-social"><a href="https://tiktok.com/@umbu2460" target="_blank" class="btn-tiktok-footer">🎵 TIKTOK @umbu2460</a></div>
-        <div class="footer-copyright"><p>© 2023-2026 CDP TEAM | Roblox Community | Official Apparel</p><p>#RiseWithCDP #UnguBerkibar</p></div>
+        <div class="footer-copyright"><p>© 2025 CDP TEAM | Roblox Community | Official Apparel</p><p>#RiseWithCDP #UnguBerkibar</p></div>
     </footer>
 </div>
 
@@ -602,6 +661,21 @@
     function hidePreloader() { if(preloader && !hidden) { hidden = true; preloader.classList.add('hide'); setTimeout(() => { preloader.style.display = 'none'; }, 600); } }
     setTimeout(() => { if(!hidden) hidePreloader(); }, 2000);
     window.addEventListener('load', () => { setTimeout(hidePreloader, 800); });
+
+    // HAMBURGER MENU
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+    // Tutup menu saat klik link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
 
     // SMOOTH SCROLL
     document.querySelectorAll('a[href^="#"]').forEach(link => {
