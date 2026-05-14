@@ -259,7 +259,7 @@
             cursor: pointer;
         }
 
-        /* PRODUCT */
+        /* PRODUCT GRID */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -644,13 +644,15 @@
 
 <script>
 (function(){
-    // PRODUCT
+    // PRODUCT DATA (ditambah produk V4)
     const products = [
         { name:"Kaos CDP V1", image:"https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/138018016357035", keywords:"v1" },
         { name:"Kaos CDP V2", image:"https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/93778780901295", keywords:"v2" },
         { name:"Kaos CDP V3", image:"https://tr.rbxcdn.com/180DAY-78c7e320b7a876d02aa0efb5609eac49/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/114313073714304", keywords:"v3" },
         { name:"CDP Polos Pendek", image:"https://tr.rbxcdn.com/180DAY-f9c55dcdfe0fbd1357b61a6e9965182f/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/77348437170853", keywords:"polos" },
-        { name:"Celana CDP-POLOS", image:"https://tr.rbxcdn.com/180DAY-ece2ea7ccdb6f86dbcea8124e917871a/420/420/Pants/Webp/noFilter", link:"https://www.roblox.com/catalog/109269882061868", keywords:"celana" }
+        { name:"Celana CDP-POLOS", image:"https://tr.rbxcdn.com/180DAY-ece2ea7ccdb6f86dbcea8124e917871a/420/420/Pants/Webp/noFilter", link:"https://www.roblox.com/catalog/109269882061868", keywords:"celana" },
+        // PRODUK BARU V4
+        { name:"BAJU CDP V4 (Lengan Pendek)", image:"https://tr.rbxcdn.com/180DAY-5c50e554fbd6b7dd3a3459acd559110a/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/123295022030406/BAJU-CDP-V4-LENGAN-PENDEK-SEKARANG", keywords:"v4 lengan pendek" }
     ];
     const productGrid = document.getElementById('productGrid');
     const searchInput = document.getElementById('searchInput');
