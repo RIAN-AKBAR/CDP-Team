@@ -18,7 +18,6 @@
             overflow-x: hidden;
             min-height: 100vh;
         }
-        /* BACKGROUND WALLPAPER */
         .bg-wallpaper {
             position: fixed;
             top: 0;
@@ -51,7 +50,6 @@
         @keyframes bgMove { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(-5%, -5%) rotate(2deg); } }
         @keyframes bgPulse { 0% { opacity: 0.3; } 100% { opacity: 0.8; } }
 
-        /* PARTIKEL */
         .particles {
             position: fixed;
             top: 0;
@@ -77,7 +75,6 @@
         ::-webkit-scrollbar-track { background: #1a1a1f; }
         ::-webkit-scrollbar-thumb { background: #6a0dad; border-radius: 10px; }
 
-        /* TOP BAR - RESPONSIVE LOGO POSITION */
         .top-bar {
             position: fixed;
             top: 0;
@@ -196,7 +193,6 @@
             }
         }
 
-        /* MAIN */
         .main-content {
             max-width: 1300px;
             margin: 0 auto;
@@ -219,11 +215,11 @@
             color: transparent;
         }
 
-        /* SEARCH */
         .search-section {
             margin: 15px auto 20px;
             max-width: 500px;
             padding: 0 16px;
+            width: 100%;
         }
         .search-box {
             display: flex;
@@ -231,29 +227,48 @@
             backdrop-filter: blur(8px);
             border-radius: 60px;
             border: 1px solid rgba(106,13,173,0.5);
-            padding: 4px 4px 4px 18px;
             align-items: center;
+            width: 100%;
+            overflow: hidden;
         }
         .search-box input {
             flex: 1;
             background: transparent;
             border: none;
-            padding: 10px 0;
+            padding: 12px 18px;
             color: #e0e0e0;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             outline: none;
+            min-width: 0;
+            width: 100%;
+        }
+        .search-box input::placeholder {
+            color: #888;
+            font-size: 0.85rem;
         }
         .search-box button {
             background: #6a0dad;
             border: none;
-            padding: 6px 16px;
-            border-radius: 40px;
+            padding: 10px 24px;
+            border-radius: 60px;
             color: white;
             font-weight: bold;
             cursor: pointer;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: 0.2s;
+            margin: 3px;
+        }
+        .search-box button:hover {
+            background: #8b2be0;
+            transform: scale(1.02);
+        }
+        @media (max-width: 480px) {
+            .search-box input { padding: 10px 14px; font-size: 0.8rem; }
+            .search-box input::placeholder { font-size: 0.75rem; }
+            .search-box button { padding: 8px 16px; font-size: 0.75rem; }
         }
 
-        /* PRODUCT GRID */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -288,7 +303,6 @@
             font-size: 0.85rem;
         }
 
-        /* DAFTAR TRIGGER */
         .register-trigger {
             background: #000000;
             border-radius: 24px;
@@ -340,7 +354,6 @@
             .trigger-text p { font-size: 0.7rem; }
         }
 
-        /* DONASI SECTION */
         .donation-section {
             margin: 20px auto 30px;
             text-align: center;
@@ -371,7 +384,6 @@
             box-shadow: 0 8px 22px rgba(106,13,173,0.6);
         }
 
-        /* MODAL QRIS */
         .modal {
             display: none;
             position: fixed;
@@ -458,7 +470,6 @@
         }
         .modal-note { margin-top: 12px; font-size: 0.7rem; color: #a855f7; }
 
-        /* RULES */
         .rules-box {
             background: rgba(10,10,18,0.85);
             backdrop-filter: blur(12px);
@@ -472,7 +483,6 @@
         .rules-box ol { padding-left: 20px; line-height: 1.5; color: #ccc; font-size: 0.75rem; }
         .rules-box li { margin: 5px 0; }
 
-        /* TEAM GRID */
         .team-grid {
             display: flex;
             flex-wrap: wrap;
@@ -520,15 +530,6 @@
             background: #6a0dad;
             color: white;
         }
-        /* Support Card khusus */
-        .support-card {
-            background: linear-gradient(135deg, #1a0a2e, #0d0d1a);
-            border: 2px solid #a855f7;
-            box-shadow: 0 0 20px rgba(168,85,247,0.3);
-        }
-        .support-card .role-title {
-            color: #ffd700;
-        }
         @media (max-width: 700px) {
             .team-card { width: 250px; padding: 22px 16px; }
             .team-avatar-img { width: 130px; height: 130px; }
@@ -563,7 +564,6 @@
             margin: 6px 0;
         }
 
-        /* PRELOADER */
         .preloader {
             position: fixed;
             top: 0;
@@ -612,7 +612,6 @@
 <div class="bg-wallpaper"></div>
 <div class="particles" id="particles"></div>
 
-<!-- PRELOADER -->
 <div id="preloader" class="preloader">
     <div class="wheel-container"><div class="tire"></div><div class="white-ring"></div><div class="hub"></div><div class="spokes"><div class="spoke-line"></div><div class="spoke-line"></div><div class="spoke-line"></div><div class="spoke-line"></div></div></div>
     <div class="welcome-text">WELCOME TO CDP</div>
@@ -621,7 +620,6 @@
     <div style="color:#888;font-size:12px;margin-top:12px;">loading...</div>
 </div>
 
-<!-- TOP BAR -->
 <div class="top-bar">
     <div class="container">
         <div class="cdp-title">⚡ CDP TEAM ⚡</div>
@@ -639,7 +637,6 @@
 </div>
 
 <div class="main-content">
-    <!-- SEARCH -->
     <div class="search-section">
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="🔍 Cari produk CDP...">
@@ -647,7 +644,6 @@
         </div>
     </div>
 
-    <!-- DAFTAR TRIGGER -->
     <div id="registerTriggerBlock" class="register-trigger">
         <img class="trigger-logo" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Logo" onerror="this.src='https://placehold.co/80x80/0a0a0a/6a0dad?text=CDP'">
         <div class="trigger-text">
@@ -656,13 +652,11 @@
         </div>
     </div>
 
-    <!-- SHOP -->
     <section id="shop">
         <h2 class="section-title">🔥 CDP OFFICIAL STORE 🔥</h2>
         <div class="product-grid" id="productGrid"></div>
     </section>
 
-    <!-- DONASI SECTION DENGAN TEKS -->
     <div class="donation-section">
         <div class="donation-info">
             💖 Ingin mendukung CDP Team? Klik tombol di bawah untuk donasi melalui QRIS! 💖
@@ -672,7 +666,6 @@
         </button>
     </div>
 
-    <!-- MODAL QRIS -->
     <div id="qrisModal" class="modal">
         <div class="modal-content modal-content-qris">
             <span class="modal-close" id="closeQrisModal">&times;</span>
@@ -684,7 +677,6 @@
         </div>
     </div>
 
-    <!-- MODAL FORM -->
     <div id="registerModal" class="modal">
         <div class="modal-content">
             <span class="modal-close" id="closeModal">&times;</span>
@@ -706,19 +698,21 @@
         </div>
     </div>
 
-    <!-- RULES -->
     <div class="rules-box">
         <h3>📜 PERSYARATAN JOIN TEAM</h3>
         <ol>
-            <li>🚫 Dilarang ngemis GP</li><li>🚫 Dilarang ngemis minta jadi admin</li>
-            <li>🔞 No share link 18+</li><li>📵 No kirim foto/video 18+</li>
-            <li>⚠️ No kirim link phising</li><li>💬 Toxic sewajarnya</li>
-            <li>📅 Cinem setiap hari minggu</li><li>🚷 No share link GB lain</li>
+            <li>🚫 Dilarang ngemis GP</li>
+            <li>🚫 Dilarang ngemis minta jadi admin</li>
+            <li>🔞 No share link 18+</li>
+            <li>📵 No kirim foto/video 18+</li>
+            <li>⚠️ No kirim link phising</li>
+            <li>💬 Toxic sewajarnya</li>
+            <li>📅 Cinem setiap hari minggu</li>
+            <li>🚷 No share link GB lain</li>
             <li>🎭 No kirim stiker 18+</li>
         </ol>
     </div>
 
-    <!-- TEAM + SUPPORT CARD -->
     <section id="team">
         <h2 class="section-title">👑 MEET THE ELITE TEAM 👑</h2>
         <div class="team-grid">
@@ -730,14 +724,6 @@
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-32EDB3B534169236DA40F4E7F5369AD0-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=RAFLY'"><div class="role-name">rafly</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/users/10867023249/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A9BFE9E1E8ADA3D68B3A1A1B21229A9C-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=BIPOS'"><div class="role-name">Bipos19</div><div class="role-title">Moderator Support</div><a href="https://www.roblox.com/users/8519693761/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-9D7AF5ADF6769107C374C5FBCD5E80E2-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=V4MP'"><div class="role-name">V4MP</div><div class="role-title">Moderator Support</div><a href="https://www.roblox.com/users/10933734314/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-            <!-- SUPPORT CDP TEAM CARD -->
-            <div class="team-card support-card">
-                <img class="team-avatar-img avatar-contributor-border" src="https://files.catbox.moe/7thi53.jpg" alt="Support CDP Team" onerror="this.src='https://placehold.co/150x150/1a1a2e/ffd700?text=❤️'">
-                <div class="role-name">SUPPORT CDP TEAM</div>
-                <div class="role-title">⭐ DONATOR & SUPPORTER ⭐</div>
-                <div style="margin-top: 8px; font-size: 0.7rem; color: #ffd700;">Terima kasih untuk semua donatur!</div>
-                <button id="supportDonateBtn" class="btn-view-profile" style="margin-top: 12px; background: #a855f7; color: white;">💖 DUKUNG SEKARANG</button>
-            </div>
         </div>
         <p style="text-align:center; color:#999; margin-top:20px; font-size:0.8rem;">+ support team aktif setiap hari</p>
     </section>
@@ -750,7 +736,6 @@
 
 <script>
 (function(){
-    // PRODUCT DATA
     const products = [
         { name:"Kaos CDP V1", image:"https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/138018016357035", keywords:"v1" },
         { name:"Kaos CDP V2", image:"https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/93778780901295", keywords:"v2" },
@@ -776,14 +761,12 @@
     searchInput.onkeyup = (e) => { if(e.key === 'Enter') renderProducts(searchInput.value); };
     renderProducts();
 
-    // PRELOADER
     const preloader = document.getElementById('preloader');
     let hidden = false;
     function hidePreloader() { if(preloader && !hidden) { hidden = true; preloader.classList.add('hide'); setTimeout(() => { preloader.style.display = 'none'; }, 600); } }
     setTimeout(() => { if(!hidden) hidePreloader(); }, 2000);
     window.addEventListener('load', () => { setTimeout(hidePreloader, 800); });
 
-    // HAMBURGER MENU
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
     hamburger.addEventListener('click', () => {
@@ -797,7 +780,6 @@
         });
     });
 
-    // SMOOTH SCROLL
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
             const target = document.querySelector(this.getAttribute('href'));
@@ -805,7 +787,6 @@
         });
     });
 
-    // MODAL DAFTAR
     const modal = document.getElementById('registerModal');
     const triggerBlock = document.getElementById('registerTriggerBlock');
     const daftarNav = document.getElementById('daftarBtnNav');
@@ -817,19 +798,15 @@
     closeModal.onclick = closeModalFunc;
     window.onclick = (e) => { if(e.target === modal) closeModalFunc(); };
 
-    // MODAL QRIS
     const qrisModal = document.getElementById('qrisModal');
     const donateBtn = document.getElementById('donateBtn');
-    const supportDonateBtn = document.getElementById('supportDonateBtn');
     const closeQrisModal = document.getElementById('closeQrisModal');
     function openQrisModal() { qrisModal.style.display = 'flex'; }
     function closeQrisModalFunc() { qrisModal.style.display = 'none'; }
     if(donateBtn) donateBtn.onclick = openQrisModal;
-    if(supportDonateBtn) supportDonateBtn.onclick = openQrisModal;
     if(closeQrisModal) closeQrisModal.onclick = closeQrisModalFunc;
     window.onclick = (e) => { if(e.target === qrisModal) closeQrisModalFunc(); };
 
-    // FORM SUBMIT
     const modalForm = document.getElementById('registerFormModal');
     const modalMessage = document.getElementById('modalMessage');
     modalForm.onsubmit = function(e) {
@@ -853,7 +830,6 @@
         setTimeout(() => { modalForm.reset(); closeModalFunc(); modalMessage.innerHTML = ''; }, 2000);
     };
 
-    // PARTICLES
     const container = document.getElementById('particles');
     for(let i = 0; i < 50; i++) {
         let p = document.createElement('div');
