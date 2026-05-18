@@ -98,14 +98,12 @@
             align-items: center;
             position: relative;
         }
-        /* Desktop: logo di kiri */
         .cdp-title {
             font-size: 1.2rem;
             font-weight: 700;
             color: #c9a5ff;
             letter-spacing: 3px;
         }
-        /* Desktop: menu di kanan */
         .nav-menu {
             display: flex;
             gap: 25px;
@@ -125,7 +123,6 @@
             color: #e8d0ff;
             border-bottom-color: #6a0dad;
         }
-        /* Hamburger button - hidden on desktop */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -141,12 +138,10 @@
             transition: 0.3s;
             border-radius: 2px;
         }
-        /* Mobile styles */
         @media (max-width: 650px) {
             .top-bar .container {
                 justify-content: space-between;
             }
-            /* Logo tetap di tengah pada mobile */
             .cdp-title {
                 position: absolute;
                 left: 50%;
@@ -190,7 +185,6 @@
             .nav-menu a:hover {
                 background: rgba(106,13,173,0.2);
             }
-            /* Hamburger animation */
             .hamburger.active span:nth-child(1) {
                 transform: rotate(45deg) translate(5px, 5px);
             }
@@ -298,13 +292,17 @@
         .register-trigger {
             background: #000000;
             border-radius: 24px;
-            padding: 24px 20px;
+            padding: 20px 25px;
             margin: 15px auto 30px auto;
-            max-width: 480px;
+            max-width: 520px;
             text-align: center;
             cursor: pointer;
             transition: 0.2s;
             border: 1px solid rgba(106,13,173,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
         }
         .register-trigger:hover {
             border-color: rgba(106,13,173,0.5);
@@ -316,29 +314,64 @@
             transform: scale(0.99);
         }
         .trigger-logo {
-            width: 100px;
-            height: auto;
-            margin-bottom: 16px;
-            display: inline-block;
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            display: block;
+            border-radius: 12px;
+        }
+        .trigger-text {
+            text-align: left;
         }
         .trigger-text h3 {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: #ffffff;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             font-weight: 700;
         }
         .trigger-text p {
             color: #aaaaaa;
             font-size: 0.8rem;
         }
-        @media (max-width: 500px) {
-            .register-trigger { padding: 18px 16px; }
-            .trigger-logo { width: 75px; margin-bottom: 12px; }
+        @media (max-width: 550px) {
+            .register-trigger { padding: 15px 18px; gap: 15px; }
+            .trigger-logo { width: 60px; height: 60px; }
             .trigger-text h3 { font-size: 1rem; }
             .trigger-text p { font-size: 0.7rem; }
         }
 
-        /* MODAL */
+        /* DONASI SECTION */
+        .donation-section {
+            margin: 20px auto 30px;
+            text-align: center;
+        }
+        .donation-info {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #c9a5ff;
+        }
+        .btn-donate {
+            background: linear-gradient(135deg, #9b4d96, #6a0dad);
+            border: none;
+            padding: 14px 35px;
+            border-radius: 60px;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.2s;
+            box-shadow: 0 5px 15px rgba(106,13,173,0.4);
+        }
+        .btn-donate:hover {
+            transform: scale(1.03);
+            background: linear-gradient(135deg, #b05eff, #8535d4);
+            box-shadow: 0 8px 22px rgba(106,13,173,0.6);
+        }
+
+        /* MODAL QRIS */
         .modal {
             display: none;
             position: fixed;
@@ -363,6 +396,9 @@
             position: relative;
             animation: modalFadeIn 0.3s ease;
         }
+        .modal-content-qris {
+            max-width: 400px;
+        }
         @keyframes modalFadeIn {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -384,6 +420,19 @@
             font-size: 1.3rem;
             color: #c9a5ff;
             margin-bottom: 15px;
+        }
+        .qris-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            margin: 15px auto;
+            display: block;
+            border: 2px solid #6a0dad;
+        }
+        .qris-note {
+            font-size: 0.7rem;
+            color: #aaa;
+            margin-top: 10px;
         }
         .modal-form input, .modal-form select {
             width: 100%;
@@ -423,7 +472,7 @@
         .rules-box ol { padding-left: 20px; line-height: 1.5; color: #ccc; font-size: 0.75rem; }
         .rules-box li { margin: 5px 0; }
 
-        /* TEAM GRID - DIPERBESAR MAXIMAL */
+        /* TEAM GRID */
         .team-grid {
             display: flex;
             flex-wrap: wrap;
@@ -471,6 +520,15 @@
             background: #6a0dad;
             color: white;
         }
+        /* Support Card khusus */
+        .support-card {
+            background: linear-gradient(135deg, #1a0a2e, #0d0d1a);
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 20px rgba(168,85,247,0.3);
+        }
+        .support-card .role-title {
+            color: #ffd700;
+        }
         @media (max-width: 700px) {
             .team-card { width: 250px; padding: 22px 16px; }
             .team-avatar-img { width: 130px; height: 130px; }
@@ -505,7 +563,7 @@
             margin: 6px 0;
         }
 
-        /* PRELOADER - RODA DIPERBESAR */
+        /* PRELOADER */
         .preloader {
             position: fixed;
             top: 0;
@@ -554,7 +612,7 @@
 <div class="bg-wallpaper"></div>
 <div class="particles" id="particles"></div>
 
-<!-- PRELOADER dengan RODA DIPERBESAR -->
+<!-- PRELOADER -->
 <div id="preloader" class="preloader">
     <div class="wheel-container"><div class="tire"></div><div class="white-ring"></div><div class="hub"></div><div class="spokes"><div class="spoke-line"></div><div class="spoke-line"></div><div class="spoke-line"></div><div class="spoke-line"></div></div></div>
     <div class="welcome-text">WELCOME TO CDP</div>
@@ -591,7 +649,7 @@
 
     <!-- DAFTAR TRIGGER -->
     <div id="registerTriggerBlock" class="register-trigger">
-        <img class="trigger-logo" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Logo" onerror="this.src='https://placehold.co/100x100/0a0a0a/6a0dad?text=CDP'">
+        <img class="trigger-logo" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Logo" onerror="this.src='https://placehold.co/80x80/0a0a0a/6a0dad?text=CDP'">
         <div class="trigger-text">
             <h3>📝 DAFTAR MENJADI MEMBER</h3>
             <p>Klik disini untuk mengisi formulir pendaftaran</p>
@@ -603,6 +661,28 @@
         <h2 class="section-title">🔥 CDP OFFICIAL STORE 🔥</h2>
         <div class="product-grid" id="productGrid"></div>
     </section>
+
+    <!-- DONASI SECTION DENGAN TEKS -->
+    <div class="donation-section">
+        <div class="donation-info">
+            💖 Ingin mendukung CDP Team? Klik tombol di bawah untuk donasi melalui QRIS! 💖
+        </div>
+        <button id="donateBtn" class="btn-donate">
+            💖 SUPPORT CDP TEAM 💖
+        </button>
+    </div>
+
+    <!-- MODAL QRIS -->
+    <div id="qrisModal" class="modal">
+        <div class="modal-content modal-content-qris">
+            <span class="modal-close" id="closeQrisModal">&times;</span>
+            <img class="modal-logo" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Logo" onerror="this.src='https://placehold.co/65x65/0a0a0a/6a0dad?text=CDP'">
+            <h3>💖 SUPPORT CDP TEAM</h3>
+            <img class="qris-image" src="https://files.catbox.moe/ilj7x2.jpg" alt="QRIS Code" onerror="this.src='https://placehold.co/300x300/1a1a2e/a855f7?text=QRIS+Scan'">
+            <p class="qris-note">Scan QRIS di atas menggunakan aplikasi pembayaran (QRIS)</p>
+            <p class="qris-note" style="margin-top:5px;">Terima kasih atas dukungannya! 🙏</p>
+        </div>
+    </div>
 
     <!-- MODAL FORM -->
     <div id="registerModal" class="modal">
@@ -638,7 +718,7 @@
         </ol>
     </div>
 
-    <!-- TEAM - DIPERBESAR MAXIMAL -->
+    <!-- TEAM + SUPPORT CARD -->
     <section id="team">
         <h2 class="section-title">👑 MEET THE ELITE TEAM 👑</h2>
         <div class="team-grid">
@@ -650,6 +730,14 @@
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-32EDB3B534169236DA40F4E7F5369AD0-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=RAFLY'"><div class="role-name">rafly</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/users/10867023249/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A9BFE9E1E8ADA3D68B3A1A1B21229A9C-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=BIPOS'"><div class="role-name">Bipos19</div><div class="role-title">Moderator Support</div><a href="https://www.roblox.com/users/8519693761/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-9D7AF5ADF6769107C374C5FBCD5E80E2-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=V4MP'"><div class="role-name">V4MP</div><div class="role-title">Moderator Support</div><a href="https://www.roblox.com/users/10933734314/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
+            <!-- SUPPORT CDP TEAM CARD -->
+            <div class="team-card support-card">
+                <img class="team-avatar-img avatar-contributor-border" src="https://files.catbox.moe/7thi53.jpg" alt="Support CDP Team" onerror="this.src='https://placehold.co/150x150/1a1a2e/ffd700?text=❤️'">
+                <div class="role-name">SUPPORT CDP TEAM</div>
+                <div class="role-title">⭐ DONATOR & SUPPORTER ⭐</div>
+                <div style="margin-top: 8px; font-size: 0.7rem; color: #ffd700;">Terima kasih untuk semua donatur!</div>
+                <button id="supportDonateBtn" class="btn-view-profile" style="margin-top: 12px; background: #a855f7; color: white;">💖 DUKUNG SEKARANG</button>
+            </div>
         </div>
         <p style="text-align:center; color:#999; margin-top:20px; font-size:0.8rem;">+ support team aktif setiap hari</p>
     </section>
@@ -728,6 +816,18 @@
     if(daftarNav) daftarNav.onclick = (e) => { e.preventDefault(); openModal(); };
     closeModal.onclick = closeModalFunc;
     window.onclick = (e) => { if(e.target === modal) closeModalFunc(); };
+
+    // MODAL QRIS
+    const qrisModal = document.getElementById('qrisModal');
+    const donateBtn = document.getElementById('donateBtn');
+    const supportDonateBtn = document.getElementById('supportDonateBtn');
+    const closeQrisModal = document.getElementById('closeQrisModal');
+    function openQrisModal() { qrisModal.style.display = 'flex'; }
+    function closeQrisModalFunc() { qrisModal.style.display = 'none'; }
+    if(donateBtn) donateBtn.onclick = openQrisModal;
+    if(supportDonateBtn) supportDonateBtn.onclick = openQrisModal;
+    if(closeQrisModal) closeQrisModal.onclick = closeQrisModalFunc;
+    window.onclick = (e) => { if(e.target === qrisModal) closeQrisModalFunc(); };
 
     // FORM SUBMIT
     const modalForm = document.getElementById('registerFormModal');
