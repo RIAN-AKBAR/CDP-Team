@@ -215,6 +215,73 @@
             color: transparent;
         }
 
+        /* CATEGORY LIST STYLES */
+        .category-list-section {
+            margin: 20px auto 30px;
+            max-width: 700px;
+            padding: 0 16px;
+        }
+        .category-list-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #c9a5ff;
+            margin-bottom: 15px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: rgba(10,10,18,0.6);
+            border-radius: 20px;
+            padding: 10px;
+            border: 1px solid rgba(106,13,173,0.3);
+        }
+        .category-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(20,20,30,0.7);
+            border-radius: 50px;
+            padding: 8px 20px;
+            transition: 0.2s;
+            cursor: pointer;
+            border: 1px solid rgba(106,13,173,0.2);
+        }
+        .category-item:hover {
+            background: rgba(106,13,173,0.2);
+            border-color: #a855f7;
+            transform: translateX(5px);
+        }
+        .category-item-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .category-icon {
+            font-size: 1.5rem;
+        }
+        .category-name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #e0e0e0;
+        }
+        .category-count {
+            background: #6a0dad;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: white;
+        }
+        @media (max-width: 550px) {
+            .category-item { padding: 6px 15px; }
+            .category-icon { font-size: 1.2rem; }
+            .category-name { font-size: 0.85rem; }
+            .category-count { padding: 3px 10px; font-size: 0.6rem; }
+        }
+
         .search-section {
             margin: 15px auto 20px;
             max-width: 500px;
@@ -654,6 +721,14 @@
 
     <section id="shop">
         <h2 class="section-title">🔥 CDP OFFICIAL STORE 🔥</h2>
+        
+        <!-- CATEGORY LIST - TAMPILAN LIST VERTICAL DENGAN ALL PRODUCTS -->
+        <div class="category-list-section">
+            <div class="category-list-title">📌 PILIH KATEGORI PRODUK</div>
+            <div class="category-list" id="categoryList"></div>
+        </div>
+
+        <!-- ALL PRODUCTS -->
         <div class="product-grid" id="productGrid"></div>
     </section>
 
@@ -736,37 +811,107 @@
 
 <script>
 (function(){
-    const products = [
-        { name:"Kaos CDP V1", image:"https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/138018016357035", keywords:"v1" },
-        { name:"Kaos CDP V2", image:"https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/93778780901295", keywords:"v2" },
-        { name:"Kaos CDP V3", image:"https://tr.rbxcdn.com/180DAY-78c7e320b7a876d02aa0efb5609eac49/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/114313073714304", keywords:"v3" },
-        { name:"CDP Polos Pendek", image:"https://tr.rbxcdn.com/180DAY-f9c55dcdfe0fbd1357b61a6e9965182f/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/77348437170853", keywords:"polos" },
-        { name:"Celana CDP-POLOS", image:"https://tr.rbxcdn.com/180DAY-ece2ea7ccdb6f86dbcea8124e917871a/420/420/Pants/Webp/noFilter", link:"https://www.roblox.com/catalog/109269882061868", keywords:"celana" },
-        { name:"BAJU CDP V4 (Lengan Pendek)", image:"https://tr.rbxcdn.com/180DAY-5c50e554fbd6b7dd3a3459acd559110a/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/123295022030406/BAJU-CDP-V4-LENGAN-PENDEK-SEKARANG", keywords:"v4" },
-        { name:"BAJU MEKANIK CDP 🔧🛠️", image:"https://tr.rbxcdn.com/180DAY-87f250a4912aaa58570cd1ebdba777cc/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/114923521024909/BAJU-MEKANIK-CDP", keywords:"mekanik" }
+    // ALL PRODUCTS
+    const allProducts = [
+        { name:"Kaos CDP V1", image:"https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/138018016357035", category:"Kaos", keywords:"v1 kaos baju" },
+        { name:"Kaos CDP V2", image:"https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/93778780901295", category:"Kaos", keywords:"v2 kaos baju" },
+        { name:"Kaos CDP V3", image:"https://tr.rbxcdn.com/180DAY-78c7e320b7a876d02aa0efb5609eac49/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/114313073714304", category:"Kaos", keywords:"v3 kaos baju" },
+        { name:"CDP Polos Pendek", image:"https://tr.rbxcdn.com/180DAY-f9c55dcdfe0fbd1357b61a6e9965182f/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/77348437170853", category:"Kaos", keywords:"polos kaos baju" },
+        { name:"JAKET ABU-ABU CDP TERBARU", image:"https://tr.rbxcdn.com/180DAY-a2dec8cbdcd98e695b97130f1ff7ad87/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/75788782464224/JAKET-ABU-ABU-CDP-TERBARU", category:"Jaket", keywords:"jaket abu abu" },
+        { name:"JAKET CDP TEAM POLOS BERAPI UNGU", image:"https://tr.rbxcdn.com/180DAY-082f3cc41ebd047419a4e1a276380361/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/137690165582351/JAKET-CDP-TEAM-POLOS-BERAPI-UNGU", category:"Jaket", keywords:"jaket ungu polos" },
+        { name:"Celana CDP-POLOS", image:"https://tr.rbxcdn.com/180DAY-ece2ea7ccdb6f86dbcea8124e917871a/420/420/Pants/Webp/noFilter", link:"https://www.roblox.com/catalog/109269882061868", category:"Celana", keywords:"celana polos" },
+        { name:"BAJU CDP V4 (Lengan Pendek)", image:"https://tr.rbxcdn.com/180DAY-5c50e554fbd6b7dd3a3459acd559110a/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/123295022030406/BAJU-CDP-V4-LENGAN-PENDEK-SEKARANG", category:"Kaos", keywords:"v4 baju" },
+        { name:"BAJU MEKANIK CDP 🔧🛠️", image:"https://tr.rbxcdn.com/180DAY-87f250a4912aaa58570cd1ebdba777cc/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/114923521024909/BAJU-MEKANIK-CDP", category:"Limited", keywords:"mekanik baju" }
     ];
+
+    // Categories dengan ALL PRODUCTS (semua produk)
+    const categories = [
+        { name: "📦 ALL PRODUCTS", icon: "📦", filter: "ALL" },
+        { name: "👕 Kaos", icon: "👕", filter: "Kaos" },
+        { name: "🧥 Jaket", icon: "🧥", filter: "Jaket" },
+        { name: "👖 Celana", icon: "👖", filter: "Celana" },
+        { name: "✨ Limited", icon: "✨", filter: "Limited" }
+    ];
+
+    // Hitung jumlah per kategori
+    function getCategoryCount(categoryFilter) {
+        if (categoryFilter === "ALL") return allProducts.length;
+        return allProducts.filter(p => p.category === categoryFilter).length;
+    }
+
     const productGrid = document.getElementById('productGrid');
+    const categoryList = document.getElementById('categoryList');
     const searchInput = document.getElementById('searchInput');
     const searchBtn = document.getElementById('searchBtn');
-    function renderProducts(f='') {
-        const low = f.toLowerCase();
-        const filtered = products.filter(p => p.name.toLowerCase().includes(low) || p.keywords.includes(low));
+
+    // Render category list (vertical list)
+    function renderCategoryList() {
+        categoryList.innerHTML = '';
+        categories.forEach(cat => {
+            const count = getCategoryCount(cat.filter);
+            const item = document.createElement('div');
+            item.className = 'category-item';
+            item.setAttribute('data-category', cat.filter);
+            item.innerHTML = `
+                <div class="category-item-left">
+                    <span class="category-icon">${cat.icon}</span>
+                    <span class="category-name">${cat.name}</span>
+                </div>
+                <div class="category-count">${count} item</div>
+            `;
+            item.addEventListener('click', () => {
+                filterByCategory(cat.filter);
+            });
+            categoryList.appendChild(item);
+        });
+    }
+
+    function filterByCategory(category) {
+        if (category === "ALL") {
+            displayProducts(allProducts);
+        } else {
+            const filtered = allProducts.filter(p => p.category === category);
+            displayProducts(filtered);
+        }
+        // Scroll to product section
+        document.getElementById('shop').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function displayProducts(productsToShow) {
         productGrid.innerHTML = '';
-        if(filtered.length === 0) { productGrid.innerHTML = '<div style="text-align:center;padding:50px;color:#aaa;">✨ Produk tidak ditemukan ✨</div>'; return; }
-        filtered.forEach(p => {
+        if(productsToShow.length === 0) {
+            productGrid.innerHTML = '<div style="text-align:center;padding:50px;color:#aaa;">✨ Produk tidak ditemukan ✨</div>';
+            return;
+        }
+        productsToShow.forEach(p => {
             productGrid.innerHTML += `<div class="product-card"><img class="product-img" src="${p.image}" onerror="this.src='https://placehold.co/400x400/1a1a2e/a855f7?text=CDP'"><div class="product-name">${p.name}</div><a href="${p.link}" target="_blank" class="btn-buy">BUY NOW →</a></div>`;
         });
     }
+
+    function renderProducts(searchTerm = '') {
+        const low = searchTerm.toLowerCase();
+        if (low === '') {
+            displayProducts(allProducts);
+        } else {
+            const filtered = allProducts.filter(p => p.name.toLowerCase().includes(low) || p.keywords.toLowerCase().includes(low));
+            displayProducts(filtered);
+        }
+    }
+
     searchBtn.onclick = () => renderProducts(searchInput.value);
     searchInput.onkeyup = (e) => { if(e.key === 'Enter') renderProducts(searchInput.value); };
+    
+    renderCategoryList();
     renderProducts();
 
+    // PRELOADER
     const preloader = document.getElementById('preloader');
     let hidden = false;
     function hidePreloader() { if(preloader && !hidden) { hidden = true; preloader.classList.add('hide'); setTimeout(() => { preloader.style.display = 'none'; }, 600); } }
     setTimeout(() => { if(!hidden) hidePreloader(); }, 2000);
     window.addEventListener('load', () => { setTimeout(hidePreloader, 800); });
 
+    // HAMBURGER MENU
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
     hamburger.addEventListener('click', () => {
@@ -780,6 +925,7 @@
         });
     });
 
+    // SMOOTH SCROLL
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
             const target = document.querySelector(this.getAttribute('href'));
@@ -787,6 +933,7 @@
         });
     });
 
+    // MODAL DAFTAR
     const modal = document.getElementById('registerModal');
     const triggerBlock = document.getElementById('registerTriggerBlock');
     const daftarNav = document.getElementById('daftarBtnNav');
@@ -798,6 +945,7 @@
     closeModal.onclick = closeModalFunc;
     window.onclick = (e) => { if(e.target === modal) closeModalFunc(); };
 
+    // MODAL QRIS
     const qrisModal = document.getElementById('qrisModal');
     const donateBtn = document.getElementById('donateBtn');
     const closeQrisModal = document.getElementById('closeQrisModal');
@@ -807,6 +955,7 @@
     if(closeQrisModal) closeQrisModal.onclick = closeQrisModalFunc;
     window.onclick = (e) => { if(e.target === qrisModal) closeQrisModalFunc(); };
 
+    // FORM SUBMIT
     const modalForm = document.getElementById('registerFormModal');
     const modalMessage = document.getElementById('modalMessage');
     modalForm.onsubmit = function(e) {
@@ -830,6 +979,7 @@
         setTimeout(() => { modalForm.reset(); closeModalFunc(); modalMessage.innerHTML = ''; }, 2000);
     };
 
+    // PARTICLES
     const container = document.getElementById('particles');
     for(let i = 0; i < 50; i++) {
         let p = document.createElement('div');
