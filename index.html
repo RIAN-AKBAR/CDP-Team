@@ -204,15 +204,39 @@
             .main-content { padding: 80px 16px 40px; }
         }
 
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 800;
+        /* SECTION TITLE STYLE - SEPERTI FOTO TEAM DRAG PELAN */
+        .hero-section-title {
             text-align: center;
-            margin: 25px 0 20px;
-            background: linear-gradient(120deg, #e0e0e0, #c9a5ff, #a855f7);
+            margin: 30px 0 25px;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #e0e0e0, #c9a5ff, #a855f7);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .hero-subtitle {
+            font-size: 1rem;
+            color: #c9a5ff;
+            letter-spacing: 3px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        .hero-divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #a855f7, #c084fc, #a855f7, transparent);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        @media (max-width: 550px) {
+            .hero-title { font-size: 1.6rem; letter-spacing: 2px; }
+            .hero-subtitle { font-size: 0.75rem; letter-spacing: 2px; }
         }
 
         .category-tabs {
@@ -729,7 +753,12 @@
     </div>
 
     <section id="shop">
-        <h2 class="section-title">🔥 CDP OFFICIAL 🔥</h2>
+        <!-- HERO SECTION TITLE - SEPERTI FOTO TEAM DRAG PELAN -->
+        <div class="hero-section-title">
+            <div class="hero-title">CIRCLE DRAG PEMULA</div>
+            <div class="hero-subtitle">SATU SERAGAM, SATU TUJUAN. TAMPIL SOLID DI JALANAN.</div>
+            <div class="hero-divider"></div>
+        </div>
         
         <div class="category-tabs" id="categoryTabs">
             <div class="category-tab active" data-category="ALL">📦 ALL</div>
@@ -931,7 +960,6 @@
     if(closeQrisModal) closeQrisModal.onclick = closeQrisModalFunc;
     window.onclick = (e) => { if(e.target === qrisModal) closeQrisModalFunc(); };
 
-    // FORM SUBMIT dengan teks email yang lebih rapi
     const modalForm = document.getElementById('registerFormModal');
     const modalMessage = document.getElementById('modalMessage');
     modalForm.onsubmit = function(e) {
@@ -951,7 +979,6 @@
         const targetEmail = 'storeumbu7@gmail.com';
         const subject = `[PENDAFTARAN CDP TEAM] ${nama} ingin bergabung`;
         
-        // Teks email yang lebih rapi dan terstruktur
         const body = `Halo Owner CDP Team,
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
