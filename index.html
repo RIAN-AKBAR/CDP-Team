@@ -420,7 +420,6 @@
             box-shadow: 0 8px 22px rgba(106,13,173,0.6);
         }
 
-        /* INFO BANNER - KEREN DENGAN TEKS PUTIH */
         .info-banner {
             background: linear-gradient(135deg, #0d0d1a, #1a0a2e);
             border: 1px solid rgba(168,85,247,0.3);
@@ -445,13 +444,6 @@
             letter-spacing: 1px;
             text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
-        .info-banner h2 span {
-            color: #ffffff;
-            background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
-            font-weight: 800;
-        }
         .info-banner p {
             font-size: 1.05rem;
             line-height: 1.7;
@@ -461,7 +453,6 @@
         .info-banner .highlight {
             color: #ffffff;
             font-weight: 600;
-            text-decoration: none;
         }
         @media (max-width: 550px) {
             .info-banner { padding: 25px 20px; margin: 30px auto; }
@@ -750,7 +741,6 @@
         <div class="product-grid" id="productGrid"></div>
     </section>
 
-    <!-- INFO BANNER - TEKS PUTIH SEMUA, TAMPILAN KEREN -->
     <div class="info-banner">
         <h2>CIRCLE DRAG PEMULA</h2>
         <p>Bukan cuma soal kecepatan, tapi soal kebanggaan. Pakai atribut resmi Team <span class="highlight">CIRCLE DRAG PEMULA</span>, tunjukkan skillmu, dan jadilah pusat perhatian di setiap meet-up!</p>
@@ -941,6 +931,7 @@
     if(closeQrisModal) closeQrisModal.onclick = closeQrisModalFunc;
     window.onclick = (e) => { if(e.target === qrisModal) closeQrisModalFunc(); };
 
+    // FORM SUBMIT dengan teks email yang lebih rapi
     const modalForm = document.getElementById('registerFormModal');
     const modalMessage = document.getElementById('modalMessage');
     modalForm.onsubmit = function(e) {
@@ -950,15 +941,37 @@
         const gender = document.getElementById('gender').value;
         const age = document.getElementById('age').value;
         const wa = document.getElementById('whatsappNumber').value;
+        
         if(!nama || !roblox || !gender || !age || !wa) {
             modalMessage.innerHTML = '⚠️ Semua field harus diisi!';
             modalMessage.style.color = '#ff8888';
             return;
         }
+        
         const targetEmail = 'storeumbu7@gmail.com';
         const subject = `[PENDAFTARAN CDP TEAM] ${nama} ingin bergabung`;
-        const body = `Halo Owner CDP Team,%0D%0A%0D%0AAda pendaftar baru!%0D%0A%0D%0A📋 DATA PENDAFTAR:%0D%0A━━━━━━━━━━━━━━━━━━━━%0D%0A📛 Nama: ${nama}%0D%0A🎮 Username Roblox: ${roblox}%0D%0A⚧ Gender: ${gender}%0D%0A📅 Umur: ${age}%0D%0A📱 WhatsApp: ${wa}%0D%0A━━━━━━━━━━━━━━━━━━━━%0D%0A%0D%0ATolong segera diproses ya kak!`;
+        
+        // Teks email yang lebih rapi dan terstruktur
+        const body = `Halo Owner CDP Team,
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           📋 DATA PENDAFTAR BARU
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📛 Nama Lengkap     : ${nama}
+🎮 Username Roblox  : ${roblox}
+⚧ Gender           : ${gender}
+📅 Umur             : ${age}
+📱 WhatsApp         : ${wa}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Tolong segera diproses ya kak! ✨
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Dikirim dari Form Pendaftaran CDP Team`;
+        
         window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
         modalMessage.innerHTML = '✅ Pendaftaran terkirim! Cek email Anda.';
         modalMessage.style.color = '#a855f7';
         setTimeout(() => { modalForm.reset(); closeModalFunc(); modalMessage.innerHTML = ''; }, 2000);
