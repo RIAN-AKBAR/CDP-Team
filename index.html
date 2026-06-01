@@ -139,7 +139,7 @@
             transition: 0.3s;
             border-radius: 2px;
         }
-        /* Mobile styles - logo tengah, menu hamburger kiri/kanan */
+        /* Mobile styles - logo ke tengah, hamburger di kiri */
         @media (max-width: 650px) {
             .top-bar .container {
                 justify-content: center;
@@ -147,16 +147,19 @@
             }
             /* Logo di tengah mobile */
             .cdp-title {
-                position: static;
-                transform: none;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
                 text-align: center;
+                white-space: nowrap;
             }
             .hamburger {
                 display: flex;
                 position: absolute;
-                right: 20px;
+                left: 20px;
                 top: 50%;
                 transform: translateY(-50%);
+                right: auto;
             }
             .nav-menu {
                 position: fixed;
