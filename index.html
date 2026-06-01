@@ -83,7 +83,7 @@
             width: 100%;
             background: rgba(10, 10, 15, 0.95);
             backdrop-filter: blur(15px);
-            padding: 12px 0;
+            padding: 15px 0;
             z-index: 99999;
             border-bottom: 1px solid rgba(106,13,173,0.3);
             box-shadow: 0 5px 20px rgba(0,0,0,0.5);
@@ -97,22 +97,22 @@
             justify-content: space-between;
             position: relative;
         }
-        /* Logo di kiri untuk desktop */
+        /* Logo di kiri untuk desktop - DIPERBESAR */
         .cdp-title {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 800;
             color: #c9a5ff;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
         }
         /* Nav menu di kanan untuk desktop */
         .nav-menu {
             display: flex;
-            gap: 25px;
+            gap: 30px;
             align-items: center;
         }
         .nav-menu a {
             color: #c9a5ff;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             transition: 0.2s;
@@ -133,11 +133,11 @@
             z-index: 100001;
         }
         .hamburger span {
-            width: 25px;
-            height: 2px;
+            width: 28px;
+            height: 3px;
             background: #c9a5ff;
             transition: 0.3s;
-            border-radius: 2px;
+            border-radius: 3px;
         }
         /* Mobile styles - logo ke tengah, hamburger di kiri */
         @media (max-width: 650px) {
@@ -145,13 +145,15 @@
                 justify-content: center;
                 position: relative;
             }
-            /* Logo di tengah mobile */
+            /* Logo di tengah mobile - DIPERBESAR */
             .cdp-title {
                 position: absolute;
                 left: 50%;
                 transform: translateX(-50%);
                 text-align: center;
                 white-space: nowrap;
+                font-size: 1.3rem;
+                letter-spacing: 3px;
             }
             .hamburger {
                 display: flex;
@@ -163,10 +165,10 @@
             }
             .nav-menu {
                 position: fixed;
-                top: 60px;
+                top: 65px;
                 left: -100%;
                 width: 70%;
-                height: calc(100vh - 60px);
+                height: calc(100vh - 65px);
                 background: rgba(10, 10, 18, 0.98);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
@@ -207,12 +209,12 @@
         .main-content {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 90px 20px 50px;
+            padding: 95px 20px 50px;
             position: relative;
             z-index: 1;
         }
         @media (max-width: 650px) {
-            .main-content { padding: 80px 16px 40px; }
+            .main-content { padding: 85px 16px 40px; }
         }
 
         /* HERO SECTION */
