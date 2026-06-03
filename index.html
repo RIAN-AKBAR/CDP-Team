@@ -75,7 +75,7 @@
         ::-webkit-scrollbar-track { background: #1a1a1f; }
         ::-webkit-scrollbar-thumb { background: #6a0dad; border-radius: 10px; }
 
-        /* ========== TOP BAR - DESKTOP & MOBILE RESPONSIVE ========== */
+        /* TOP BAR */
         .top-bar {
             position: fixed;
             top: 0;
@@ -97,14 +97,12 @@
             justify-content: space-between;
             position: relative;
         }
-        /* Logo di kiri untuk desktop - DIPERBESAR */
         .cdp-title {
             font-size: 1.6rem;
             font-weight: 800;
             color: #c9a5ff;
             letter-spacing: 4px;
         }
-        /* Nav menu di kanan untuk desktop */
         .nav-menu {
             display: flex;
             gap: 30px;
@@ -123,7 +121,6 @@
             color: #e8d0ff;
             border-bottom-color: #6a0dad;
         }
-        /* Hamburger button - hidden on desktop */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -139,13 +136,11 @@
             transition: 0.3s;
             border-radius: 3px;
         }
-        /* Mobile styles - logo ke tengah, hamburger di kiri */
         @media (max-width: 650px) {
             .top-bar .container {
                 justify-content: center;
                 position: relative;
             }
-            /* Logo di tengah mobile - DIPERBESAR */
             .cdp-title {
                 position: absolute;
                 left: 50%;
@@ -179,7 +174,6 @@
                 transition: 0.3s ease;
                 z-index: 99998;
                 border-right: 1px solid rgba(106,13,173,0.3);
-                margin-left: 0;
             }
             .nav-menu.active {
                 left: 0;
@@ -355,6 +349,7 @@
             .trigger-text p { font-size: 0.7rem; }
         }
 
+        /* CATEGORY TABS - TANPA EMOJI */
         .category-tabs {
             display: flex;
             justify-content: center;
@@ -506,6 +501,63 @@
         .rules-box h3 { font-size: 1.2rem; color: #c9a5ff; text-align: center; margin-bottom: 12px; }
         .rules-box ol { padding-left: 20px; line-height: 1.5; color: #ccc; font-size: 0.75rem; }
         .rules-box li { margin: 5px 0; }
+
+        /* TUTORIAL PENDAFTARAN */
+        .tutorial-box {
+            background: rgba(10,10,18,0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(106,13,173,0.4);
+            border-radius: 25px;
+            padding: 22px 25px;
+            margin: 35px auto;
+            max-width: 750px;
+        }
+        .tutorial-box h3 {
+            font-size: 1.3rem;
+            color: #c9a5ff;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: rgba(20,20,30,0.5);
+            padding: 12px 16px;
+            border-radius: 20px;
+            border-left: 3px solid #a855f7;
+        }
+        .step-number {
+            background: #6a0dad;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .step-text {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #e0e0e0;
+        }
+        .step-text strong {
+            color: #c9a5ff;
+        }
+        @media (max-width: 550px) {
+            .tutorial-box { padding: 18px; }
+            .step-item { padding: 10px 12px; gap: 10px; }
+            .step-number { width: 24px; height: 24px; font-size: 0.7rem; }
+            .step-text { font-size: 0.8rem; }
+        }
 
         .team-grid {
             display: flex;
@@ -780,11 +832,12 @@
             <div class="hero-divider"></div>
         </div>
         
+        <!-- KATEGORI TANPA EMOJI -->
         <div class="category-tabs" id="categoryTabs">
-            <div class="category-tab active" data-category="ALL">📦 ALL</div>
-            <div class="category-tab" data-category="Kaos">👕 SHIRT</div>
-            <div class="category-tab" data-category="Jaket">🧥 JACKET</div>
-            <div class="category-tab" data-category="Celana">👖 TROUSERS</div>
+            <div class="category-tab active" data-category="ALL">ALL</div>
+            <div class="category-tab" data-category="Kaos">SHIRT</div>
+            <div class="category-tab" data-category="Jaket">JACKET</div>
+            <div class="category-tab" data-category="Celana">TROUSERS</div>
         </div>
 
         <div class="product-grid" id="productGrid"></div>
@@ -849,6 +902,34 @@
             <li>🚷 No share link GB lain</li>
             <li>🎭 No kirim stiker 18+</li>
         </ol>
+    </div>
+
+    <!-- TUTORIAL PENDAFTARAN -->
+    <div class="tutorial-box">
+        <h3>📚 TUTORIAL PENDAFTARAN</h3>
+        <div class="step-list">
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <span class="step-text"><strong>Klik tombol "DAFTAR"</strong> di menu atas atau tombol "DAFTAR MENJADI MEMBER" di halaman ini.</span>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <span class="step-text">Isi <strong>formulir pendaftaran</strong> dengan data yang benar (Nama, Username Roblox, Gender, Umur, WhatsApp).</span>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <span class="step-text">Klik <strong>"KIRIM PENDAFTARAN"</strong>, maka akan terbuka aplikasi email default Anda.</span>
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <span class="step-text">Kirim email tersebut (data sudah otomatis terisi). Tunggu konfirmasi dari Owner via email.</span>
+            </div>
+            <div class="step-item">
+                <span class="step-number">5</span>
+                <span class="step-text">Setelah diterima, Anda akan dihubungi dan resmi menjadi member CDP Team!</span>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:18px; font-size:0.75rem; color:#aaa;">✅ Pastikan data WhatsApp aktif agar mudah dikontak.</p>
     </div>
 
     <section id="team">
@@ -1038,4 +1119,4 @@ Dikirim dari Form Pendaftaran CDP Team`;
 })();
 </script>
 </body>
-</html>
+    </html>
