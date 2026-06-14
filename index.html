@@ -245,7 +245,85 @@
             .hero-subtitle { font-size: 0.75rem; letter-spacing: 2px; }
         }
 
-        /* ALBUM SECTION - TANPA GAMBAR */
+        /* MUSIC PLAYER */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: rgba(10, 10, 18, 0.95);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 12px 18px;
+            border: 1px solid rgba(106,13,173,0.5);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: 0.2s;
+        }
+        .music-player:hover {
+            border-color: #a855f7;
+        }
+        .music-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .music-btn {
+            background: #6a0dad;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .music-btn:hover {
+            background: #a855f7;
+            transform: scale(1.05);
+        }
+        .music-select {
+            background: #1a1a2a;
+            border: 1px solid #6a0dad;
+            border-radius: 30px;
+            padding: 6px 12px;
+            color: #c9a5ff;
+            font-size: 0.7rem;
+            cursor: pointer;
+            outline: none;
+        }
+        .music-select option {
+            background: #0a0a0f;
+        }
+        .volume-slider {
+            width: 70px;
+            cursor: pointer;
+            background: #6a0dad;
+            height: 3px;
+            border-radius: 3px;
+            -webkit-appearance: none;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #a855f7;
+            cursor: pointer;
+        }
+        @media (max-width: 650px) {
+            .music-player { padding: 8px 12px; gap: 10px; }
+            .music-btn { width: 28px; height: 28px; font-size: 12px; }
+            .music-select { font-size: 0.6rem; padding: 4px 8px; }
+            .volume-slider { width: 50px; }
+        }
+
         .album-section {
             background: rgba(10,10,18,0.85);
             backdrop-filter: blur(12px);
@@ -276,7 +354,6 @@
             background: linear-gradient(95deg, #8b2be0, #4c1d95);
         }
 
-        /* ACTION BUTTONS */
         .action-buttons {
             display: flex;
             justify-content: center;
@@ -323,7 +400,6 @@
             filter: brightness(1.05);
         }
 
-        /* MODAL INPUT NAMA TEAM */
         .input-modal {
             display: none;
             position: fixed;
@@ -798,6 +874,18 @@
             font-weight: bold;
             font-size: 0.7rem;
         }
+        .btn-youtube-footer {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #FF0000;
+            padding: 5px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 0.7rem;
+        }
 
         .modal, .qris-modal {
             display: none;
@@ -931,6 +1019,22 @@
     <div style="color:#888;font-size:12px;margin-top:12px;">loading...</div>
 </div>
 
+<!-- MUSIC PLAYER -->
+<div class="music-player" id="musicPlayer">
+    <div class="music-controls">
+        <button class="music-btn" id="playPauseBtn">⏸</button>
+        <button class="music-btn" id="prevBtn">⏮</button>
+        <button class="music-btn" id="nextBtn">⏭</button>
+        <select id="musicSelect" class="music-select">
+            <option value="lagu1">🎵 Lagu 1</option>
+            <option value="lagu2">🎵 Lagu 2</option>
+            <option value="lagu3">🎵 Lagu 3</option>
+        </select>
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="50">
+    </div>
+    <audio id="audioPlayer" loop style="display:none;"></audio>
+</div>
+
 <div class="top-bar">
     <div class="container">
         <div class="cdp-title">⚡ CDP OFFICIAL ⚡</div>
@@ -980,19 +1084,16 @@
         <div class="product-grid" id="productGrid"></div>
     </section>
 
-    <!-- ALBUM SECTION - TANPA GAMBAR -->
     <div class="album-section">
         <h3>📸 GALERI CDP TEAM</h3>
         <a href="album.html" class="btn-album">📷 VIEW ALBUM</a>
     </div>
 
-    <!-- ACTION BUTTONS COLAB & LAGA -->
     <div class="action-buttons">
         <button id="colabBtn" class="btn-colab">🤝 KERJA SAMA (COLAB)</button>
         <button id="lagaBtn" class="btn-laga">⚔️ LAGA / BATTLE</button>
     </div>
 
-    <!-- MODAL INPUT NAMA TEAM UNTUK COLAB/LAGA -->
     <div id="teamNameModal" class="input-modal">
         <div class="input-modal-content">
             <h3 id="modalTitle">Masukkan Nama Team Anda</h3>
@@ -1096,6 +1197,7 @@
         <div class="footer-links">
             <a href="https://tiktok.com/@umbu2460" target="_blank" class="btn-tiktok-footer">🎵 TIKTOK @umbu2460</a>
             <a href="https://discord.gg/kEYVZJGdk" target="_blank" class="btn-discord-footer">💬 DISCORD</a>
+            <a href="https://youtube.com/@teamcdpcircledragpemula?si=vQkfSAEBAx3LtTdE" target="_blank" class="btn-youtube-footer">▶️ YOUTUBE</a>
         </div>
         <div class="footer-copyright"><p>© 2023-2026 CDP OFFICIAL | Roblox Community | Official Apparel</p><p>code warna kendaraan : 5e326c</p></div>
     </footer>
@@ -1103,6 +1205,91 @@
 
 <script>
 (function(){
+    // MUSIC PLAYER
+    const audio = document.getElementById('audioPlayer');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const musicSelect = document.getElementById('musicSelect');
+    const volumeSlider = document.getElementById('volumeSlider');
+    
+    // Daftar lagu (gunakan base64 silent audio sebagai fallback, atau bisa diganti dengan file MP3 asli)
+    // NOTE: Karena tidak ada file MP3 yang diupload, kita gunakan audio dari URL placeholder yang valid
+    // Untuk keperluan demo, kita gunakan file audio dari contoh (sumber bebas)
+    const playlist = [
+        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    ];
+    
+    let currentTrack = 0;
+    let isPlaying = false;
+    
+    function loadTrack(index) {
+        audio.src = playlist[index];
+        audio.load();
+        if (isPlaying) {
+            audio.play().catch(e => console.log("Autoplay dicegah browser, klik play manual"));
+        }
+        musicSelect.selectedIndex = index;
+    }
+    
+    function playPause() {
+        if (isPlaying) {
+            audio.pause();
+            playPauseBtn.textContent = "▶";
+        } else {
+            audio.play().catch(e => console.log("Play error"));
+            playPauseBtn.textContent = "⏸";
+        }
+        isPlaying = !isPlaying;
+    }
+    
+    function prevTrack() {
+        currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+        loadTrack(currentTrack);
+        if (isPlaying) {
+            audio.play();
+            playPauseBtn.textContent = "⏸";
+        }
+    }
+    
+    function nextTrack() {
+        currentTrack = (currentTrack + 1) % playlist.length;
+        loadTrack(currentTrack);
+        if (isPlaying) {
+            audio.play();
+            playPauseBtn.textContent = "⏸";
+        }
+    }
+    
+    function onTrackEnd() {
+        nextTrack();
+    }
+    
+    playPauseBtn.addEventListener('click', playPause);
+    prevBtn.addEventListener('click', prevTrack);
+    nextBtn.addEventListener('click', nextTrack);
+    musicSelect.addEventListener('change', (e) => {
+        currentTrack = parseInt(e.target.selectedIndex);
+        loadTrack(currentTrack);
+        if (isPlaying) {
+            audio.play();
+            playPauseBtn.textContent = "⏸";
+        }
+    });
+    volumeSlider.addEventListener('input', (e) => {
+        audio.volume = e.target.value / 100;
+    });
+    audio.addEventListener('ended', onTrackEnd);
+    audio.volume = 0.5;
+    volumeSlider.value = 50;
+    
+    // Auto-play attempt (karena browser mungkin blokir, user tetap bisa klik play)
+    loadTrack(0);
+    audio.volume = 0.5;
+    
+    // Product data
     const allProducts = [
         { name:"Kaos CDP V1", image:"https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/138018016357035", category:"Kaos", keywords:"v1 kaos baju shirt" },
         { name:"Kaos CDP V2", image:"https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/93778780901295", category:"Kaos", keywords:"v2 kaos baju shirt" },
@@ -1196,7 +1383,7 @@
     const modalSendBtn = document.getElementById('modalSendBtn');
     const modalCancelBtn = document.getElementById('modalCancelBtn');
     
-    let currentAction = ''; // 'colab' or 'laga'
+    let currentAction = '';
     
     function closeModal() {
         teamNameModal.style.display = 'none';
@@ -1236,13 +1423,10 @@
     });
     
     modalCancelBtn.addEventListener('click', closeModal);
-    
-    // Tutup modal klik di luar
     window.addEventListener('click', (e) => {
         if (e.target === teamNameModal) closeModal();
     });
     
-    // Tombol Colab & Laga
     const colabBtn = document.getElementById('colabBtn');
     const lagaBtn = document.getElementById('lagaBtn');
     colabBtn.addEventListener('click', () => openModal('colab'));
