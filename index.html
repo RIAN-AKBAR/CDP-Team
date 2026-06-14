@@ -245,7 +245,7 @@
             .hero-subtitle { font-size: 0.75rem; letter-spacing: 2px; }
         }
 
-        /* MUSIC PLAYER - FIXED BOTTOM RIGHT */
+        /* MUSIC PLAYER */
         .music-player {
             position: fixed;
             bottom: 20px;
@@ -260,10 +260,6 @@
             align-items: center;
             gap: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            transition: 0.2s;
-        }
-        .music-player:hover {
-            border-color: #a855f7;
         }
         .music-controls {
             display: flex;
@@ -297,9 +293,6 @@
             font-size: 0.7rem;
             cursor: pointer;
             outline: none;
-        }
-        .music-select option {
-            background: #0a0a0f;
         }
         .volume-slider {
             width: 70px;
@@ -366,13 +359,11 @@
             padding: 14px 35px;
             border-radius: 60px;
             color: white;
-            text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            transition: 0.2s;
             cursor: pointer;
             border: none;
         }
@@ -385,13 +376,11 @@
             padding: 14px 35px;
             border-radius: 60px;
             color: white;
-            text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            transition: 0.2s;
             cursor: pointer;
             border: none;
         }
@@ -1019,7 +1008,7 @@
     <div style="color:#888;font-size:12px;margin-top:12px;">loading...</div>
 </div>
 
-<!-- MUSIC PLAYER - DENGAN PLAYLIST BARU -->
+<!-- MUSIC PLAYER - AUTO PLAY -->
 <div class="music-player" id="musicPlayer">
     <div class="music-controls">
         <button class="music-btn" id="playPauseBtn">⏸</button>
@@ -1205,7 +1194,7 @@
 
 <script>
 (function(){
-    // MUSIC PLAYER - DENGAN 3 LAGU DARI CATBOX
+    // ========== MUSIC PLAYER - AUTO PLAY OPTIMIZED ==========
     const audio = document.getElementById('audioPlayer');
     const playPauseBtn = document.getElementById('playPauseBtn');
     const prevBtn = document.getElementById('prevBtn');
@@ -1213,7 +1202,7 @@
     const musicSelect = document.getElementById('musicSelect');
     const volumeSlider = document.getElementById('volumeSlider');
     
-    // PLAYLIST BARU (3 lagu dari catbox)
+    // PLAYLIST 3 LAGU
     const playlist = [
         "https://files.catbox.moe/1ywrcz.mp3",
         "https://files.catbox.moe/k9zbux.mp3",
@@ -1222,6 +1211,7 @@
     
     let currentTrack = 0;
     let isPlaying = false;
+    let autoPlayAttempted = false;
     
     function loadTrack(index) {
         audio.src = playlist[index];
@@ -1234,7 +1224,7 @@
             isPlaying = true;
             playPauseBtn.textContent = "⏸";
         }).catch(e => {
-            console.log("Auto-play blocked, user perlu klik play");
+            console.log("Auto-play blocked by browser");
             isPlaying = false;
             playPauseBtn.textContent = "▶";
         });
@@ -1244,46 +1234,37 @@
         if (isPlaying) {
             audio.pause();
             playPauseBtn.textContent = "▶";
+            isPlaying = false;
         } else {
             playAudio();
         }
-        isPlaying = !isPlaying;
     }
     
     function prevTrack() {
         currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
         loadTrack(currentTrack);
-        if (isPlaying) {
-            playAudio();
-        } else {
-            audio.pause();
-        }
+        if (isPlaying) playAudio();
+        else audio.pause();
     }
     
     function nextTrack() {
         currentTrack = (currentTrack + 1) % playlist.length;
         loadTrack(currentTrack);
-        if (isPlaying) {
-            playAudio();
-        } else {
-            audio.pause();
-        }
+        if (isPlaying) playAudio();
+        else audio.pause();
     }
     
     function onTrackEnd() {
         nextTrack();
     }
     
-    // Event listeners
     playPauseBtn.addEventListener('click', playPause);
     prevBtn.addEventListener('click', prevTrack);
     nextBtn.addEventListener('click', nextTrack);
     musicSelect.addEventListener('change', (e) => {
         currentTrack = parseInt(e.target.selectedIndex);
         loadTrack(currentTrack);
-        if (isPlaying) {
-            playAudio();
-        }
+        if (isPlaying) playAudio();
     });
     volumeSlider.addEventListener('input', (e) => {
         audio.volume = e.target.value / 100;
@@ -1292,17 +1273,24 @@
     audio.volume = 0.5;
     volumeSlider.value = 50;
     
-    // Load lagu pertama
     loadTrack(0);
     
-    // Auto-play setelah halaman dimuat (dengan sedikit delay)
+    // AUTO PLAY - COBA PLAY SETELAH HALAMAN LOAD DAN PRELOADER HILANG
     window.addEventListener('load', () => {
         setTimeout(() => {
             playAudio();
-        }, 500);
+        }, 1000);
     });
     
-    // Product data dan fungsi lainnya (sama seperti sebelumnya)
+    // Juga coba play saat user pertama kali interaksi (fallback)
+    document.body.addEventListener('click', function once() {
+        if (!isPlaying && !autoPlayAttempted) {
+            autoPlayAttempted = true;
+            playAudio();
+        }
+    }, { once: true });
+    
+    // ========== PRODUCTS & OTHER FUNCTIONS ==========
     const allProducts = [
         { name:"Kaos CDP V1", image:"https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/138018016357035", category:"Kaos", keywords:"v1 kaos baju shirt" },
         { name:"Kaos CDP V2", image:"https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/93778780901295", category:"Kaos", keywords:"v2 kaos baju shirt" },
