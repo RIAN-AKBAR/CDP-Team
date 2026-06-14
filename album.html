@@ -75,6 +75,78 @@
         ::-webkit-scrollbar-track { background: #1a1a1f; }
         ::-webkit-scrollbar-thumb { background: #6a0dad; border-radius: 10px; }
 
+        /* MUSIC PLAYER - SAMA DENGAN INDEX */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: rgba(10, 10, 18, 0.95);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 12px 18px;
+            border: 1px solid rgba(106,13,173,0.5);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .music-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .music-btn {
+            background: #6a0dad;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .music-btn:hover {
+            background: #a855f7;
+            transform: scale(1.05);
+        }
+        .music-select {
+            background: #1a1a2a;
+            border: 1px solid #6a0dad;
+            border-radius: 30px;
+            padding: 6px 12px;
+            color: #c9a5ff;
+            font-size: 0.7rem;
+            cursor: pointer;
+            outline: none;
+        }
+        .volume-slider {
+            width: 70px;
+            cursor: pointer;
+            background: #6a0dad;
+            height: 3px;
+            border-radius: 3px;
+            -webkit-appearance: none;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #a855f7;
+            cursor: pointer;
+        }
+        @media (max-width: 650px) {
+            .music-player { padding: 8px 12px; gap: 10px; }
+            .music-btn { width: 28px; height: 28px; font-size: 12px; }
+            .music-select { font-size: 0.6rem; padding: 4px 8px; }
+            .volume-slider { width: 50px; }
+        }
+
         /* HEADER */
         .album-header {
             text-align: center;
@@ -124,11 +196,11 @@
             border-radius: 2px;
         }
 
-        /* GALLERY GRID - CARD KEREN TANPA STATS */
+        /* GALLERY GRID */
         .gallery-container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 30px 20px 60px;
+            padding: 30px 20px 80px;
         }
         .gallery-grid {
             display: grid;
@@ -195,7 +267,6 @@
         .gallery-card:hover .overlay-icon {
             transform: translateY(0);
         }
-        /* CARD CONTENT (INFO BAWAH) - TANPA STATS */
         .card-content {
             padding: 16px 20px 20px;
             position: relative;
@@ -327,6 +398,22 @@
 <div class="bg-wallpaper"></div>
 <div class="particles" id="particles"></div>
 
+<!-- MUSIC PLAYER - AKAN TERKONEKSI DENGAN INDEX.HTML MELALUI LOCALSTORAGE / SESSION STORAGE -->
+<div class="music-player" id="musicPlayer">
+    <div class="music-controls">
+        <button class="music-btn" id="playPauseBtn">⏸</button>
+        <button class="music-btn" id="prevBtn">⏮</button>
+        <button class="music-btn" id="nextBtn">⏭</button>
+        <select id="musicSelect" class="music-select">
+            <option value="0">🎵 Lagu 1</option>
+            <option value="1">🎵 Lagu 2</option>
+            <option value="2">🎵 Lagu 3</option>
+        </select>
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="50">
+    </div>
+    <audio id="bgMusic" loop style="display:none;"></audio>
+</div>
+
 <div class="album-header">
     <a href="index.html" class="back-btn">← KEMBALI</a>
     <h1 class="album-title">📸 GALERI CDP TEAM</h1>
@@ -353,53 +440,161 @@
 </div>
 
 <script>
-    // DAFTAR FOTO ALBUM - TANPA STATS VIEWS/LIKES
+(function(){
+    // ======================= DATA GALERI =======================
     const albumData = [
-        { 
-            url: "https://files.catbox.moe/4bqc4i.jpg", 
-            title: "Drag Race Seru", 
-            desc: "Aksi balapan malam hari bersama tim", 
-            date: "2025"
-        },
-        { 
-            url: "https://files.catbox.moe/frzz7i.jpg", 
-            title: "Kebersamaan CDP", 
-            desc: "Momen solidaritas anggota CDP Team", 
-            date: "2025"
-        },
-        { 
-            url: "https://files.catbox.moe/3b4zxf.jpg", 
-            title: "Konvoi Bersama", 
-            desc: "H-ling bersama Circle Drag Pemula", 
-            date: "2025"
-        },
-        { 
-            url: "https://files.catbox.moe/0ysvo0.jpg", 
-            title: "Show Off Official", 
-            desc: "Tampil keren dengan atribut CDP", 
-            date: "2025"
-        },
-        { 
-            url: "https://files.catbox.moe/nczpx3.jpg", 
-            title: "Foto Cool", 
-            desc: "Pertemuan besar semua member CDP", 
-            date: "2025"
-        },
-        { 
-            url: "https://files.catbox.moe/0w486c.jpg", 
-            title: "Estetik Mode", 
-            desc: "Kekompakan tim yang selalu terjaga", 
-            date: "2025"
-        }
+        { url: "https://files.catbox.moe/4bqc4i.jpg", title: "Drag Race Seru", desc: "Aksi balapan malam hari bersama tim", date: "2025" },
+        { url: "https://files.catbox.moe/frzz7i.jpg", title: "Kebersamaan CDP", desc: "Momen solidaritas anggota CDP Team", date: "2025" },
+        { url: "https://files.catbox.moe/3b4zxf.jpg", title: "Konvoi Bersama", desc: "H-ling bersama Circle Drag Pemula", date: "2025" },
+        { url: "https://files.catbox.moe/0ysvo0.jpg", title: "Show Off Official", desc: "Tampil keren dengan atribut CDP", date: "2025" },
+        { url: "https://files.catbox.moe/nczpx3.jpg", title: "Foto Cool", desc: "Pertemuan besar semua member CDP", date: "2025" },
+        { url: "https://files.catbox.moe/0w486c.jpg", title: "Estetik Mode", desc: "Kekompakan tim yang selalu terjaga", date: "2025" }
     ];
 
+    // ======================= MUSIC PLAYER (NYAMBUNG DENGAN INDEX) =======================
+    const audio = document.getElementById('bgMusic');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const musicSelect = document.getElementById('musicSelect');
+    const volumeSlider = document.getElementById('volumeSlider');
+    
+    const playlist = [
+        "https://files.catbox.moe/1ywrcz.mp3",
+        "https://files.catbox.moe/k9zbux.mp3",
+        "https://files.catbox.moe/m8dov6.mp3"
+    ];
+    
+    let currentTrack = 0;
+    let isPlaying = false;
+    
+    // Fungsi untuk sinkronisasi dengan index.html melalui localStorage
+    function syncMusicState() {
+        const savedTrack = localStorage.getItem('cdp_current_track');
+        const savedTime = localStorage.getItem('cdp_current_time');
+        const savedPlaying = localStorage.getItem('cdp_is_playing');
+        
+        if (savedTrack !== null) {
+            currentTrack = parseInt(savedTrack);
+            loadTrack(currentTrack);
+            if (savedTime !== null && !isNaN(parseFloat(savedTime))) {
+                audio.currentTime = parseFloat(savedTime);
+            }
+            if (savedPlaying === 'true') {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    playPauseBtn.textContent = "⏸";
+                }).catch(() => {
+                    isPlaying = false;
+                    playPauseBtn.textContent = "▶";
+                });
+            }
+        } else {
+            loadTrack(0);
+        }
+    }
+    
+    function saveMusicState() {
+        localStorage.setItem('cdp_current_track', currentTrack);
+        localStorage.setItem('cdp_current_time', audio.currentTime);
+        localStorage.setItem('cdp_is_playing', isPlaying);
+    }
+    
+    function loadTrack(index) {
+        audio.src = playlist[index];
+        audio.load();
+        musicSelect.selectedIndex = index;
+        currentTrack = index;
+    }
+    
+    function playAudio() {
+        audio.play().then(() => {
+            isPlaying = true;
+            playPauseBtn.textContent = "⏸";
+            saveMusicState();
+        }).catch(e => {
+            console.log("Auto-play blocked");
+            isPlaying = false;
+            playPauseBtn.textContent = "▶";
+        });
+    }
+    
+    function playPause() {
+        if (isPlaying) {
+            audio.pause();
+            playPauseBtn.textContent = "▶";
+        } else {
+            playAudio();
+        }
+        isPlaying = !isPlaying;
+        saveMusicState();
+    }
+    
+    function prevTrack() {
+        currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+        loadTrack(currentTrack);
+        if (isPlaying) playAudio();
+        else audio.pause();
+        saveMusicState();
+    }
+    
+    function nextTrack() {
+        currentTrack = (currentTrack + 1) % playlist.length;
+        loadTrack(currentTrack);
+        if (isPlaying) playAudio();
+        else audio.pause();
+        saveMusicState();
+    }
+    
+    function onTrackEnd() {
+        nextTrack();
+        saveMusicState();
+    }
+    
+    // Event listeners
+    playPauseBtn.addEventListener('click', playPause);
+    prevBtn.addEventListener('click', prevTrack);
+    nextBtn.addEventListener('click', nextTrack);
+    musicSelect.addEventListener('change', (e) => {
+        currentTrack = parseInt(e.target.value);
+        loadTrack(currentTrack);
+        if (isPlaying) playAudio();
+        saveMusicState();
+    });
+    volumeSlider.addEventListener('input', (e) => {
+        audio.volume = e.target.value / 100;
+        localStorage.setItem('cdp_volume', audio.volume);
+    });
+    audio.addEventListener('ended', onTrackEnd);
+    audio.addEventListener('timeupdate', () => {
+        if (isPlaying) saveMusicState();
+    });
+    
+    // Load volume dari localStorage
+    const savedVolume = localStorage.getItem('cdp_volume');
+    if (savedVolume !== null) {
+        audio.volume = parseFloat(savedVolume);
+        volumeSlider.value = audio.volume * 100;
+    } else {
+        audio.volume = 0.5;
+        volumeSlider.value = 50;
+    }
+    
+    // Sinkronisasi state musik dari halaman index (jika ada)
+    syncMusicState();
+    
+    // Simpan state saat halaman ditutup
+    window.addEventListener('beforeunload', () => {
+        saveMusicState();
+    });
+    
+    // ======================= GALERI RENDER =======================
     const galleryGrid = document.getElementById('galleryGrid');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxCaption = document.getElementById('lightboxCaption');
     let currentIndex = 0;
-
-    // RENDER GALERI DENGAN CARD KEREN (TANPA STATS)
+    
     function renderGallery() {
         galleryGrid.innerHTML = '';
         albumData.forEach((item, index) => {
@@ -410,16 +605,11 @@
                 <div class="card-img-wrapper">
                     <img class="gallery-img" src="${item.url}" alt="${item.title}" loading="lazy">
                     <div class="card-overlay">
-                        <div class="overlay-icon">
-                            🔍 Lihat Detail
-                        </div>
+                        <div class="overlay-icon">🔍 Lihat Detail</div>
                     </div>
                 </div>
                 <div class="card-content">
-                    <div class="card-title">
-                        📷 ${item.title}
-                        <span>✦ ${item.date}</span>
-                    </div>
+                    <div class="card-title">📷 ${item.title}<span>✦ ${item.date}</span></div>
                     <div class="card-desc">${item.desc}</div>
                 </div>
             `;
@@ -427,37 +617,35 @@
             galleryGrid.appendChild(card);
         });
     }
-
-    // LIGHTBOX FUNCTIONS
+    
     function openLightbox(index) {
         currentIndex = index;
         updateLightbox();
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
-
+    
     function updateLightbox() {
         const data = albumData[currentIndex];
         lightboxImg.src = data.url;
         lightboxCaption.innerHTML = `${data.title} • ${data.desc}`;
     }
-
+    
     function closeLightbox() {
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
     }
-
+    
     function prevImage() {
         currentIndex = (currentIndex - 1 + albumData.length) % albumData.length;
         updateLightbox();
     }
-
+    
     function nextImage() {
         currentIndex = (currentIndex + 1) % albumData.length;
         updateLightbox();
     }
-
-    // EVENT LISTENERS
+    
     document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
     document.querySelector('.lightbox-prev').addEventListener('click', prevImage);
     document.querySelector('.lightbox-next').addEventListener('click', nextImage);
@@ -470,11 +658,10 @@
         if (e.key === 'ArrowLeft') prevImage();
         if (e.key === 'ArrowRight') nextImage();
     });
-
-    // INIT
+    
     renderGallery();
-
-    // PARTICLES
+    
+    // ======================= PARTICLES =======================
     const container = document.getElementById('particles');
     for(let i = 0; i < 40; i++) {
         let p = document.createElement('div');
@@ -487,6 +674,7 @@
         p.style.animationDelay = Math.random() * 5 + 's';
         container.appendChild(p);
     }
+})();
 </script>
 </body>
 </html>
