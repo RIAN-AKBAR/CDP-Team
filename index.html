@@ -245,7 +245,7 @@
             .hero-subtitle { font-size: 0.75rem; letter-spacing: 2px; }
         }
 
-        /* MUSIC PLAYER */
+        /* MUSIC PLAYER - FIXED BOTTOM RIGHT */
         .music-player {
             position: fixed;
             bottom: 20px;
@@ -1019,7 +1019,7 @@
     <div style="color:#888;font-size:12px;margin-top:12px;">loading...</div>
 </div>
 
-<!-- MUSIC PLAYER -->
+<!-- MUSIC PLAYER - DENGAN PLAYLIST BARU -->
 <div class="music-player" id="musicPlayer">
     <div class="music-controls">
         <button class="music-btn" id="playPauseBtn">⏸</button>
@@ -1205,7 +1205,7 @@
 
 <script>
 (function(){
-    // MUSIC PLAYER
+    // MUSIC PLAYER - DENGAN 3 LAGU DARI CATBOX
     const audio = document.getElementById('audioPlayer');
     const playPauseBtn = document.getElementById('playPauseBtn');
     const prevBtn = document.getElementById('prevBtn');
@@ -1213,13 +1213,11 @@
     const musicSelect = document.getElementById('musicSelect');
     const volumeSlider = document.getElementById('volumeSlider');
     
-    // Daftar lagu (gunakan base64 silent audio sebagai fallback, atau bisa diganti dengan file MP3 asli)
-    // NOTE: Karena tidak ada file MP3 yang diupload, kita gunakan audio dari URL placeholder yang valid
-    // Untuk keperluan demo, kita gunakan file audio dari contoh (sumber bebas)
+    // PLAYLIST BARU (3 lagu dari catbox)
     const playlist = [
-        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+        "https://files.catbox.moe/1ywrcz.mp3",
+        "https://files.catbox.moe/k9zbux.mp3",
+        "https://files.catbox.moe/m8dov6.mp3"
     ];
     
     let currentTrack = 0;
@@ -1228,10 +1226,18 @@
     function loadTrack(index) {
         audio.src = playlist[index];
         audio.load();
-        if (isPlaying) {
-            audio.play().catch(e => console.log("Autoplay dicegah browser, klik play manual"));
-        }
         musicSelect.selectedIndex = index;
+    }
+    
+    function playAudio() {
+        audio.play().then(() => {
+            isPlaying = true;
+            playPauseBtn.textContent = "⏸";
+        }).catch(e => {
+            console.log("Auto-play blocked, user perlu klik play");
+            isPlaying = false;
+            playPauseBtn.textContent = "▶";
+        });
     }
     
     function playPause() {
@@ -1239,8 +1245,7 @@
             audio.pause();
             playPauseBtn.textContent = "▶";
         } else {
-            audio.play().catch(e => console.log("Play error"));
-            playPauseBtn.textContent = "⏸";
+            playAudio();
         }
         isPlaying = !isPlaying;
     }
@@ -1249,8 +1254,9 @@
         currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
         loadTrack(currentTrack);
         if (isPlaying) {
-            audio.play();
-            playPauseBtn.textContent = "⏸";
+            playAudio();
+        } else {
+            audio.pause();
         }
     }
     
@@ -1258,8 +1264,9 @@
         currentTrack = (currentTrack + 1) % playlist.length;
         loadTrack(currentTrack);
         if (isPlaying) {
-            audio.play();
-            playPauseBtn.textContent = "⏸";
+            playAudio();
+        } else {
+            audio.pause();
         }
     }
     
@@ -1267,6 +1274,7 @@
         nextTrack();
     }
     
+    // Event listeners
     playPauseBtn.addEventListener('click', playPause);
     prevBtn.addEventListener('click', prevTrack);
     nextBtn.addEventListener('click', nextTrack);
@@ -1274,8 +1282,7 @@
         currentTrack = parseInt(e.target.selectedIndex);
         loadTrack(currentTrack);
         if (isPlaying) {
-            audio.play();
-            playPauseBtn.textContent = "⏸";
+            playAudio();
         }
     });
     volumeSlider.addEventListener('input', (e) => {
@@ -1285,11 +1292,17 @@
     audio.volume = 0.5;
     volumeSlider.value = 50;
     
-    // Auto-play attempt (karena browser mungkin blokir, user tetap bisa klik play)
+    // Load lagu pertama
     loadTrack(0);
-    audio.volume = 0.5;
     
-    // Product data
+    // Auto-play setelah halaman dimuat (dengan sedikit delay)
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            playAudio();
+        }, 500);
+    });
+    
+    // Product data dan fungsi lainnya (sama seperti sebelumnya)
     const allProducts = [
         { name:"Kaos CDP V1", image:"https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/138018016357035", category:"Kaos", keywords:"v1 kaos baju shirt" },
         { name:"Kaos CDP V2", image:"https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/93778780901295", category:"Kaos", keywords:"v2 kaos baju shirt" },
