@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Galeri CDP Team | Official Photo Album</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0a0a0f;
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .bg-wallpaper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at 30% 40%, #1a0a2e, #0a0a0f, #050508);
+            background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+            background-blend-mode: overlay;
+        }
+        .bg-wallpaper::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: repeating-linear-gradient(45deg, rgba(106,13,173,0.03) 0px, rgba(106,13,173,0.03) 2px, transparent 2px, transparent 12px);
+            animation: bgMove 40s linear infinite;
+        }
+        .bg-wallpaper::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(106,13,173,0.15) 0%, transparent 70%);
+            animation: bgPulse 8s ease-in-out infinite alternate;
+        }
+        @keyframes bgMove { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(-5%, -5%) rotate(2deg); } }
+        @keyframes bgPulse { 0% { opacity: 0.3; } 100% { opacity: 0.8; } }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(106,13,173,0.3);
+            border-radius: 50%;
+            filter: blur(3px);
+            animation: floatParticle 14s infinite alternate ease-in-out;
+        }
+        @keyframes floatParticle {
+            0% { transform: translateY(0) translateX(0); opacity: 0.1; }
+            100% { transform: translateY(-70px) translateX(40px); opacity: 0.4; }
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #1a1a1f; }
+        ::-webkit-scrollbar-thumb { background: #6a0dad; border-radius: 10px; }
+
+        /* HEADER */
+        .album-header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            position: relative;
+        }
+        .back-btn {
+            position: absolute;
+            left: 20px;
+            top: 45px;
+            background: rgba(106,13,173,0.3);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 40px;
+            color: #c9a5ff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            border: 1px solid rgba(157,78,221,0.3);
+        }
+        .back-btn:hover {
+            background: #6a0dad;
+            color: white;
+            transform: translateX(-3px);
+        }
+        .album-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #e0e0e0, #c9a5ff, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .album-subtitle {
+            color: #aaa;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .album-divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #a855f7, #c084fc, #a855f7, transparent);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* GALLERY GRID - CARD KEREN TANPA STATS */
+        .gallery-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 30px 20px 60px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+        }
+        .gallery-card {
+            position: relative;
+            background: linear-gradient(145deg, #12121a, #0a0a10);
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(106,13,173,0.4);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .gallery-card:hover {
+            transform: translateY(-10px);
+            border-color: #a855f7;
+            box-shadow: 0 25px 35px -12px rgba(106,13,173,0.4), 0 0 15px rgba(168,85,247,0.2);
+        }
+        .card-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16 / 10;
+        }
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .gallery-card:hover .gallery-img {
+            transform: scale(1.05);
+        }
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(106,13,173,0.3), rgba(0,0,0,0.7));
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gallery-card:hover .card-overlay {
+            opacity: 1;
+        }
+        .overlay-icon {
+            background: rgba(106,13,173,0.8);
+            backdrop-filter: blur(8px);
+            padding: 12px 18px;
+            border-radius: 50px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+        .gallery-card:hover .overlay-icon {
+            transform: translateY(0);
+        }
+        /* CARD CONTENT (INFO BAWAH) - TANPA STATS */
+        .card-content {
+            padding: 16px 20px 20px;
+            position: relative;
+        }
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #c9a5ff;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card-title span {
+            background: #6a0dad;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: 600;
+        }
+        .card-desc {
+            font-size: 0.75rem;
+            color: #aaa;
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+        .glass-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6a0dad, #a855f7, #c084fc);
+            border-radius: 3px;
+        }
+
+        /* LIGHTBOX MODAL */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 100000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(157,78,221,0.3);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 35px;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 100001;
+        }
+        .lightbox-close:hover {
+            color: #a855f7;
+            transform: scale(1.1);
+        }
+        .lightbox-caption {
+            margin-top: 20px;
+            color: #c9a5ff;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .lightbox-prev, .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(106,13,173,0.5);
+            backdrop-filter: blur(8px);
+            color: white;
+            font-size: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 100001;
+        }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+        .lightbox-prev:hover, .lightbox-next:hover {
+            background: #6a0dad;
+            transform: translateY(-50%) scale(1.05);
+        }
+        @media (max-width: 650px) {
+            .lightbox-prev, .lightbox-next {
+                width: 35px;
+                height: 35px;
+                font-size: 20px;
+            }
+            .back-btn { top: 35px; font-size: 0.75rem; padding: 6px 15px; }
+            .album-title { font-size: 1.6rem; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+            .card-content { padding: 12px 16px; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px 25px;
+            font-size: 0.7rem;
+            border-top: 1px solid rgba(106,13,173,0.3);
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-wallpaper"></div>
+<div class="particles" id="particles"></div>
+
+<div class="album-header">
+    <a href="index.html" class="back-btn">← KEMBALI</a>
+    <h1 class="album-title">📸 GALERI CDP TEAM</h1>
+    <p class="album-subtitle">Momen terbaik bersama Circle Drag Pemula</p>
+    <div class="album-divider"></div>
+</div>
+
+<div class="gallery-container">
+    <div class="gallery-grid" id="galleryGrid"></div>
+</div>
+
+<footer>
+    <p>© 2023-2026 CDP OFFICIAL | Roblox Community | Official Apparel</p>
+    <p style="margin-top: 5px;">#RiseWithCDP #UnguBerkibar</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <span class="lightbox-prev">❮</span>
+    <span class="lightbox-next">❯</span>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script>
+    // DAFTAR FOTO ALBUM - TANPA STATS VIEWS/LIKES
+    const albumData = [
+        { 
+            url: "https://files.catbox.moe/4bqc4i.jpg", 
+            title: "Drag Race Seru", 
+            desc: "Aksi balapan malam hari bersama tim", 
+            date: "2025"
+        },
+        { 
+            url: "https://files.catbox.moe/frzz7i.jpg", 
+            title: "Kebersamaan CDP", 
+            desc: "Momen solidaritas anggota CDP Team", 
+            date: "2025"
+        },
+        { 
+            url: "https://files.catbox.moe/3b4zxf.jpg", 
+            title: "Konvoi Malam", 
+            desc: "H-ling bersama Circle Drag Pemula", 
+            date: "2025"
+        },
+        { 
+            url: "https://files.catbox.moe/0ysvo0.jpg", 
+            title: "Show Off Official", 
+            desc: "Tampil keren dengan atribut CDP", 
+            date: "2025"
+        },
+        { 
+            url: "https://files.catbox.moe/nczpx3.jpg", 
+            title: "Meet Up Akbar", 
+            desc: "Pertemuan besar semua member CDP", 
+            date: "2025"
+        },
+        { 
+            url: "https://files.catbox.moe/0w486c.jpg", 
+            title: "Solidarity", 
+            desc: "Kekompakan tim yang selalu terjaga", 
+            date: "2025"
+        }
+    ];
+
+    const galleryGrid = document.getElementById('galleryGrid');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    let currentIndex = 0;
+
+    // RENDER GALERI DENGAN CARD KEREN (TANPA STATS)
+    function renderGallery() {
+        galleryGrid.innerHTML = '';
+        albumData.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'gallery-card';
+            card.innerHTML = `
+                <div class="glass-effect"></div>
+                <div class="card-img-wrapper">
+                    <img class="gallery-img" src="${item.url}" alt="${item.title}" loading="lazy">
+                    <div class="card-overlay">
+                        <div class="overlay-icon">
+                            🔍 Lihat Detail
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">
+                        📷 ${item.title}
+                        <span>✦ ${item.date}</span>
+                    </div>
+                    <div class="card-desc">${item.desc}</div>
+                </div>
+            `;
+            card.addEventListener('click', () => openLightbox(index));
+            galleryGrid.appendChild(card);
+        });
+    }
+
+    // LIGHTBOX FUNCTIONS
+    function openLightbox(index) {
+        currentIndex = index;
+        updateLightbox();
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function updateLightbox() {
+        const data = albumData[currentIndex];
+        lightboxImg.src = data.url;
+        lightboxCaption.innerHTML = `${data.title} • ${data.desc}`;
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + albumData.length) % albumData.length;
+        updateLightbox();
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % albumData.length;
+        updateLightbox();
+    }
+
+    // EVENT LISTENERS
+    document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    document.querySelector('.lightbox-prev').addEventListener('click', prevImage);
+    document.querySelector('.lightbox-next').addEventListener('click', nextImage);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+    });
+
+    // INIT
+    renderGallery();
+
+    // PARTICLES
+    const container = document.getElementById('particles');
+    for(let i = 0; i < 40; i++) {
+        let p = document.createElement('div');
+        p.classList.add('particle');
+        let s = Math.random() * 8 + 2;
+        p.style.width = s + 'px'; p.style.height = s + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.animationDuration = 10 + Math.random() * 20 + 's';
+        p.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(p);
+    }
+</script>
+</body>
+</html>
