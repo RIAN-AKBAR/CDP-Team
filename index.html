@@ -319,7 +319,6 @@
             padding: 14px 35px;
             border-radius: 60px;
             color: white;
-            text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
             display: inline-flex;
@@ -338,7 +337,6 @@
             padding: 14px 35px;
             border-radius: 60px;
             color: white;
-            text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
             display: inline-flex;
@@ -1371,5 +1369,23 @@ Dikirim dari Form Pendaftaran CDP Team`;
     }
 })();
 </script>
+
+<!-- ========== WEBSITE MONITORING ========== -->
+<script>
+const domain = 'cdp-team.vercel.app';
+fetch('https://website-monitor.vercel.app/api/track-visitor', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ website: domain, page: window.location.pathname })
+});
+setInterval(() => {
+  fetch('https://website-monitor.vercel.app/api/track-visitor', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ website: domain, page: window.location.pathname })
+  });
+}, 30000);
+</script>
+
 </body>
 </html>
