@@ -1373,13 +1373,13 @@ Dikirim dari Form Pendaftaran CDP Team`;
 <!-- ========== WEBSITE MONITORING ========== -->
 <script>
 const domain = 'cdp-team.vercel.app';
-fetch('https://website-monitor.vercel.app/api/track-visitor', {
+fetch('https://website-monitor-virid.vercel.app/api/track-visitor', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ website: domain, page: window.location.pathname })
 });
 setInterval(() => {
-  fetch('https://website-monitor.vercel.app/api/track-visitor', {
+  fetch('https://website-monitor-virid.vercel.app/api/track-visitor', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ website: domain, page: window.location.pathname })
