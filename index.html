@@ -925,10 +925,14 @@
             justify-content: center;
             align-items: center;
             z-index: 999999;
-            transition: opacity 0.6s ease;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
             flex-direction: column;
         }
-        .preloader.hide { opacity: 0; visibility: hidden; }
+        .preloader.hide { 
+            opacity: 0; 
+            visibility: hidden;
+            pointer-events: none;
+        }
         .wheel-container {
             width: 220px;
             height: 220px;
@@ -1207,11 +1211,45 @@
     };
     renderProducts();
 
-    const preloader = document.getElementById('preloader');
-    let hidden = false;
-    function hidePreloader() { if(preloader && !hidden) { hidden = true; preloader.classList.add('hide'); setTimeout(() => { preloader.style.display = 'none'; }, 600); } }
-    setTimeout(() => { if(!hidden) hidePreloader(); }, 2000);
-    window.addEventListener('load', () => { setTimeout(hidePreloader, 800); });
+    // ============================================
+    // PERBAIKAN PRELOADER - VERSI PALING AMAN
+    // ============================================
+    (function() {
+        const preloader = document.getElementById('preloader');
+        if (!preloader) return;
+        
+        let isHidden = false;
+        
+        function hidePreloader() {
+            if (isHidden) return;
+            isHidden = true;
+            
+            preloader.classList.add('hide');
+            
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 700);
+        }
+        
+        // 1. Tunggu window load
+        if (document.readyState === 'complete') {
+            setTimeout(hidePreloader, 300);
+        } else {
+            window.addEventListener('load', function() {
+                setTimeout(hidePreloader, 300);
+            });
+        }
+        
+        // 2. Fallback jika load tidak terjadi (max 2.5 detik)
+        setTimeout(hidePreloader, 2500);
+        
+        // 3. Hilangkan saat user berinteraksi (opsional)
+        const events = ['click', 'scroll', 'touchstart', 'keydown'];
+        events.forEach(ev => {
+            document.addEventListener(ev, hidePreloader, { once: true });
+        });
+        
+    })();
 
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
@@ -1369,5 +1407,6 @@ Dikirim dari Form Pendaftaran CDP Team`;
     }
 })();
 
+</script>
 </body>
 </html>
