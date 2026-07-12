@@ -1268,11 +1268,11 @@
         let message = '';
         if (currentAction === 'colab') {
             message = `assalamualaikum permisi kak saya mau colab saya dari team ${teamName}`;
-            const waNumber = '6283822142615';
+            const waNumber = '6282154329388';
             window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`, '_blank');
         } else if (currentAction === 'laga') {
             message = `assalamualaikum permisi kak saya mau laga saya dari team ${teamName}`;
-            const waNumber = '6283137061796';
+            const waNumber = '6282154329388';
             window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`, '_blank');
         }
         
@@ -1368,24 +1368,6 @@ Dikirim dari Form Pendaftaran CDP Team`;
         container.appendChild(p);
     }
 })();
-</script>
-
-<!-- ========== WEBSITE MONITORING ========== -->
-<script>
-const domain = 'cdp-team.vercel.app';
-fetch('https://website-monitor-virid.vercel.app/api/track-visitor', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ website: domain, page: window.location.pathname })
-});
-setInterval(() => {
-  fetch('https://website-monitor-virid.vercel.app/api/track-visitor', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ website: domain, page: window.location.pathname })
-  });
-}, 30000);
-</script>
 
 </body>
 </html>
