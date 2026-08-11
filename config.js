@@ -28,8 +28,7 @@ const CDP_CONFIG = {
         JASA_CINE: 'https://jasacinembyanzarcine.netlify.app/',
         TIKTOK: 'https://tiktok.com/@umbu2460',
         DISCORD: 'https://discord.gg/kEYVZJGdk',
-        YOUTUBE: 'https://youtube.com/@teamcdpcircledragpemula?si=vQkfSAEBAx3LtTdE',
-        WHATSAPP: 'https://wa.me/6282154329388'
+        YOUTUBE: 'https://youtube.com/@teamcdpcircledragpemula?si=vQkfSAEBAx3LtTdE'
     },
     
     // ============================================
