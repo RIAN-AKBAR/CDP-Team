@@ -245,7 +245,7 @@
             .hero-subtitle { font-size: 0.75rem; letter-spacing: 2px; }
         }
 
-        /* REGISTER BUTTON - VERSION 2 (Updated) */
+        /* REGISTER SECTION */
         .register-section {
             background: rgba(10,10,18,0.85);
             backdrop-filter: blur(12px);
@@ -567,7 +567,7 @@
             .search-box button { padding: 8px 16px; font-size: 0.75rem; }
         }
 
-        /* REGISTER TRIGGER - UPDATED VERSION */
+        /* REGISTER TRIGGER */
         .register-trigger {
             background: #000000;
             border-radius: 24px;
@@ -1105,7 +1105,6 @@
             100% { transform: scale(1.5); opacity: 0; }
         }
 
-        /* NOTIF BADGE DI BUBBLE */
         .bubble-badge {
             position: absolute;
             top: -5px;
@@ -1217,7 +1216,7 @@
             <a href="#shop">✨ BELI BAJU</a>
             <a href="#team">👥 TEAM</a>
             <!-- Tombol Daftar di Navbar -->
-            <a href="https://here-checking-distribution-runtime.trycloudflare.com/register_cdp/index.html" target="_blank" class="btn-register-nav" style="background:rgba(106,13,173,0.3);border-radius:40px;padding:8px 20px;border:1px solid rgba(106,13,173,0.5);">📝 DAFTAR</a>
+            <a id="navRegisterBtn" target="_blank" class="btn-register-nav" style="background:rgba(106,13,173,0.3);border-radius:40px;padding:8px 20px;border:1px solid rgba(106,13,173,0.5);">📝 DAFTAR</a>
         </div>
     </div>
 </div>
@@ -1231,9 +1230,9 @@
     </div>
 
     <!-- ======================================== -->
-    <!-- REGISTER TRIGGER - Updated dengan link baru -->
+    <!-- REGISTER TRIGGER -->
     <!-- ======================================== -->
-    <a href="https://here-checking-distribution-runtime.trycloudflare.com/register_cdp/index.html" target="_blank" class="register-trigger" id="registerTriggerBlock">
+    <a id="registerTriggerBlock" target="_blank" class="register-trigger">
         <img class="trigger-logo" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Logo" onerror="this.src='https://placehold.co/80x80/0a0a0a/6a0dad?text=CDP'">
         <div class="trigger-text">
             <h3>📝 DAFTAR MENJADI MEMBER</h3>
@@ -1262,19 +1261,19 @@
     <!-- ROLXUM STORE -->
     <div class="rolxum-section">
         <h3>🛒 ROLXUM STORE</h3>
-        <a href="https://rolxum-store.vercel.app/" target="_blank" class="btn-rolxum">🚀 KUNJUNGI ROLXUM</a>
+        <a id="rolxumLink" target="_blank" class="btn-rolxum">🚀 KUNJUNGI ROLXUM</a>
     </div>
 
     <!-- CINE BY UMBU -->
     <div class="cineumbu-section">
         <h3>🎬 CINE BY UMBU</h3>
-        <a href="https://cine-umbu-store.vercel.app" target="_blank" class="btn-cineumbu">🎥 KUNJUNGI CINE UMBU</a>
+        <a id="cineUmbuLink" target="_blank" class="btn-cineumbu">🎥 KUNJUNGI CINE UMBU</a>
     </div>
 
     <!-- JASA CINE SECTION -->
     <div class="cine-section">
         <h3>🎬 JASA CINEMATIK</h3>
-        <a href="https://jasacinembyanzarcine.netlify.app/" target="_blank" class="btn-cine">🎥 PESAN SEKARANG</a>
+        <a id="jasaCineLink" target="_blank" class="btn-cine">🎥 PESAN SEKARANG</a>
     </div>
 
     <div class="album-section">
@@ -1374,14 +1373,14 @@
     <section id="team">
         <h2 class="section-title">👑 MEET THE ELITE TEAM 👑</h2>
         <div class="team-grid">
-            <div class="team-card"><img class="team-avatar-img avatar-owner-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8B644E630139E7B4C98E38F7FFE935A1-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/a855f7?text=AKANG'"><div class="role-name">AKANGMV0649</div><div class="role-title">OWNER</div><a href="https://www.roblox.com/users/9597142392/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-            <div class="team-card"><img class="team-avatar-img avatar-ceo-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-818D713CF67B17B9425D483C06FF15D6-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/c084fc?text=CEO'"><div class="role-name">Lanosavi73</div><div class="role-title">CEO-OWNER & Web Dev</div><a href="https://www.roblox.com/users/8429909641/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
+            <div class="team-card"><img class="team-avatar-img avatar-owner-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8F43D31BAC0846156F7CDC85E6BF4793-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/a855f7?text=AKANG'"><div class="role-name">AKANGMV0649</div><div class="role-title">OWNER</div><a href="https://www.roblox.com/users/9597142392/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
+            <div class="team-card"><img class="team-avatar-img avatar-ceo-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D7636D6FD9862C55D08F5E0CA3DE4723-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/c084fc?text=CEO'"><div class="role-name">Lanosavi73</div><div class="role-title">CEO-OWNER & Web Dev</div><a href="https://www.roblox.com/users/8429909641/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-06CC895A17ACBBEC3F62061C7E0B3C8F-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=AZRIL'"><div class="role-name">azril</div><div class="role-title">Contributor</div><a href="https://www.roblox.com/users/10736193358/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-CB0DF0EE67DD56A21D1A786C335F3D11-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=JEJE'"><div class="role-name">jeje</div><div class="role-title">Donatur & Support</div><a href="https://www.roblox.com/users/10783769267/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
+            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-51F5E352505CDF9E2DCFE377249E31C5-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=JEJE'"><div class="role-name">jeje</div><div class="role-title">Donatur & Support</div><a href="https://www.roblox.com/users/10783769267/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8416A408FDBDF3270EC6FD5AF64E3C0C-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=DITZ'"><div class="role-name">ditz</div><div class="role-title">Contributor</div><a href="https://www.roblox.com/users/6174897216/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-181C25C705B74A2D56528FAF2EBAFA94-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=RAFLY'"><div class="role-name">rafly</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/users/10867023249/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-AEAA577A87F20EBBD3A02BC5AD0C55A0-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=BIPOS'"><div class="role-name">Bipos19</div><div class="role-title">Moderator Support</div><a href="https://www.roblox.com/users/8519693761/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E09BF22E1A8D457FB74BDFBFB8500D82-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=V4MP'"><div class="role-name">V4MP</div><div class="role-title">Moderator Support</div><a href="https://www.roblox.com/users/10933734314/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
+            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-32EDB3B534169236DA40F4E7F5369AD0-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=RAFLY'"><div class="role-name">rafly</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/users/10867023249/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
+            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A9BFE9E1E8ADA3D68B3A1A1B21229A9C-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=BIPOS'"><div class="role-name">Bipos19</div><div class="role-title">Moderator Support</div><a href="https://www.roblox.com/users/8519693761/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
+            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-9D7AF5ADF6769107C374C5FBCD5E80E2-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=V4MP'"><div class="role-name">V4MP</div><div class="role-title">Moderator Support</div><a href="https://www.roblox.com/users/10933734314/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-17A095030634362D8662C05EDD043162-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=ANZAR'"><div class="role-name">anzar_scene</div><div class="role-title">Contributor</div><a href="https://www.roblox.com/id/users/5409989525" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
         </div>
         <p style="text-align:center; color:#999; margin-top:20px; font-size:0.8rem;">+ support team aktif setiap hari</p>
@@ -1389,9 +1388,9 @@
 
     <footer>
         <div class="footer-links">
-            <a href="https://tiktok.com/@umbu2460" target="_blank" class="btn-tiktok-footer">🎵 TIKTOK @umbu2460</a>
-            <a href="https://discord.gg/kEYVZJGdk" target="_blank" class="btn-discord-footer">💬 DISCORD</a>
-            <a href="https://youtube.com/@teamcdpcircledragpemula?si=vQkfSAEBAx3LtTdE" target="_blank" class="btn-youtube-footer">▶️ YOUTUBE</a>
+            <a id="tiktokLink" target="_blank" class="btn-tiktok-footer">🎵 TIKTOK @umbu2460</a>
+            <a id="discordLink" target="_blank" class="btn-discord-footer">💬 DISCORD</a>
+            <a id="youtubeLink" target="_blank" class="btn-youtube-footer">▶️ YOUTUBE</a>
         </div>
         <div class="footer-copyright"><p>© 2023-2026 CDP OFFICIAL | Roblox Community | Official Apparel</p><p>code warna kendaraan : 5e326c</p></div>
     </footer>
@@ -1400,7 +1399,7 @@
 <!-- ======================================== -->
 <!-- FLOATING BUBBLE UNTUK ADMIN -->
 <!-- ======================================== -->
-<a href="https://here-checking-distribution-runtime.trycloudflare.com/register_cdp/admin.php" target="_blank" class="floating-bubble" id="adminBubble">
+<a id="adminBubble" target="_blank" class="floating-bubble">
     <span class="bubble-pulse"></span>
     <span class="bubble-pulse"></span>
     <span class="tooltip">🔐 Admin Panel</span>
@@ -1408,8 +1407,59 @@
     🔐
 </a>
 
+<!-- ======================================== -->
+<!-- CONFIG.JS - Load dulu sebelum script utama -->
+<!-- ======================================== -->
+<script src="config.js"></script>
+
 <script>
 (function(){
+    // ============================================
+    // SET LINK DARI CONFIG.JS
+    // ============================================
+    
+    // Register Trigger
+    const registerTrigger = document.getElementById('registerTriggerBlock');
+    if (registerTrigger && typeof getRegisterUrl !== 'undefined') {
+        registerTrigger.href = getRegisterUrl();
+    }
+    
+    // Nav Register Button
+    const navRegisterBtn = document.getElementById('navRegisterBtn');
+    if (navRegisterBtn && typeof getRegisterUrl !== 'undefined') {
+        navRegisterBtn.href = getRegisterUrl();
+    }
+    
+    // Admin Bubble
+    const adminBubble = document.getElementById('adminBubble');
+    if (adminBubble && typeof getAdminUrl !== 'undefined') {
+        adminBubble.href = getAdminUrl();
+    }
+    
+    // External Links
+    if (typeof CDP_CONFIG !== 'undefined') {
+        const rolxumLink = document.getElementById('rolxumLink');
+        if (rolxumLink) rolxumLink.href = CDP_CONFIG.EXTERNAL_LINKS.ROLXUM;
+        
+        const cineUmbuLink = document.getElementById('cineUmbuLink');
+        if (cineUmbuLink) cineUmbuLink.href = CDP_CONFIG.EXTERNAL_LINKS.CINE_UMBU;
+        
+        const jasaCineLink = document.getElementById('jasaCineLink');
+        if (jasaCineLink) jasaCineLink.href = CDP_CONFIG.EXTERNAL_LINKS.JASA_CINE;
+        
+        const tiktokLink = document.getElementById('tiktokLink');
+        if (tiktokLink) tiktokLink.href = CDP_CONFIG.EXTERNAL_LINKS.TIKTOK;
+        
+        const discordLink = document.getElementById('discordLink');
+        if (discordLink) discordLink.href = CDP_CONFIG.EXTERNAL_LINKS.DISCORD;
+        
+        const youtubeLink = document.getElementById('youtubeLink');
+        if (youtubeLink) youtubeLink.href = CDP_CONFIG.EXTERNAL_LINKS.YOUTUBE;
+    }
+
+    // ============================================
+    // DATA PRODUK
+    // ============================================
     const allProducts = [
         { name:"Kaos CDP V1", image:"https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/138018016357035", category:"Kaos", keywords:"v1 kaos baju shirt" },
         { name:"Kaos CDP V2", image:"https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/93778780901295", category:"Kaos", keywords:"v2 kaos baju shirt" },
@@ -1471,7 +1521,7 @@
     renderProducts();
 
     // ============================================
-    // PRELOADER
+    // PRELOADER - PERBAIKAN
     // ============================================
     (function() {
         const preloader = document.getElementById('preloader');
@@ -1490,6 +1540,7 @@
             }, 700);
         }
         
+        // Tunggu semua asset selesai loading
         if (document.readyState === 'complete') {
             setTimeout(hidePreloader, 300);
         } else {
@@ -1498,8 +1549,10 @@
             });
         }
         
-        setTimeout(hidePreloader, 2500);
+        // Fallback maksimal 3 detik
+        setTimeout(hidePreloader, 3000);
         
+        // Hapus saat user berinteraksi
         const events = ['click', 'scroll', 'touchstart', 'keydown'];
         events.forEach(ev => {
             document.addEventListener(ev, hidePreloader, { once: true });
@@ -1507,27 +1560,40 @@
         
     })();
 
+    // ============================================
+    // HAMBURGER MENU
+    // ============================================
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
-    });
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
 
+    // ============================================
+    // SMOOTH SCROLL
+    // ============================================
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
             const target = document.querySelector(this.getAttribute('href'));
-            if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+            if(target) { 
+                e.preventDefault(); 
+                target.scrollIntoView({ behavior: 'smooth' }); 
+            }
         });
     });
 
-    // MODAL UNTUK COLAB & LAGA
+    // ============================================
+    // MODAL COLAB & LAGA
+    // ============================================
     const teamNameModal = document.getElementById('teamNameModal');
     const teamNameInput = document.getElementById('teamNameInput');
     const modalTitle = document.getElementById('modalTitle');
@@ -1537,43 +1603,44 @@
     let currentAction = '';
     
     function closeModal() {
-        teamNameModal.style.display = 'none';
-        teamNameInput.value = '';
+        if (teamNameModal) teamNameModal.style.display = 'none';
+        if (teamNameInput) teamNameInput.value = '';
     }
     
     function openModal(action) {
         currentAction = action;
         if (action === 'colab') {
-            modalTitle.innerText = 'Masukkan Nama Team Anda (Colab)';
+            if (modalTitle) modalTitle.innerText = 'Masukkan Nama Team Anda (Colab)';
         } else {
-            modalTitle.innerText = 'Masukkan Nama Team Anda (Laga)';
+            if (modalTitle) modalTitle.innerText = 'Masukkan Nama Team Anda (Laga)';
         }
-        teamNameModal.style.display = 'flex';
-        teamNameInput.focus();
+        if (teamNameModal) teamNameModal.style.display = 'flex';
+        if (teamNameInput) teamNameInput.focus();
     }
     
-    modalSendBtn.addEventListener('click', () => {
-        let teamName = teamNameInput.value.trim();
-        if (teamName === '') {
-            alert('Silakan masukkan nama team Anda!');
-            return;
-        }
-        
-        let message = '';
-        if (currentAction === 'colab') {
-            message = `assalamualaikum permisi kak saya mau colab saya dari team ${teamName}`;
+    if (modalSendBtn) {
+        modalSendBtn.addEventListener('click', () => {
+            let teamName = teamNameInput ? teamNameInput.value.trim() : '';
+            if (teamName === '') {
+                alert('Silakan masukkan nama team Anda!');
+                return;
+            }
+            
+            let message = '';
             const waNumber = '6282154329388';
+            if (currentAction === 'colab') {
+                message = `assalamualaikum permisi kak saya mau colab saya dari team ${teamName}`;
+            } else if (currentAction === 'laga') {
+                message = `assalamualaikum permisi kak saya mau laga saya dari team ${teamName}`;
+            }
             window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`, '_blank');
-        } else if (currentAction === 'laga') {
-            message = `assalamualaikum permisi kak saya mau laga saya dari team ${teamName}`;
-            const waNumber = '6282154329388';
-            window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`, '_blank');
-        }
-        
-        closeModal();
-    });
+            closeModal();
+        });
+    }
     
-    modalCancelBtn.addEventListener('click', closeModal);
+    if (modalCancelBtn) {
+        modalCancelBtn.addEventListener('click', closeModal);
+    }
     
     window.addEventListener('click', (e) => {
         if (e.target === teamNameModal) closeModal();
@@ -1581,43 +1648,55 @@
     
     const colabBtn = document.getElementById('colabBtn');
     const lagaBtn = document.getElementById('lagaBtn');
-    colabBtn.addEventListener('click', () => openModal('colab'));
-    lagaBtn.addEventListener('click', () => openModal('laga'));
+    if (colabBtn) colabBtn.addEventListener('click', () => openModal('colab'));
+    if (lagaBtn) lagaBtn.addEventListener('click', () => openModal('laga'));
 
+    // ============================================
+    // MODAL REGISTER
+    // ============================================
     const modal = document.getElementById('registerModal');
     const closeModalReg = document.getElementById('closeModal');
-    function closeModalRegFunc() { modal.style.display = 'none'; }
-    closeModalReg.onclick = closeModalRegFunc;
+    function closeModalRegFunc() { if (modal) modal.style.display = 'none'; }
+    if (closeModalReg) closeModalReg.onclick = closeModalRegFunc;
     window.onclick = (e) => { if(e.target === modal) closeModalRegFunc(); };
 
+    // ============================================
+    // MODAL QRIS
+    // ============================================
     const qrisModal = document.getElementById('qrisModal');
     const donateBtn = document.getElementById('donateBtn');
     const closeQrisModal = document.getElementById('closeQrisModal');
-    function openQrisModal() { qrisModal.style.display = 'flex'; }
-    function closeQrisModalFunc() { qrisModal.style.display = 'none'; }
+    function openQrisModal() { if (qrisModal) qrisModal.style.display = 'flex'; }
+    function closeQrisModalFunc() { if (qrisModal) qrisModal.style.display = 'none'; }
     if(donateBtn) donateBtn.onclick = openQrisModal;
     if(closeQrisModal) closeQrisModal.onclick = closeQrisModalFunc;
     window.onclick = (e) => { if(e.target === qrisModal) closeQrisModalFunc(); };
 
+    // ============================================
+    // FORM PENDAFTARAN MODAL
+    // ============================================
     const modalForm = document.getElementById('registerFormModal');
     const modalMessage = document.getElementById('modalMessage');
-    modalForm.onsubmit = function(e) {
-        e.preventDefault();
-        const nama = document.getElementById('fullName').value;
-        const roblox = document.getElementById('robloxUser').value;
-        const gender = document.getElementById('gender').value;
-        const age = document.getElementById('age').value;
-        const wa = document.getElementById('whatsappNumber').value;
-        
-        if(!nama || !roblox || !gender || !age || !wa) {
-            modalMessage.innerHTML = '⚠️ Semua field harus diisi!';
-            modalMessage.style.color = '#ff8888';
-            return;
-        }
-        
-        const targetEmail = 'storeumbu7@gmail.com';
-        const subject = `[PENDAFTARAN CDP TEAM] ${nama} ingin bergabung`;
-        const body = `Halo Owner CDP Team,
+    if (modalForm) {
+        modalForm.onsubmit = function(e) {
+            e.preventDefault();
+            const nama = document.getElementById('fullName').value;
+            const roblox = document.getElementById('robloxUser').value;
+            const gender = document.getElementById('gender').value;
+            const age = document.getElementById('age').value;
+            const wa = document.getElementById('whatsappNumber').value;
+            
+            if(!nama || !roblox || !gender || !age || !wa) {
+                if (modalMessage) {
+                    modalMessage.innerHTML = '⚠️ Semua field harus diisi!';
+                    modalMessage.style.color = '#ff8888';
+                }
+                return;
+            }
+            
+            const targetEmail = 'storeumbu7@gmail.com';
+            const subject = `[PENDAFTARAN CDP TEAM] ${nama} ingin bergabung`;
+            const body = `Halo Owner CDP Team,
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            📋 DATA PENDAFTAR BARU
@@ -1634,25 +1713,38 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Dikirim dari Form Pendaftaran CDP Team`;
-        
-        window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        
-        modalMessage.innerHTML = '✅ Pendaftaran terkirim! Cek email Anda.';
-        modalMessage.style.color = '#a855f7';
-        setTimeout(() => { modalForm.reset(); closeModalRegFunc(); modalMessage.innerHTML = ''; }, 2000);
-    };
+            
+            window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            if (modalMessage) {
+                modalMessage.innerHTML = '✅ Pendaftaran terkirim! Cek email Anda.';
+                modalMessage.style.color = '#a855f7';
+            }
+            setTimeout(() => { 
+                modalForm.reset(); 
+                closeModalRegFunc(); 
+                if (modalMessage) modalMessage.innerHTML = ''; 
+            }, 2000);
+        };
+    }
 
+    // ============================================
+    // PARTICLES
+    // ============================================
     const container = document.getElementById('particles');
-    for(let i = 0; i < 50; i++) {
-        let p = document.createElement('div');
-        p.classList.add('particle');
-        let s = Math.random() * 8 + 2;
-        p.style.width = s + 'px'; p.style.height = s + 'px';
-        p.style.left = Math.random() * 100 + '%';
-        p.style.top = Math.random() * 100 + '%';
-        p.style.animationDuration = 10 + Math.random() * 20 + 's';
-        p.style.animationDelay = Math.random() * 5 + 's';
-        container.appendChild(p);
+    if (container) {
+        for(let i = 0; i < 50; i++) {
+            let p = document.createElement('div');
+            p.classList.add('particle');
+            let s = Math.random() * 8 + 2;
+            p.style.width = s + 'px'; 
+            p.style.height = s + 'px';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            p.style.animationDuration = 10 + Math.random() * 20 + 's';
+            p.style.animationDelay = Math.random() * 5 + 's';
+            container.appendChild(p);
+        }
     }
 })();
 
