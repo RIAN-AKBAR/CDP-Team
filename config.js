@@ -6,7 +6,7 @@ const CDP_CONFIG = {
     // ============================================
     // URL TUNNEL CLOUDFLARE - GANTI DI SINI SAJA
     // ============================================
-    TUNNEL_URL: 'https://here-checking-distribution-runtime.trycloudflare.com',
+    TUNNEL_URL: 'https://building-dean-home-attorneys.trycloudflare.com',
     
     // ============================================
     // PATH REGISTER & ADMIN
