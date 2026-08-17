@@ -6,7 +6,7 @@ const CDP_CONFIG = {
     // ============================================
     // URL TUNNEL CLOUDFLARE - GANTI DI SINI SAJA
     // ============================================
-    TUNNEL_URL: 'https://walnut-release-bar-freedom.trycloudflare.com',
+    TUNNEL_URL: 'https://congressional-introducing-strange-davis.trycloudflare.com',
     
     // ============================================
     // PATH REGISTER & ADMIN
