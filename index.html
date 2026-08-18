@@ -1458,9 +1458,10 @@
     }
 
     // ============================================
-    // DATA PRODUK
+    // DATA PRODUK (SEMUA PRODUK + 5 PRODUK BARU)
     // ============================================
     const allProducts = [
+        // Produk yang sudah ada sebelumnya
         { name:"Kaos CDP V1", image:"https://tr.rbxcdn.com/180DAY-6465260b95fd69488cea26bfaa5e8095/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/138018016357035", category:"Kaos", keywords:"v1 kaos baju shirt" },
         { name:"Kaos CDP V2", image:"https://tr.rbxcdn.com/180DAY-f919288a6af1f439e52aff593f87bd13/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/93778780901295", category:"Kaos", keywords:"v2 kaos baju shirt" },
         { name:"Kaos CDP V3", image:"https://tr.rbxcdn.com/180DAY-78c7e320b7a876d02aa0efb5609eac49/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/114313073714304", category:"Kaos", keywords:"v3 kaos baju shirt" },
@@ -1469,7 +1470,56 @@
         { name:"JAKET CDP TEAM POLOS BERAPI UNGU", image:"https://tr.rbxcdn.com/180DAY-082f3cc41ebd047419a4e1a276380361/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/137690165582351/JAKET-CDP-TEAM-POLOS-BERAPI-UNGU", category:"Jaket", keywords:"jaket ungu polos jacket" },
         { name:"Celana CDP-POLOS", image:"https://tr.rbxcdn.com/180DAY-ece2ea7ccdb6f86dbcea8124e917871a/420/420/Pants/Webp/noFilter", link:"https://www.roblox.com/catalog/109269882061868", category:"Celana", keywords:"celana polos trousers" },
         { name:"BAJU CDP V4 (Lengan Pendek)", image:"https://tr.rbxcdn.com/180DAY-5c50e554fbd6b7dd3a3459acd559110a/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/123295022030406/BAJU-CDP-V4-LENGAN-PENDEK-SEKARANG", category:"Kaos", keywords:"v4 baju shirt" },
-        { name:"BAJU MEKANIK CDP 🔧🛠️", image:"https://tr.rbxcdn.com/180DAY-87f250a4912aaa58570cd1ebdba777cc/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/114923521024909/BAJU-MEKANIK-CDP", category:"Jaket", keywords:"mekanik baju jacket" }
+        { name:"BAJU MEKANIK CDP 🔧🛠️", image:"https://tr.rbxcdn.com/180DAY-87f250a4912aaa58570cd1ebdba777cc/420/420/Shirt/Webp/noFilter", link:"https://www.roblox.com/catalog/114923521024909/BAJU-MEKANIK-CDP", category:"Jaket", keywords:"mekanik baju jacket" },
+
+        // ============================================
+        // PRODUK BARU YANG DITAMBAHKAN
+        // ============================================
+        
+        // 1. Jaket Tracktop cdp
+        {
+            name:"Jaket Tracktop cdp",
+            image:"https://tr.rbxcdn.com/180DAY-a9761406c5b38d404bcd6a41f742dff6/420/420/Shirt/Webp/noFilter",
+            link:"https://www.roblox.com/catalog/117106261818794",
+            category:"Jaket",
+            keywords:"jaket tracktop jacket"
+        },
+
+        // 2. Kemeja CDP Lengan Pendek V5
+        {
+            name:"Kemeja CDP Lengan Pendek V5",
+            image:"https://tr.rbxcdn.com/180DAY-1bf29801e9b190d3bf4fedd21b978cb1/420/420/Shirt/Webp/noFilter",
+            link:"https://www.roblox.com/catalog/102372334238148",
+            category:"Kaos",
+            keywords:"kemeja v5 kaos baju shirt"
+        },
+
+        // 3. Jaket putih v2 CDP
+        {
+            name:"Jaket putih v2 CDP",
+            image:"https://tr.rbxcdn.com/180DAY-6a5f2290ceba3d576c30c4eb8868f489/420/420/Shirt/Webp/noFilter",
+            link:"https://www.roblox.com/catalog/96069960672576",
+            category:"Jaket",
+            keywords:"jaket putih v2 jacket"
+        },
+
+        // 4. JAKET CELANA CDP
+        {
+            name:"JAKET CELANA CDP",
+            image:"https://tr.rbxcdn.com/180DAY-3c384ddbc4d74dc2aed87faf2a61614e/420/420/Pants/Webp/noFilter",
+            link:"https://www.roblox.com/catalog/118412249633151",
+            category:"Celana",
+            keywords:"jaket celana trousers"
+        },
+
+        // 5. Jaket putih CDP
+        {
+            name:"Jaket putih CDP",
+            image:"https://tr.rbxcdn.com/180DAY-8aa70dcfdd276c9156d8a5fe8153286d/420/420/Shirt/Webp/noFilter",
+            link:"https://www.roblox.com/catalog/83961962658957",
+            category:"Jaket",
+            keywords:"jaket putih jacket"
+        }
     ];
 
     const productGrid = document.getElementById('productGrid');
