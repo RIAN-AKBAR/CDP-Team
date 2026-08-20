@@ -6,7 +6,7 @@ const CDP_CONFIG = {
     // ============================================
     // URL TUNNEL CLOUDFLARE - GANTI DI SINI SAJA
     // ============================================
-    TUNNEL_URL: 'https://congressional-introducing-strange-davis.trycloudflare.com',
+    TUNNEL_URL: 'https://cardiovascular-close-bigger-sounds.trycloudflare.com',
     
     // ============================================
     // PATH REGISTER & ADMIN
