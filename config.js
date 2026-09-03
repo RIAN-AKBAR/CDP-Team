@@ -6,7 +6,7 @@ const CDP_CONFIG = {
     // ============================================
     // URL TUNNEL CLOUDFLARE - GANTI DI SINI SAJA
     // ============================================
-    TUNNEL_URL: 'https://logs-tension-chuck-lately.trycloudflare.com',
+    TUNNEL_URL: 'https://clients-jeff-arguments-offices.trycloudflare.com',
     
     // ============================================
     // PATH REGISTER & ADMIN
