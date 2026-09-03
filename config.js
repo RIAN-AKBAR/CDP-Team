@@ -6,7 +6,7 @@ const CDP_CONFIG = {
     // ============================================
     // URL TUNNEL CLOUDFLARE - GANTI DI SINI SAJA
     // ============================================
-    TUNNEL_URL: 'https://clients-jeff-arguments-offices.trycloudflare.com',
+    TUNNEL_URL: 'https://covers-waterproof-ratings-wireless.trycloudflare.com',
     
     // ============================================
     // PATH REGISTER & ADMIN
