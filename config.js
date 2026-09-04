@@ -24,7 +24,7 @@ const CDP_CONFIG = {
     // ============================================
     EXTERNAL_LINKS: {
         ROLXUM: 'https://rolxum-store.vercel.app/',
-        CINE_UMBU: 'https://cine-umbu-store.vercel.app',
+        CINE_UMBU: 'https://cine-by-umbu.ai.studio',
         JASA_CINE: 'https://jasacinembyanzarcine.netlify.app/',
         TIKTOK: 'https://tiktok.com/@umbu2460',
         DISCORD: 'https://discord.gg/kEYVZJGdk',
