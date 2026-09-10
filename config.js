@@ -6,7 +6,7 @@ const CDP_CONFIG = {
     // ============================================
     // URL TUNNEL CLOUDFLARE - GANTI DI SINI SAJA
     // ============================================
-    TUNNEL_URL: 'https://definition-addition-backgrounds-adapted.trycloudflare.com',
+    TUNNEL_URL: 'https://ray-consequently-carb-injured.trycloudflare.com',
     
     // ============================================
     // PATH REGISTER & ADMIN
