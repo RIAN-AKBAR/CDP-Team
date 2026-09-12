@@ -6,7 +6,7 @@ const CDP_CONFIG = {
     // ============================================
     // URL TUNNEL CLOUDFLARE - GANTI DI SINI SAJA
     // ============================================
-    TUNNEL_URL: 'https://pediatric-mod-editing-hugh.trycloudflare.com',
+    TUNNEL_URL: 'https://triumph-sophisticated-involvement-mrna.trycloudflare.com',
     
     // ============================================
     // PATH REGISTER & ADMIN
