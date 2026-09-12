@@ -6,7 +6,7 @@ const CDP_CONFIG = {
     // ============================================
     // URL TUNNEL CLOUDFLARE - GANTI DI SINI SAJA
     // ============================================
-    TUNNEL_URL: 'https://classroom-homeless-turbo-costumes.trycloudflare.com',
+    TUNNEL_URL: 'https://pediatric-mod-editing-hugh.trycloudflare.com',
     
     // ============================================
     // PATH REGISTER & ADMIN
