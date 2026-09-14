@@ -9,10 +9,11 @@ const CDP_CONFIG = {
     TUNNEL_URL: 'https://beaches-adequate-maui-afternoon.trycloudflare.com',
     
     // ============================================
-    // PATH REGISTER & ADMIN
+    // PATH REGISTER, ADMIN & CHAT
     // ============================================
     REGISTER_PATH: '/register_cdp/index.html',
     ADMIN_PATH: '/register_cdp/admin.php',
+    CHAT_PATH: '/register_cdp/chat_simple.php',
     
     // ============================================
     // BASE URL UNTUK GITHUB (INDEX UTAMA)
@@ -54,6 +55,10 @@ function getAdminUrl() {
     return CDP_CONFIG.TUNNEL_URL + CDP_CONFIG.ADMIN_PATH;
 }
 
+function getChatUrl() {
+    return CDP_CONFIG.TUNNEL_URL + CDP_CONFIG.CHAT_PATH;
+}
+
 function getWhatsAppUrl(message = '') {
     return `https://wa.me/${CDP_CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
@@ -64,4 +69,5 @@ function getWhatsAppUrl(message = '') {
 window.CDP_CONFIG = CDP_CONFIG;
 window.getRegisterUrl = getRegisterUrl;
 window.getAdminUrl = getAdminUrl;
+window.getChatUrl = getChatUrl;
 window.getWhatsAppUrl = getWhatsAppUrl;
