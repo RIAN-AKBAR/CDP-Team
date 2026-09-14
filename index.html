@@ -286,6 +286,100 @@
             .bubble-badge { width: 18px; height: 18px; font-size: 0.45rem; top: -3px; right: -3px; }
         }
 
+        /* ============================================ */
+        /* FLOATING BUBBLE CHAT / CS - DI ATAS ADMIN */
+        /* ============================================ */
+        .floating-chat {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            z-index: 99999;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border: 2px solid rgba(37,211,102,0.6);
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(37,211,102,0.5), 0 0 15px rgba(37,211,102,0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            animation: floatBubble 3s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+        .floating-chat:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 35px rgba(37,211,102,0.7), 0 0 30px rgba(37,211,102,0.3);
+            border-color: #25D366;
+        }
+        .floating-chat .tooltip {
+            position: absolute;
+            right: 75px;
+            background: rgba(10,10,18,0.95);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #25D366;
+            white-space: nowrap;
+            border: 1px solid rgba(37,211,102,0.3);
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+        .floating-chat:hover .tooltip { opacity: 1; }
+        .floating-chat .bubble-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(37,211,102,0.4);
+            animation: pulseRing 2s ease-out infinite;
+        }
+        .floating-chat .bubble-pulse:nth-child(2) { animation-delay: 0.5s; }
+        .floating-chat .bubble-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff0050;
+            color: white;
+            font-size: 0.55rem;
+            font-weight: 700;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #0a0a0f;
+        }
+        @media (max-width: 550px) {
+            .floating-chat {
+                bottom: 90px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+            .floating-chat .tooltip {
+                right: 65px;
+                font-size: 0.65rem;
+                padding: 6px 12px;
+            }
+            .floating-chat .bubble-badge {
+                width: 18px;
+                height: 18px;
+                font-size: 0.45rem;
+                top: -3px;
+                right: -3px;
+            }
+        }
+
         .preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #000; display: flex; justify-content: center; align-items: center; z-index: 999999; transition: opacity 0.6s ease, visibility 0.6s ease; flex-direction: column; }
         .preloader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
         .wheel-container { width: 220px; height: 220px; position: relative; animation: spin 0.8s linear infinite; margin: 0 auto; }
@@ -724,10 +818,10 @@
             <!-- MODERATOR: Kyz -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-BA1C606AF3748D70FB18BC67A8BF0DD8-Png-Background/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=KYZ'"><div class="role-name">Kyz</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/11102097651" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
 
-            <!-- MODERATOR: Zyfxsah (BARU) -->
+            <!-- MODERATOR: Zyfxsah -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D6AAD7B511D69D9850D93C3C4CF7EE2C-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=ZYFXSAH'"><div class="role-name">Zyfxsah</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/6229953844" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
 
-            <!-- MODERATOR: kenyok_67 (BARU) -->
+            <!-- MODERATOR: kenyok_67 -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-9C91ABD5346A0CD76998DA11091CCAAD-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=KENYOK'"><div class="role-name">kenyok_67</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/11152318699" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
         </div>
         <p style="text-align:center; color:#999; margin-top:20px; font-size:0.8rem;">+ support team aktif setiap hari</p>
@@ -743,6 +837,17 @@
         <div class="footer-copyright"><p>© 2023-2026 CDP OFFICIAL | Roblox Community | Official Apparel</p><p>code warna kendaraan : 5e326c</p></div>
     </footer>
 </div>
+
+<!-- ============================================ -->
+<!-- FLOATING BUBBLE CHAT / CS - DI ATAS ADMIN -->
+<!-- ============================================ -->
+<a id="chatBubble" target="_blank" class="floating-chat">
+    <span class="bubble-pulse"></span>
+    <span class="bubble-pulse"></span>
+    <span class="tooltip">💬 Chat CS</span>
+    <span class="bubble-badge">💬</span>
+    💬
+</a>
 
 <a id="adminBubble" target="_blank" class="floating-bubble">
     <span class="bubble-pulse"></span>
@@ -771,6 +876,15 @@
     if (adminBubble && typeof getAdminUrl !== 'undefined') {
         adminBubble.href = getAdminUrl();
     }
+    
+    // ============================================
+    // CHAT BUBBLE → otomatis dari config.js
+    // ============================================
+    const chatBubble = document.getElementById('chatBubble');
+    if (chatBubble && typeof getChatUrl !== 'undefined') {
+        chatBubble.href = getChatUrl();
+    }
+    
     if (typeof CDP_CONFIG !== 'undefined') {
         const rolxumLink = document.getElementById('rolxumLink');
         if (rolxumLink) rolxumLink.href = "https://rolxumstoreroblox.lovable.app/";
