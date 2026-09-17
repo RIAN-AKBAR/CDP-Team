@@ -6,7 +6,7 @@ const CDP_CONFIG = {
     // ============================================
     // URL TUNNEL CLOUDFLARE - GANTI DI SINI SAJA
     // ============================================
-    TUNNEL_URL: 'https://beaches-adequate-maui-afternoon.trycloudflare.com',
+    TUNNEL_URL: 'https://hardware-gpl-paragraphs-prisoner.trycloudflare.com',
     
     // ============================================
     // PATH REGISTER, ADMIN & CHAT
