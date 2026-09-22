@@ -4,6 +4,24 @@
 
 const CDP_CONFIG = {
     // ============================================
+    // 🔧 MAINTENANCE MODE - GANTI TRUE/FALSE DI SINI
+    // ============================================
+    MAINTENANCE_MODE: false,  // ← true = MAINTENANCE ON, false = MAINTENANCE OFF
+    
+    // ============================================
+    // 🔧 PENGATURAN HALAMAN MAINTENANCE
+    // ============================================
+    MAINTENANCE_CONFIG: {
+        TITLE: 'CDP OFFICIAL',
+        MESSAGE: 'Kami sedang melakukan pemeliharaan sistem untuk memberikan pengalaman terbaik.',
+        SUB_MESSAGE: 'Silakan kembali beberapa saat lagi. Terima kasih atas kesabaran Anda! 🙏',
+        REFRESH_INTERVAL: 30,       // auto refresh dalam detik
+        SHOW_COUNTDOWN: true,        // tampilkan countdown timer
+        ESTIMATED_TIME: '30 Menit',  // estimasi selesai (kosongkan '' jika tidak mau tampil)
+        CONTACT_WA: '6282154329388'  // nomor WA admin (kosongkan '' jika tidak mau tampil)
+    },
+    
+    // ============================================
     // URL TUNNEL CLOUDFLARE - GANTI DI SINI SAJA
     // ============================================
     TUNNEL_URL: 'https://north-charming-impaired-missed.trycloudflare.com',
@@ -64,6 +82,18 @@ function getWhatsAppUrl(message = '') {
 }
 
 // ============================================
+// FUNGSI MAINTENANCE MODE
+// ============================================
+
+function isMaintenanceMode() {
+    return CDP_CONFIG.MAINTENANCE_MODE === true;
+}
+
+function getMaintenanceConfig() {
+    return CDP_CONFIG.MAINTENANCE_CONFIG;
+}
+
+// ============================================
 // EXPOSE KE GLOBAL (agar bisa diakses dari HTML)
 // ============================================
 window.CDP_CONFIG = CDP_CONFIG;
@@ -71,3 +101,5 @@ window.getRegisterUrl = getRegisterUrl;
 window.getAdminUrl = getAdminUrl;
 window.getChatUrl = getChatUrl;
 window.getWhatsAppUrl = getWhatsAppUrl;
+window.isMaintenanceMode = isMaintenanceMode;
+window.getMaintenanceConfig = getMaintenanceConfig;
