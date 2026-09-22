@@ -213,30 +213,6 @@
             .step-text { font-size: 0.8rem; }
         }
 
-        .team-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 35px; margin: 35px 0; }
-        .team-card { background: rgba(15,15,22,0.85); backdrop-filter: blur(8px); border-radius: 40px; padding: 28px 20px; text-align: center; width: 280px; border: 1px solid rgba(106,13,173,0.5); transition: 0.2s; }
-        .team-card:hover { transform: translateY(-5px); border-color: #a855f7; }
-        .team-avatar-img { width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 18px; display: block; object-fit: cover; border: 3px solid; }
-        .avatar-owner-border { border-color: #a855f7; }
-        .avatar-ceo-border { border-color: #c084fc; }
-        .avatar-contributor-border { border-color: #8b5cf6; }
-        .role-name { font-size: 1.3rem; font-weight: 800; margin: 12px 0 5px; color: #e0e0e0; }
-        .role-title { font-size: 0.8rem; font-weight: 600; color: #a855f7; margin-bottom: 12px; }
-        .btn-view-profile { display: inline-block; padding: 8px 18px; background: rgba(106,13,173,0.2); border: 1px solid #6a0dad; border-radius: 40px; color: #c9a5ff; text-decoration: none; font-size: 0.75rem; transition: 0.2s; }
-        .btn-view-profile:hover { background: #6a0dad; color: white; }
-        @media (max-width: 700px) {
-            .team-card { width: 250px; padding: 22px 16px; }
-            .team-avatar-img { width: 130px; height: 130px; }
-            .role-name { font-size: 1.1rem; }
-            .role-title { font-size: 0.7rem; }
-        }
-        @media (max-width: 550px) {
-            .team-card { width: 220px; padding: 18px 12px; }
-            .team-avatar-img { width: 110px; height: 110px; }
-            .role-name { font-size: 1rem; }
-            .btn-view-profile { padding: 6px 14px; font-size: 0.65rem; }
-        }
-
         .section-title { font-size: 1.8rem; font-weight: 800; text-align: center; margin: 25px 0 20px; background: linear-gradient(120deg, #e0e0e0, #c9a5ff, #a855f7); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
         footer { text-align: center; padding: 25px 20px 20px; font-size: 0.7rem; border-top: 1px solid rgba(106,13,173,0.3); margin-top: 25px; }
@@ -622,7 +598,7 @@
         </div>
         <div class="nav-menu" id="navMenu">
             <a href="#shop">✨ BELI BAJU</a>
-            <a href="#team">👥 TEAM</a>
+            <a href="#crew">👑 CREW</a>
             <a id="navRegisterBtn" target="_blank" class="btn-register-nav" style="background:rgba(106,13,173,0.3);border-radius:40px;padding:8px 20px;border:1px solid rgba(106,13,173,0.5);">📝 DAFTAR</a>
         </div>
     </div>
@@ -681,6 +657,13 @@
         <h3>📸 GALERI CDP TEAM</h3>
         <a href="album.html" class="btn-album">📷 VIEW ALBUM</a>
     </div>
+
+    <!-- ============ BLOCK: MEET THE ELITE TEAM ============ -->
+    <div class="album-section" id="crew">
+        <h3>👑 MEET THE ELITE TEAM</h3>
+        <a id="crewLink" target="_blank" class="btn-album">👑 VIEW CREW</a>
+    </div>
+    <!-- ==================================================== -->
 
     <div class="action-buttons">
         <button id="colabBtn" class="btn-colab">🤝 KERJA SAMA (COLAB)</button>
@@ -770,40 +753,6 @@
         <p style="text-align:center; margin-top:18px; font-size:0.75rem; color:#aaa;">✅ Pastikan data WhatsApp aktif agar mudah dikontak oleh Owner.</p>
     </div>
 
-    <section id="team">
-        <h2 class="section-title">👑 MEET THE ELITE TEAM 👑</h2>
-        <div class="team-grid">
-            <div class="team-card"><img class="team-avatar-img avatar-owner-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-640021FC7E2D4D1FE9FE51C760D49C28-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/a855f7?text=AKANG'"><div class="role-name">AKANGMV0649</div><div class="role-title">OWNER</div><a href="https://www.roblox.com/users/9597142392/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-ceo-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A04A7FA9B6749D042BFBD2D23A79B5BE-Png-Background/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/c084fc?text=CEO'"><div class="role-name">Lanosavi73</div><div class="role-title">CEO-OWNER & Web Dev</div><a href="https://www.roblox.com/users/8429909641/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-06CC895A17ACBBEC3F62061C7E0B3C8F-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=AZRIL'"><div class="role-name">azril</div><div class="role-title">Contributor</div><a href="https://www.roblox.com/users/10736193358/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-0A1CA98A624995EA79F8B46A754B0FE5-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=RAEY'"><div class="role-name">raey</div><div class="role-title">Donatur & Support</div><a href="https://www.roblox.com/id/users/11481638368" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8416A408FDBDF3270EC6FD5AF64E3C0C-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=DITZ'"><div class="role-name">ditz</div><div class="role-title">Contributor</div><a href="https://www.roblox.com/users/6174897216/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-181C25C705B74A2D56528FAF2EBAFA94-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=RAFLY'"><div class="role-name">rafly</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/users/10867023249/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-4D5CABBB4099A4922C78E852139D38ED-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=BIPOS'"><div class="role-name">Bipos19</div><div class="role-title">Contributor</div><a href="https://www.roblox.com/users/8519693761/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-DCB1706153B18CA7DD0F850BA6465582-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=V4MP'"><div class="role-name">V4MP</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/users/10933734314/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-17A095030634362D8662C05EDD043162-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=ANZAR'"><div class="role-name">anzar_scene</div><div class="role-title">Contributor</div><a href="https://www.roblox.com/id/users/5409989525" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-EC525403B0DBE6260BB483718D0A0EB8-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=OPIN'"><div class="role-name">OPIN</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/8726680209" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D33B14BD74121FC063E8C2F8A88B4EA3-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=BREMBO'"><div class="role-name">BREMBO</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/8813330709" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-BA1C606AF3748D70FB18BC67A8BF0DD8-Png-Background/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=KYZ'"><div class="role-name">Kyz</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/11102097651" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D6AAD7B511D69D9850D93C3C4CF7EE2C-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=ZYFXSAH'"><div class="role-name">Zyfxsah</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/6229953844" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-9C91ABD5346A0CD76998DA11091CCAAD-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=KENYOK'"><div class="role-name">kenyok_67</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/11152318699" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-        </div>
-        <p style="text-align:center; color:#999; margin-top:20px; font-size:0.8rem;">+ support team aktif setiap hari</p>
-    </section>
-
     <footer>
         <div class="footer-links">
             <a id="tiktokLink" target="_blank" class="btn-tiktok-footer">🎵 TIKTOK @umbu2460</a>
@@ -834,7 +783,7 @@
 <script src="config.js"></script>
 
 <!-- ============================================ -->
-<!-- MAINTENANCE MODE CHECK - JANGAN DIUBAH URUTANNYA -->
+<!-- MAINTENANCE MODE CHECK -->
 <!-- ============================================ -->
 <script>
 (function() {
@@ -876,6 +825,14 @@
     const chatBubble = document.getElementById('chatBubble');
     if (chatBubble && typeof getChatUrl !== 'undefined') {
         chatBubble.href = getChatUrl();
+    }
+
+    // ============================================
+    // SET LINK CREW (LANGSUNG KE TUNNEL - SAMA SEPERTI REGISTER)
+    // ============================================
+    const crewLink = document.getElementById('crewLink');
+    if (crewLink && typeof getCrewUrl !== 'undefined') {
+        crewLink.href = getCrewUrl();
     }
     
     if (typeof CDP_CONFIG !== 'undefined') {
