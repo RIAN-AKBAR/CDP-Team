@@ -6,7 +6,7 @@ const CDP_CONFIG = {
     // ============================================
     // 🔧 MAINTENANCE MODE - GANTI TRUE/FALSE DI SINI
     // ============================================
-    MAINTENANCE_MODE: true,  // ← true = MAINTENANCE ON, false = MAINTENANCE OFF
+    MAINTENANCE_MODE: false,  // ← true = MAINTENANCE ON, false = MAINTENANCE OFF
     
     // ============================================
     // 🔧 PENGATURAN HALAMAN MAINTENANCE
@@ -27,11 +27,12 @@ const CDP_CONFIG = {
     TUNNEL_URL: 'https://north-charming-impaired-missed.trycloudflare.com',
     
     // ============================================
-    // PATH REGISTER, ADMIN & CHAT
+    // PATH REGISTER, ADMIN, CHAT & CREW
     // ============================================
     REGISTER_PATH: '/register_cdp/index.html',
     ADMIN_PATH: '/register_cdp/admin.php',
     CHAT_PATH: '/register_cdp/chat_simple.php',
+    CREW_PATH: '/register_cdp/crew.php',
     
     // ============================================
     // BASE URL UNTUK GITHUB (INDEX UTAMA)
@@ -77,6 +78,14 @@ function getChatUrl() {
     return CDP_CONFIG.TUNNEL_URL + CDP_CONFIG.CHAT_PATH;
 }
 
+// ============================================
+// FUNGSI UNTUK MENDAPATKAN URL CREW (BARU)
+// ============================================
+
+function getCrewUrl() {
+    return CDP_CONFIG.TUNNEL_URL + CDP_CONFIG.CREW_PATH;
+}
+
 function getWhatsAppUrl(message = '') {
     return `https://wa.me/${CDP_CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
@@ -100,6 +109,7 @@ window.CDP_CONFIG = CDP_CONFIG;
 window.getRegisterUrl = getRegisterUrl;
 window.getAdminUrl = getAdminUrl;
 window.getChatUrl = getChatUrl;
+window.getCrewUrl = getCrewUrl;
 window.getWhatsAppUrl = getWhatsAppUrl;
 window.isMaintenanceMode = isMaintenanceMode;
 window.getMaintenanceConfig = getMaintenanceConfig;
