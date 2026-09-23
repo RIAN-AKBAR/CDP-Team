@@ -6,7 +6,7 @@ const CDP_CONFIG = {
     // ============================================
     // 🔧 MAINTENANCE MODE - GANTI TRUE/FALSE DI SINI
     // ============================================
-    MAINTENANCE_MODE: true,  // ← true = MAINTENANCE ON, false = MAINTENANCE OFF
+    MAINTENANCE_MODE: false,  // ← true = MAINTENANCE ON, false = MAINTENANCE OFF
     
     // ============================================
     // 🔧 PENGATURAN HALAMAN MAINTENANCE
@@ -24,7 +24,7 @@ const CDP_CONFIG = {
     // ============================================
     // URL TUNNEL CLOUDFLARE - GANTI DI SINI SAJA
     // ============================================
-    TUNNEL_URL: 'https://north-charming-impaired-missed.trycloudflare.com',
+    TUNNEL_URL: 'https://suggest-emission-broadcasting-knew.trycloudflare.com',
     
     // ============================================
     // PATH REGISTER, ADMIN, CHAT & CREW
