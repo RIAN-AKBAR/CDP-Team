@@ -15,9 +15,9 @@ const CDP_CONFIG = {
         TITLE: 'CDP OFFICIAL',
         MESSAGE: 'Kami sedang melakukan pemeliharaan sistem dan update sistem untuk memberikan pengalaman terbaik.',
         SUB_MESSAGE: 'Silakan kembali beberapa saat lagi. Terima kasih atas kesabaran Anda! 🙏',
-        REFRESH_INTERVAL: 30,       // auto refresh dalam detik
+        REFRESH_INTERVAL: 3,       // auto refresh dalam detik
         SHOW_COUNTDOWN: true,        // tampilkan countdown timer
-        ESTIMATED_TIME: '30 Menit',  // estimasi selesai (kosongkan '' jika tidak mau tampil)
+        ESTIMATED_TIME: '3 hari',  // estimasi selesai (kosongkan '' jika tidak mau tampil)
         CONTACT_WA: '6282154329388'  // nomor WA admin (kosongkan '' jika tidak mau tampil)
     },
     
