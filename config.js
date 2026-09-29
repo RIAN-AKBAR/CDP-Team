@@ -6,14 +6,14 @@ const CDP_CONFIG = {
     // ============================================
     // 🔧 MAINTENANCE MODE - GANTI TRUE/FALSE DI SINI
     // ============================================
-    MAINTENANCE_MODE: false,  // ← true = MAINTENANCE ON, false = MAINTENANCE OFF
+    MAINTENANCE_MODE: true,  // ← true = MAINTENANCE ON, false = MAINTENANCE OFF
     
     // ============================================
     // 🔧 PENGATURAN HALAMAN MAINTENANCE
     // ============================================
     MAINTENANCE_CONFIG: {
         TITLE: 'CDP OFFICIAL',
-        MESSAGE: 'Kami sedang melakukan pemeliharaan sistem untuk memberikan pengalaman terbaik.',
+        MESSAGE: 'Kami sedang melakukan pemeliharaan sistem dan update sistem untuk memberikan pengalaman terbaik.',
         SUB_MESSAGE: 'Silakan kembali beberapa saat lagi. Terima kasih atas kesabaran Anda! 🙏',
         REFRESH_INTERVAL: 30,       // auto refresh dalam detik
         SHOW_COUNTDOWN: true,        // tampilkan countdown timer
