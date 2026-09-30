@@ -6,9 +6,8 @@ const CDP_CONFIG = {
     // ============================================
     // 🔧 MAINTENANCE MODE - GANTI TRUE/FALSE DI SINI
     // ============================================
-    MAINTENANCE_MODE: true,  // ← true = MAINTENANCE ON, false = MAINTENANCE OFF
-    
-    // ============================================
+    MAINTENANCE_MODE: false,  // ← true = MAINTENANCE ON, false = MAINTENANCE OFF
+    ====================
     // 🔧 PENGATURAN HALAMAN MAINTENANCE
     // ============================================
     MAINTENANCE_CONFIG: {
