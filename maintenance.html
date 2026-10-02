@@ -1,519 +1,321 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>🔧 Maintenance | CDP Official</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="https://files.catbox.moe/7thi53.jpg">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: #0a0a0f;
-            color: #e0e0e0;
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<title>🚧 Maintenance - CDP Official</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://files.catbox.moe/7thi53.jpg">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{min-height:100%;overflow-x:hidden;}
+body{
+    background:#000;
+    color:#e0e0e0;
+    font-family:'Inter',sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:30px 20px;
+    position:relative;
+}
 
-        /* BACKGROUND */
-        .bg-wallpaper {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -2;
-            background: radial-gradient(ellipse at 30% 40%, #1a0a2e, #0a0a0f, #050508);
-            background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
-            background-blend-mode: overlay;
-        }
-        .bg-wallpaper::before {
-            content: '';
-            position: absolute;
-            width: 200%; height: 200%;
-            top: -50%; left: -50%;
-            background: repeating-linear-gradient(45deg, rgba(106,13,173,0.05) 0px, rgba(106,13,173,0.05) 2px, transparent 2px, transparent 12px);
-            animation: bgMove 40s linear infinite;
-        }
-        .bg-wallpaper::after {
-            content: '';
-            position: absolute;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at 80% 20%, rgba(106,13,173,0.2) 0%, transparent 70%);
-            animation: bgPulse 4s ease-in-out infinite alternate;
-        }
-        @keyframes bgMove { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(-5%, -5%) rotate(2deg); } }
-        @keyframes bgPulse { 0% { opacity: 0.3; } 100% { opacity: 0.9; } }
+/* BACKGROUND */
+.bg-wallpaper{
+    position:fixed;inset:0;z-index:-2;
+    background:radial-gradient(ellipse at 30% 40%,#1a0a2e,#0a0a0f,#050508);
+    background-image:url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+    background-blend-mode:overlay;
+}
+.bg-wallpaper::before{
+    content:'';position:absolute;
+    width:200%;height:200%;top:-50%;left:-50%;
+    background:repeating-linear-gradient(45deg,rgba(106,13,173,0.03) 0px,rgba(106,13,173,0.03) 2px,transparent 2px,transparent 12px);
+    animation:bgMove 40s linear infinite;
+}
+.bg-wallpaper::after{
+    content:'';position:absolute;
+    width:100%;height:100%;
+    background:radial-gradient(circle at 80% 20%,rgba(106,13,173,0.15) 0%,transparent 70%);
+    animation:bgPulse 8s ease-in-out infinite alternate;
+}
+@keyframes bgMove{0%{transform:translate(0,0) rotate(0deg);}100%{transform:translate(-5%,-5%) rotate(2deg);}}
+@keyframes bgPulse{0%{opacity:0.3;}100%{opacity:0.8;}}
 
-        /* PARTICLES */
-        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-        .particle { position: absolute; background: rgba(168,85,247,0.5); border-radius: 50%; filter: blur(2px); animation: floatParticle 10s infinite alternate ease-in-out; }
-        @keyframes floatParticle {
-            0% { transform: translateY(0) translateX(0); opacity: 0.1; }
-            100% { transform: translateY(-100px) translateX(50px); opacity: 0.6; }
-        }
+/* PARTICLES */
+.particles{position:fixed;inset:0;z-index:-1;pointer-events:none;}
+.particle{
+    position:absolute;background:rgba(106,13,173,0.3);
+    border-radius:50%;filter:blur(3px);
+    animation:floatParticle 14s infinite alternate ease-in-out;
+}
+@keyframes floatParticle{
+    0%{transform:translateY(0) translateX(0);opacity:0.1;}
+    100%{transform:translateY(-70px) translateX(40px);opacity:0.4;}
+}
 
-        /* MAIN CARD */
-        .maintenance-container {
-            position: relative;
-            z-index: 10;
-            max-width: 600px;
-            width: 90%;
-            background: rgba(10,10,18,0.85);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(106,13,173,0.5);
-            border-radius: 35px;
-            padding: 50px 35px;
-            text-align: center;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.7), 0 0 40px rgba(106,13,173,0.2);
-            animation: slideUp 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            max-height: 95vh;
-            overflow-y: auto;
-        }
-        @keyframes slideUp {
-            0% { transform: translateY(60px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
+/* CONTAINER */
+.container{
+    max-width:540px;width:100%;
+    position:relative;z-index:2;text-align:center;
+    animation:popIn 0.6s ease;
+}
+@keyframes popIn{
+    0%{opacity:0;transform:translateY(20px) scale(0.95);}
+    100%{opacity:1;transform:translateY(0) scale(1);}
+}
 
-        /* LOGO */
-        .mt-logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid #a855f7;
-            box-shadow: 0 0 30px rgba(168,85,247,0.6);
-            margin-bottom: 25px;
-            animation: pulseLogo 2s ease-in-out infinite;
-            object-fit: cover;
-        }
-        @keyframes pulseLogo {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(168,85,247,0.6); }
-            50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(168,85,247,0.9); }
-        }
+/* RODA */
+.wheel-container{
+    width:180px;height:180px;position:relative;
+    margin:0 auto 30px;
+    animation:spinSlow 3s linear infinite;
+    filter:drop-shadow(0 0 30px rgba(157,78,221,0.6));
+}
+@keyframes spinSlow{to{transform:rotate(360deg);}}
+.tire{
+    width:100%;height:100%;border-radius:50%;
+    background:#000;border:14px solid #111;
+    position:absolute;box-shadow:0 0 28px #9D4EDD;
+}
+.white-ring{
+    position:absolute;top:50%;left:50%;
+    width:70%;height:70%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;border:6px solid #fff;
+    box-shadow:0 0 10px #fff;z-index:2;
+}
+.hub{
+    position:absolute;top:50%;left:50%;
+    width:32%;height:32%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(circle,#E0AFFF 0%,#9D4EDD 70%,#5a1f99 100%);
+    box-shadow:0 0 20px #fff;z-index:3;
+}
+.spokes{position:absolute;inset:0;z-index:1;}
+.spoke-line{position:absolute;background:#fff;box-shadow:0 0 8px #fff;}
+.spoke-line:nth-child(1){width:6px;height:58%;top:21%;left:50%;transform:translateX(-50%);}
+.spoke-line:nth-child(2){width:58%;height:6px;top:50%;left:21%;transform:translateY(-50%);}
+.spoke-line:nth-child(3){width:6px;height:58%;top:21%;left:50%;transform:translateX(-50%) rotate(45deg);}
+.spoke-line:nth-child(4){width:6px;height:58%;top:21%;left:50%;transform:translateX(-50%) rotate(-45deg);}
 
-        /* TITLE */
-        .mt-title {
-            font-size: 2rem;
-            font-weight: 800;
-            background: linear-gradient(120deg, #e0e0e0, #c9a5ff, #a855f7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-        .mt-subtitle {
-            font-size: 0.85rem;
-            color: #a855f7;
-            letter-spacing: 3px;
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
+/* TEXT */
+.title{
+    font-size:2rem;font-weight:900;letter-spacing:3px;
+    text-transform:uppercase;
+    background:linear-gradient(135deg,#e0e0e0,#c9a5ff,#a855f7);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:10px;
+    filter:drop-shadow(0 0 20px rgba(168,85,247,0.5));
+}
+.subtitle{
+    color:#a855f7;font-size:0.82rem;font-weight:700;
+    letter-spacing:3px;text-transform:uppercase;
+    margin-bottom:25px;
+}
 
-        /* ICON */
-        .mt-icon {
-            font-size: 4rem;
-            display: block;
-            margin: 15px auto 20px;
-            animation: rotateIcon 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 15px rgba(168,85,247,0.7));
-        }
-        @keyframes rotateIcon {
-            0%, 100% { transform: rotate(-15deg); }
-            50% { transform: rotate(15deg); }
-        }
+/* MESSAGE */
+.message{
+    color:#c8b8dd;font-size:0.92rem;line-height:1.7;
+    padding:18px 22px;
+    background:rgba(106,13,173,0.1);
+    border:1px solid rgba(106,13,173,0.3);
+    border-left:3px solid #a855f7;
+    border-radius:12px;text-align:left;
+    margin-bottom:25px;
+}
 
-        /* MESSAGE */
-        .mt-message {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #e0e0e0;
-            margin-bottom: 12px;
-            padding: 0 10px;
-        }
-        .mt-sub-message {
-            font-size: 0.85rem;
-            color: #aaa;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            padding: 0 10px;
-        }
+/* AUTO REFRESH INFO */
+.auto-info{
+    display:flex;align-items:center;justify-content:center;
+    gap:8px;
+    padding:14px 20px;
+    background:rgba(106,13,173,0.15);
+    border:1px solid rgba(106,13,173,0.4);
+    border-radius:12px;
+    margin-bottom:25px;
+    font-size:0.78rem;
+    color:#c9a5ff;
+    font-weight:600;
+}
+.auto-dot{
+    width:8px;height:8px;border-radius:50%;
+    background:#22c55e;
+    box-shadow:0 0 10px #22c55e;
+    animation:pulseDot 1.5s infinite;
+}
+@keyframes pulseDot{
+    0%,100%{opacity:1;transform:scale(1);}
+    50%{opacity:0.4;transform:scale(0.8);}
+}
+.auto-info .count{
+    color:#fff;
+    font-weight:800;
+    font-variant-numeric:tabular-nums;
+    display:inline-block;
+    min-width:20px;
+    text-align:center;
+}
 
-        /* COUNTDOWN */
-        .countdown-box {
-            background: rgba(20,20,30,0.8);
-            border: 1px solid rgba(106,13,173,0.5);
-            border-radius: 20px;
-            padding: 18px 20px;
-            margin: 25px auto;
-            max-width: 350px;
-        }
-        .countdown-label {
-            font-size: 0.75rem;
-            color: #c9a5ff;
-            letter-spacing: 2px;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-        .countdown-timer {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 3px;
-            font-variant-numeric: tabular-nums;
-            text-shadow: 0 0 20px rgba(168,85,247,0.6);
-        }
-        .countdown-timer small {
-            font-size: 0.9rem;
-            color: #a855f7;
-            font-weight: 600;
-            margin-left: 5px;
-        }
+/* BUTTONS */
+.btn-group{
+    display:flex;gap:10px;
+    justify-content:center;flex-wrap:wrap;
+    margin-bottom:25px;
+}
+.btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 28px;border-radius:40px;
+    color:white;font-weight:800;font-size:0.78rem;
+    letter-spacing:1.5px;text-transform:uppercase;
+    text-decoration:none;border:none;cursor:pointer;
+    font-family:inherit;transition:0.25s;
+}
+.btn-primary{
+    background:linear-gradient(135deg,#6a0dad,#8b2be0);
+    box-shadow:0 0 25px rgba(168,85,247,0.6);
+}
+.btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 35px rgba(168,85,247,0.9);
+}
+.btn-outline{
+    background:transparent;
+    border:1px solid rgba(106,13,173,0.5);
+    color:#c9a5ff;
+}
+.btn-outline:hover{
+    background:rgba(106,13,173,0.2);
+    border-color:#a855f7;
+}
 
-        /* PROGRESS BAR */
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 20px auto;
-            max-width: 350px;
-        }
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #6a0dad, #a855f7, #c084fc, #a855f7, #6a0dad);
-            background-size: 200% 100%;
-            border-radius: 10px;
-            animation: shimmer 2s linear infinite;
-            width: 100%;
-            transition: width 1s linear;
-        }
-        @keyframes shimmer {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 200% 0%; }
-        }
+/* NOTE */
+.note{
+    color:#666;font-size:0.72rem;
+    line-height:1.6;letter-spacing:0.3px;
+}
+.note a{color:#a855f7;text-decoration:none;font-weight:700;}
+.note a:hover{color:#c9a5ff;}
 
-        /* ESTIMATED TIME */
-        .estimated-time {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(106,13,173,0.2);
-            border: 1px solid rgba(168,85,247,0.4);
-            padding: 8px 18px;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            color: #c9a5ff;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-
-        /* BUTTONS */
-        .mt-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 30px;
-            align-items: center;
-        }
-        .btn-refresh {
-            background: linear-gradient(135deg, #6a0dad, #a855f7);
-            border: none;
-            padding: 14px 35px;
-            border-radius: 50px;
-            color: white;
-            font-weight: bold;
-            font-size: 0.95rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.2s;
-            box-shadow: 0 5px 25px rgba(106,13,173,0.5);
-            text-decoration: none;
-            font-family: 'Inter', sans-serif;
-        }
-        .btn-refresh:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 35px rgba(106,13,173,0.8);
-            background: linear-gradient(135deg, #8535d4, #c084fc);
-        }
-        .btn-refresh:active { transform: scale(0.98); }
-        .btn-refresh:disabled { opacity: 0.7; cursor: not-allowed; }
-        .btn-refresh .spin {
-            display: inline-block;
-            transition: transform 0.5s;
-        }
-        .btn-refresh:hover .spin { transform: rotate(180deg); }
-
-        .btn-contact {
-            background: rgba(37,211,102,0.15);
-            border: 1px solid rgba(37,211,102,0.5);
-            padding: 12px 30px;
-            border-radius: 50px;
-            color: #25D366;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.2s;
-            font-family: 'Inter', sans-serif;
-        }
-        .btn-contact:hover {
-            background: rgba(37,211,102,0.3);
-            transform: scale(1.03);
-        }
-
-        /* AUTO REFRESH INFO */
-        .auto-refresh-info {
-            font-size: 0.75rem;
-            color: #666;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: #a855f7;
-            border-radius: 50%;
-            animation: pulseDot 1.5s ease-in-out infinite;
-        }
-        @keyframes pulseDot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.7); }
-        }
-
-        /* FOOTER */
-        .mt-footer {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(106,13,173,0.3);
-            font-size: 0.7rem;
-            color: #666;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 550px) {
-            .maintenance-container { padding: 35px 22px; border-radius: 28px; }
-            .mt-title { font-size: 1.4rem; letter-spacing: 2px; }
-            .mt-subtitle { font-size: 0.7rem; letter-spacing: 2px; }
-            .mt-icon { font-size: 3rem; }
-            .mt-message { font-size: 0.85rem; }
-            .mt-sub-message { font-size: 0.75rem; }
-            .countdown-timer { font-size: 1.7rem; }
-            .mt-logo { width: 80px; height: 80px; }
-            .btn-refresh { padding: 12px 28px; font-size: 0.85rem; }
-        }
-    </style>
+/* RESPONSIVE */
+@media (max-width:550px){
+    body{padding:20px 15px;}
+    .wheel-container{width:140px;height:140px;margin-bottom:25px;}
+    .tire{border-width:12px;}
+    .white-ring{border-width:5px;}
+    .title{font-size:1.4rem;letter-spacing:2px;}
+    .subtitle{font-size:0.7rem;letter-spacing:2px;}
+    .message{font-size:0.82rem;padding:15px 18px;}
+    .btn{padding:11px 22px;font-size:0.7rem;}
+    .auto-info{font-size:0.7rem;padding:12px 16px;}
+}
+@media (max-width:380px){
+    .wheel-container{width:120px;height:120px;}
+    .title{font-size:1.2rem;}
+}
+</style>
 </head>
 <body>
 
 <div class="bg-wallpaper"></div>
 <div class="particles" id="particles"></div>
 
-<div class="maintenance-container">
-    <img class="mt-logo" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Logo" onerror="this.src='https://placehold.co/100x100/0a0a0a/6a0dad?text=CDP'">
-    
-    <div class="mt-title" id="mtTitle">CDP OFFICIAL</div>
-    <div class="mt-subtitle">⚡ MAINTENANCE MODE ⚡</div>
-    
-    <span class="mt-icon">🔧</span>
-    
-    <div class="mt-message" id="mtMessage">
-        Kami sedang melakukan pemeliharaan sistem untuk memberikan pengalaman terbaik.
-    </div>
-    <div class="mt-sub-message" id="mtSubMessage">
-        Silakan kembali beberapa saat lagi. Terima kasih atas kesabaran Anda! 🙏
-    </div>
-
-    <!-- COUNTDOWN -->
-    <div class="countdown-box" id="countdownBox">
-        <div class="countdown-label">🔄 Auto Refresh Dalam</div>
-        <div class="countdown-timer" id="countdownTimer">30<small>s</small></div>
+<div class="container">
+    <!-- RODA -->
+    <div class="wheel-container">
+        <div class="tire"></div>
+        <div class="white-ring"></div>
+        <div class="hub"></div>
+        <div class="spokes">
+            <div class="spoke-line"></div>
+            <div class="spoke-line"></div>
+            <div class="spoke-line"></div>
+            <div class="spoke-line"></div>
+        </div>
     </div>
 
-    <!-- PROGRESS -->
-    <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
+    <h1 class="title">🚧 MAINTENANCE 🚧</h1>
+    <p class="subtitle">⚡ CDP OFFICIAL ⚡</p>
+
+    <div class="message" id="message">
+        Mohon maaf, website CDP Official sedang dalam perbaikan untuk meningkatkan kualitas layanan kami. Kami akan segera kembali dalam waktu dekat!
     </div>
 
-    <!-- ESTIMATED TIME -->
-    <div class="estimated-time" id="estimatedTime">
-        ⏱️ Estimasi selesai: <strong id="estimatedTimeValue">-</strong>
+    <div class="auto-info" id="autoInfo">
+        <span class="auto-dot"></span>
+        <span>Auto-refresh dalam <span class="count" id="refreshCount">10</span> detik</span>
     </div>
 
-    <!-- ACTIONS -->
-    <div class="mt-actions">
-        <button class="btn-refresh" id="refreshBtn">
-            <span class="spin">🔄</span> REFRESH SEKARANG
-        </button>
-        <a class="btn-contact" id="contactBtn" href="#" target="_blank">
-            💬 Hubungi Admin
-        </a>
+    <div class="btn-group">
+        <button class="btn btn-primary" onclick="location.reload()">🔄 REFRESH SEKARANG</button>
+        <a href="#" id="waBtn" class="btn btn-outline" target="_blank">💬 HUBUNGI ADMIN</a>
     </div>
 
-    <div class="auto-refresh-info">
-        <span class="pulse-dot"></span>
-        Halaman akan otomatis refresh
-    </div>
-
-    <div class="mt-footer">
-        © 2023-2026 CDP OFFICIAL | Roblox Community
+    <div class="note" id="note">
+        Terima kasih atas kesabaran Anda 🙏<br>
+        © 2023-<span id="year"></span> <a href="#">CDP OFFICIAL</a> | Roblox Community
     </div>
 </div>
 
 <script src="config.js"></script>
+
 <script>
 (function() {
-    // ============================================
-    // AMBIL KONFIGURASI MAINTENANCE
-    // ============================================
-    const config = (typeof getMaintenanceConfig === 'function') 
-        ? getMaintenanceConfig() 
-        : {
-            TITLE: 'CDP OFFICIAL',
-            MESSAGE: 'Kami sedang melakukan pemeliharaan sistem.',
-            SUB_MESSAGE: 'Silakan kembali beberapa saat lagi. Terima kasih! 🙏',
-            REFRESH_INTERVAL: 30,
-            SHOW_COUNTDOWN: true,
-            ESTIMATED_TIME: '30 Menit',
-            CONTACT_WA: '6282154329388'
-        };
-
-    // ============================================
-    // JIKA MAINTENANCE OFF → REDIRECT KE INDEX
-    // ============================================
-    if (typeof isMaintenanceMode === 'function' && !isMaintenanceMode()) {
-        window.location.replace('index.html');
-        return;
+    // ============ PARTICLES ============
+    const particles = document.getElementById('particles');
+    for (let i = 0; i < 50; i++) {
+        let p = document.createElement('div');
+        p.classList.add('particle');
+        let s = Math.random() * 8 + 2;
+        p.style.width = s + 'px';
+        p.style.height = s + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.animationDuration = 10 + Math.random() * 20 + 's';
+        p.style.animationDelay = Math.random() * 5 + 's';
+        particles.appendChild(p);
     }
 
-    // ============================================
-    // SET TEXT DARI CONFIG
-    // ============================================
-    const mtTitle = document.getElementById('mtTitle');
-    const mtMessage = document.getElementById('mtMessage');
-    const mtSubMessage = document.getElementById('mtSubMessage');
-    const estimatedTime = document.getElementById('estimatedTime');
-    const estimatedTimeValue = document.getElementById('estimatedTimeValue');
-    const countdownBox = document.getElementById('countdownBox');
-    const contactBtn = document.getElementById('contactBtn');
-    const refreshBtn = document.getElementById('refreshBtn');
-    const countdownTimer = document.getElementById('countdownTimer');
-    const progressFill = document.getElementById('progressFill');
+    // ============ LOAD CONFIG ============
+    const CFG = (typeof CDP_CONFIG !== 'undefined') ? CDP_CONFIG : {};
+    const MT = CFG.MAINTENANCE || {};
 
-    if (mtTitle && config.TITLE) mtTitle.textContent = config.TITLE;
-    if (mtMessage) mtMessage.textContent = config.MESSAGE;
-    if (mtSubMessage) mtSubMessage.textContent = config.SUB_MESSAGE;
+    // Override text dari config
+    if (MT.PESAN) document.getElementById('message').textContent = MT.PESAN;
+    if (MT.WA_ADMIN) document.getElementById('waBtn').href = MT.WA_ADMIN;
+    if (MT.NOTE) {
+        document.getElementById('note').innerHTML = 
+            MT.NOTE + '<br>© 2023-' + new Date().getFullYear() + ' <a href="#">CDP OFFICIAL</a> | Roblox Community';
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ============ AUTO REFRESH ============
+    const REFRESH_DETIK = MT.AUTO_REFRESH_DETIK || 10;
+    let counter = REFRESH_DETIK;
+    const countEl = document.getElementById('refreshCount');
     
-    if (config.ESTIMATED_TIME && config.ESTIMATED_TIME.trim() !== '') {
-        if (estimatedTimeValue) estimatedTimeValue.textContent = config.ESTIMATED_TIME;
-    } else {
-        if (estimatedTime) estimatedTime.style.display = 'none';
-    }
-
-    // Contact button
-    if (contactBtn && config.CONTACT_WA && config.CONTACT_WA.trim() !== '') {
-        contactBtn.href = `https://wa.me/${config.CONTACT_WA}?text=${encodeURIComponent('Halo admin, saya ingin bertanya tentang maintenance CDP Official.')}`;
-    } else if (contactBtn) {
-        contactBtn.style.display = 'none';
-    }
-
-    // ============================================
-    // AUTO REFRESH + COUNTDOWN
-    // ============================================
-    const totalSeconds = config.REFRESH_INTERVAL || 30;
-    let remaining = totalSeconds;
-
-    if (!config.SHOW_COUNTDOWN && countdownBox) {
-        countdownBox.style.display = 'none';
-    }
-
-    function updateCountdown() {
-        if (countdownTimer) {
-            countdownTimer.innerHTML = remaining + '<small>s</small>';
+    if (countEl) countEl.textContent = counter;
+    
+    const refreshInterval = setInterval(function() {
+        counter--;
+        
+        if (counter <= 0) {
+            clearInterval(refreshInterval);
+            console.log('%c🔄 AUTO REFRESH...', 'color:#22c55e;font-weight:bold;');
+            location.reload();
+            return;
         }
-        if (progressFill) {
-            const percent = (remaining / totalSeconds) * 100;
-            progressFill.style.width = percent + '%';
-        }
-        remaining--;
-        if (remaining < 0) {
-            remaining = totalSeconds;
-            window.location.reload();
-        }
-    }
+        
+        if (countEl) countEl.textContent = counter;
+    }, 1000);
 
-    if (config.SHOW_COUNTDOWN) {
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    } else {
-        setTimeout(() => {
-            window.location.reload();
-        }, totalSeconds * 1000);
-    }
-
-    // ============================================
-    // MANUAL REFRESH BUTTON
-    // ============================================
-    if (refreshBtn) {
-        refreshBtn.addEventListener('click', function() {
-            this.innerHTML = '<span class="spin">🔄</span> LOADING...';
-            this.disabled = true;
-            setTimeout(() => {
-                window.location.reload();
-            }, 500);
-        });
-    }
-
-    // ============================================
-    // PARTICLES EFFECT
-    // ============================================
-    const container = document.getElementById('particles');
-    if (container) {
-        for (let i = 0; i < 40; i++) {
-            let p = document.createElement('div');
-            p.classList.add('particle');
-            let s = Math.random() * 6 + 2;
-            p.style.width = s + 'px';
-            p.style.height = s + 'px';
-            p.style.left = Math.random() * 100 + '%';
-            p.style.top = Math.random() * 100 + '%';
-            p.style.animationDuration = 8 + Math.random() * 15 + 's';
-            p.style.animationDelay = Math.random() * 5 + 's';
-            container.appendChild(p);
-        }
-    }
-
-    // ============================================
-    // CEK STATUS MAINTENANCE SETIAP 10 DETIK
-    // Jika admin matikan maintenance → otomatis redirect ke index
-    // ============================================
-    setInterval(() => {
-        const script = document.createElement('script');
-        script.src = 'config.js?v=' + Date.now();
-        script.onload = function() {
-            if (typeof isMaintenanceMode === 'function' && !isMaintenanceMode()) {
-                window.location.replace('index.html');
-            }
-            script.remove();
-        };
-        document.head.appendChild(script);
-    }, 10000);
-
+    // ============ LOG ============
+    console.log('%c🚧 MAINTENANCE PAGE 🚧', 'color:#ff6666;font-size:16px;font-weight:bold;');
+    console.log('🔄 Auto refresh tiap:', REFRESH_DETIK + ' detik');
 })();
 </script>
+
 </body>
 </html>
