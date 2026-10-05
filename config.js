@@ -11,14 +11,14 @@ const CDP_CONFIG = {
     MAINTENANCE: {
         // true = tampilkan halaman maintenance
         // false = tampil portal loading normal
-        AKTIF: false,
+        AKTIF: true,
         
         // Pesan yang ditampilkan di halaman maintenance
         PESAN: 'Mohon maaf, website CDP Official sedang dalam perbaikan untuk meningkatkan kualitas layanan kami. Kami akan segera kembali dalam waktu dekat!',
         
         // Durasi countdown maintenance (menit)
         // 60 = 1 jam, 120 = 2 jam
-        DURASI_MENIT: 60,
+        DURASI_MENIT: 180,
         
         // ⭐ AUTO REFRESH - refresh halaman tiap N detik
         // 10 = refresh tiap 10 detik (recommended)
