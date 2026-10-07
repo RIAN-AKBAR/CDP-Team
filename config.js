@@ -11,7 +11,7 @@ const CDP_CONFIG = {
     MAINTENANCE: {
         // true = tampilkan halaman maintenance
         // false = tampil portal loading normal
-        AKTIF: true,
+        AKTIF: false,
         
         // Pesan yang ditampilkan di halaman maintenance
         PESAN: 'Mohon maaf, website CDP Official sedang dalam perbaikan untuk meningkatkan kualitas layanan kami. Kami akan segera kembali dalam waktu dekat!',
@@ -40,7 +40,7 @@ const CDP_CONFIG = {
     TUNNEL: {
         // URL Cloudflare Tunnel kamu
         // Contoh: 'https://cdp-register.trycloudflare.com'
-        URL: 'https://useful-nights-sensitivity-email.trycloudflare.com/cdp-team',
+        URL: 'https://privilege-advertisement-screensavers-orders.trycloudflare.com/cdp-team',
         
         // Durasi loading portal (ms)
         // 3500 = 3.5 detik
