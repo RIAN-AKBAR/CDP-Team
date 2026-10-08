@@ -40,7 +40,7 @@ const CDP_CONFIG = {
     TUNNEL: {
         // URL Cloudflare Tunnel kamu
         // Contoh: 'https://cdp-register.trycloudflare.com'
-        URL: 'https://biol-recommends-matthew-publisher.trycloudflare.com/cdp-team',
+        URL: 'https://string-reveal-iso-bits.trycloudflare.com/cdp-team',
         
         // Durasi loading portal (ms)
         // 3500 = 3.5 detik
