@@ -40,7 +40,7 @@ const CDP_CONFIG = {
     TUNNEL: {
         // URL Cloudflare Tunnel kamu
         // Contoh: 'https://cdp-register.trycloudflare.com'
-        URL: 'https://maps-aids-attend-stranger.trycloudflare.com/cdp-team',
+        URL: 'https://centered-blocked-neural-taken.trycloudflare.com/cdp-team',
         
         // Durasi loading portal (ms)
         // 3500 = 3.5 detik
