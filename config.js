@@ -11,7 +11,7 @@ const CDP_CONFIG = {
     MAINTENANCE: {
         // true = tampilkan halaman maintenance
         // false = tampil portal loading normal
-        AKTIF: false,
+        AKTIF: true,
         
         // Pesan yang ditampilkan di halaman maintenance
         PESAN: 'Mohon maaf, website CDP Official sedang dalam perbaikan untuk meningkatkan kualitas layanan kami. Kami akan segera kembali dalam waktu dekat!',
