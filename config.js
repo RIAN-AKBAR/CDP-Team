@@ -11,14 +11,14 @@ const CDP_CONFIG = {
     MAINTENANCE: {
         // true = tampilkan halaman maintenance
         // false = tampil portal loading normal
-        AKTIF: false,
+        AKTIF: true,
         
         // Pesan yang ditampilkan di halaman maintenance
-        PESAN: 'Mohon maaf, website CDP Official sedang dalam perbaikan untuk meningkatkan kualitas layanan kami. Kami akan segera kembali dalam waktu dekat!',
+        PESAN: 'Mohon maaf, website CDP Official sedang dalam perbaikan sistem !',
         
         // Durasi countdown maintenance (menit)
         // 60 = 1 jam, 120 = 2 jam
-        DURASI_MENIT: 180,
+        DURASI_MENIT: -,
         
         // ⭐ AUTO REFRESH - refresh halaman tiap N detik
         // 10 = refresh tiap 10 detik (recommended)
@@ -28,7 +28,7 @@ const CDP_CONFIG = {
         ADMIN: 'Admin CDP',
         
         // Link WA admin
-        WA_ADMIN: 'https://wa.me/6282154329388',
+        WA_ADMIN: 'https://wa.me/6285167089251',
         
         // Note di bawah halaman
         NOTE: 'Terima kasih atas kesabaran Anda 🙏'
