@@ -7,7 +7,7 @@ const CDP_CONFIG = {
     // MAINTENANCE MODE - SET true UNTUK AKTIFKAN
     // ============================================
     MAINTENANCE: {
-        ENABLED: false,                          // ← ganti ke true untuk maintenance
+        ENABLED: true,                          // ← ganti ke true untuk maintenance
         TITLE: '🛠️ SEDANG MAINTENANCE',
         MESSAGE: 'Kami sedang melakukan perbaikan sistem. Silakan kembali lagi nanti.',
         ESTIMATED: 'Akan kembali dalam waktu dekat',
