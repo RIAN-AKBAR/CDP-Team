@@ -32,12 +32,12 @@ const CDP_CONFIG = {
     // ============================================
     // BASE URL UNTUK GITHUB
     // ============================================
-    GITHUB_URL: 'https://cdp-team.github.io',
+    GITHUB_URL: 'https://cdp-team.vercel.app',
     
     // ============================================
     // LINK DISCORD UNTUK PENDAFTARAN
     // ============================================
-    DISCORD_INVITE: 'https://discord.gg/kEYVZJGdk',
+    DISCORD_INVITE: 'https://discord.gg/zMVeXV5EZ',
     
     // ============================================
     // LINK EXTERNAL
