@@ -95,16 +95,13 @@
             .hero-subtitle { font-size: 0.75rem; letter-spacing: 2px; }
         }
 
-        /* CINE & ALBUM SECTIONS */
         .cine-section, .album-section {
             background: rgba(10,10,18,0.85); backdrop-filter: blur(12px);
             border-radius: 30px; padding: 30px 25px; margin: 40px auto;
             max-width: 500px; text-align: center;
             border: 1px solid rgba(106,13,173,0.4);
         }
-
         .cine-section h3, .album-section h3 { font-size: 1.5rem; color: #c9a5ff; margin-bottom: 15px; }
-
         .btn-cine, .btn-album {
             display: inline-block; padding: 12px 30px; border-radius: 40px;
             color: white; text-decoration: none; font-weight: bold; transition: 0.2s;
@@ -274,9 +271,7 @@
             .preloader-subtext { font-size: 11px; }
         }
 
-        /* ============================================ */
-        /* POPUP IKLAN TUTORIAL DAFTAR */
-        /* ============================================ */
+        /* POPUP IKLAN */
         .ads-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -337,14 +332,9 @@
             transform: rotate(90deg) scale(1.1);
         }
 
-        .ads-header {
-            text-align: center;
-            margin-bottom: 22px;
-        }
+        .ads-header { text-align: center; margin-bottom: 22px; }
         .ads-header .ads-logo {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
+            width: 70px; height: 70px; border-radius: 50%;
             border: 3px solid #5865F2;
             box-shadow: 0 0 20px rgba(88,101,242,0.5);
             margin-bottom: 12px;
@@ -358,77 +348,36 @@
             font-weight: 800;
             margin-bottom: 6px;
         }
-        .ads-header .ads-sub {
-            font-size: 0.8rem;
-            color: #5865F2;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
+        .ads-header .ads-sub { font-size: 0.8rem; color: #5865F2; font-weight: 600; letter-spacing: 1px; }
 
-        .ads-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 20px 0;
-        }
+        .ads-steps { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
         .ads-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
+            display: flex; align-items: flex-start; gap: 12px;
             background: rgba(20,20,30,0.7);
-            padding: 12px 14px;
-            border-radius: 18px;
+            padding: 12px 14px; border-radius: 18px;
             border-left: 3px solid #5865F2;
             text-align: left;
         }
         .ads-step .ads-num {
             background: linear-gradient(135deg, #5865F2, #8b5cf6);
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.85rem;
-            flex-shrink: 0;
-            color: white;
+            width: 30px; height: 30px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 0.85rem; flex-shrink: 0; color: white;
         }
-        .ads-step .ads-text {
-            font-size: 0.85rem;
-            line-height: 1.5;
-            color: #e0e0e0;
-        }
-        .ads-step .ads-text strong {
-            color: #c9a5ff;
-        }
+        .ads-step .ads-text { font-size: 0.85rem; line-height: 1.5; color: #e0e0e0; }
+        .ads-step .ads-text strong { color: #c9a5ff; }
 
         .ads-cta {
-            display: block;
-            width: 100%;
+            display: block; width: 100%;
             background: linear-gradient(135deg, #5865F2, #8b5cf6);
-            border: none;
-            padding: 14px;
-            border-radius: 50px;
-            color: white;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: 0.2s;
+            border: none; padding: 14px; border-radius: 50px;
+            color: white; font-weight: bold; font-size: 1rem;
+            cursor: pointer; margin-top: 15px; transition: 0.2s;
             box-shadow: 0 5px 20px rgba(88,101,242,0.5);
         }
-        .ads-cta:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(88,101,242,0.7);
-        }
+        .ads-cta:hover { transform: scale(1.02); box-shadow: 0 8px 30px rgba(88,101,242,0.7); }
 
-        .ads-footer-note {
-            text-align: center;
-            margin-top: 12px;
-            font-size: 0.7rem;
-            color: #888;
-        }
+        .ads-footer-note { text-align: center; margin-top: 12px; font-size: 0.7rem; color: #888; }
 
         @media (max-width: 550px) {
             .ads-content { padding: 30px 18px 22px; border-radius: 24px; }
@@ -438,9 +387,7 @@
             .ads-close { width: 34px; height: 34px; font-size: 20px; top: 10px; right: 12px; }
         }
 
-        /* ============================================ */
         /* MAINTENANCE PAGE */
-        /* ============================================ */
         .maintenance-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -614,9 +561,7 @@
 </head>
 <body>
 
-<!-- ============================================ -->
-<!-- MAINTENANCE OVERLAY - muncul saat maintenance ON -->
-<!-- ============================================ -->
+<!-- MAINTENANCE OVERLAY -->
 <div class="maintenance-overlay" id="maintenanceOverlay">
     <div class="maintenance-content">
         <div class="maintenance-icon">🛠️</div>
@@ -642,9 +587,7 @@
     </div>
 </div>
 
-<!-- ============================================ -->
 <!-- KONTEN WEB ASLI -->
-<!-- ============================================ -->
 <div id="mainWebsite" style="display:none;">
 
 <div class="bg-wallpaper"></div>
@@ -658,19 +601,15 @@
     <div style="color:#888;font-size:12px;margin-top:12px;">loading...</div>
 </div>
 
-<!-- ============================================ -->
-<!-- POPUP IKLAN TUTORIAL DAFTAR (VIA DISCORD) -->
-<!-- ============================================ -->
+<!-- POPUP IKLAN TUTORIAL DAFTAR -->
 <div class="ads-overlay" id="adsOverlay">
     <div class="ads-content">
         <button class="ads-close" id="adsCloseBtn" aria-label="Tutup">&times;</button>
-
         <div class="ads-header">
             <img class="ads-logo" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Logo" onerror="this.src='https://placehold.co/70x70/0a0a0a/5865F2?text=CDP'">
             <h2>📢 CARA MENDAFTAR MEMBER CDP</h2>
             <div class="ads-sub">⚡ DAFTAR VIA DISCORD ⚡</div>
         </div>
-
         <div class="ads-steps">
             <div class="ads-step">
                 <div class="ads-num">1</div>
@@ -689,7 +628,6 @@
                 <div class="ads-text">Isi data pendaftaran yang diminta, lalu <strong>tunggu konfirmasi Owner</strong> untuk resmi jadi member!</div>
             </div>
         </div>
-
         <button class="ads-cta" id="adsCtaBtn">💬 JOIN DISCORD SEKARANG</button>
         <div class="ads-footer-note">✨ Tunggu konfirmasi dari Owner setelah mendaftar ✨</div>
     </div>
@@ -734,14 +672,12 @@
             <div class="hero-subtitle">SATU SERAGAM, SATU TUJUAN. TAMPIL SOLID DI JALANAN.</div>
             <div class="hero-divider"></div>
         </div>
-
         <div class="category-tabs" id="categoryTabs">
             <div class="category-tab active" data-category="ALL">ALL</div>
             <div class="category-tab" data-category="Kaos">SHIRT</div>
             <div class="category-tab" data-category="Jaket">JACKET</div>
             <div class="category-tab" data-category="Celana">TROUSERS</div>
         </div>
-
         <div class="product-grid" id="productGrid"></div>
     </section>
 
@@ -780,9 +716,7 @@
         <div class="donation-info">
             💖 Ingin mendukung CDP Team? Klik tombol di bawah untuk donasi melalui QRIS! 💖
         </div>
-        <button id="donateBtn" class="btn-donate">
-            💖 SUPPORT CDP TEAM 💖
-        </button>
+        <button id="donateBtn" class="btn-donate">💖 SUPPORT CDP TEAM 💖</button>
     </div>
 
     <div id="qrisModal" class="modal">
@@ -811,9 +745,6 @@
         </ol>
     </div>
 
-    <!-- ============================================ -->
-    <!-- TUTORIAL PENDAFTARAN VIA DISCORD -->
-    <!-- ============================================ -->
     <div class="tutorial-box">
         <h3>📚 TUTORIAL PENDAFTARAN (VIA DISCORD)</h3>
         <div class="step-list">
@@ -828,46 +759,19 @@
     <section id="team">
         <h2 class="section-title">👑 MEET THE ELITE TEAM 👑</h2>
         <div class="team-grid">
-            <!-- OWNER -->
             <div class="team-card"><img class="team-avatar-img avatar-owner-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-640021FC7E2D4D1FE9FE51C760D49C28-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/a855f7?text=AKANG'"><div class="role-name">AKANGMV0649</div><div class="role-title">OWNER</div><a href="https://www.roblox.com/users/9597142392/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- CEO -->
             <div class="team-card"><img class="team-avatar-img avatar-ceo-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A04A7FA9B6749D042BFBD2D23A79B5BE-Png-Background/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/c084fc?text=CEO'"><div class="role-name">Lanosavi73</div><div class="role-title">CEO-OWNER & Web Dev</div><a href="https://www.roblox.com/users/8429909641/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- CONTRIBUTOR: azril -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-06CC895A17ACBBEC3F62061C7E0B3C8F-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=AZRIL'"><div class="role-name">azril</div><div class="role-title">Contributor</div><a href="https://www.roblox.com/users/10736193358/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- DONATUR: raey -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-0A1CA98A624995EA79F8B46A754B0FE5-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=RAEY'"><div class="role-name">raey</div><div class="role-title">Donatur & Support</div><a href="https://www.roblox.com/id/users/11481638368" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- CONTRIBUTOR: ditz -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8416A408FDBDF3270EC6FD5AF64E3C0C-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=DITZ'"><div class="role-name">ditz</div><div class="role-title">Contributor</div><a href="https://www.roblox.com/users/6174897216/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- MODERATOR: rafly -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-181C25C705B74A2D56528FAF2EBAFA94-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=RAFLY'"><div class="role-name">rafly</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/users/10867023249/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- CONTRIBUTOR: Bipos19 -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-4D5CABBB4099A4922C78E852139D38ED-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=BIPOS'"><div class="role-name">Bipos19</div><div class="role-title">Contributor</div><a href="https://www.roblox.com/users/8519693761/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- MODERATOR: V4MP -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-DCB1706153B18CA7DD0F850BA6465582-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=V4MP'"><div class="role-name">V4MP</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/users/10933734314/profile" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- CONTRIBUTOR: anzar_scene -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-17A095030634362D8662C05EDD043162-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=ANZAR'"><div class="role-name">anzar_scene</div><div class="role-title">Contributor</div><a href="https://www.roblox.com/id/users/5409989525" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- MODERATOR: OPIN -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-EC525403B0DBE6260BB483718D0A0EB8-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=OPIN'"><div class="role-name">OPIN</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/8726680209" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- MODERATOR: BREMBO -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D33B14BD74121FC063E8C2F8A88B4EA3-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=BREMBO'"><div class="role-name">BREMBO</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/8813330709" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- MODERATOR: Kyz -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-BA1C606AF3748D70FB18BC67A8BF0DD8-Png-Background/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=KYZ'"><div class="role-name">Kyz</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/11102097651" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- MODERATOR: Zyfxsah -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D6AAD7B511D69D9850D93C3C4CF7EE2C-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=ZYFXSAH'"><div class="role-name">Zyfxsah</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/6229953844" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
-
-            <!-- MODERATOR: kenyok_67 -->
             <div class="team-card"><img class="team-avatar-img avatar-contributor-border" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-9C91ABD5346A0CD76998DA11091CCAAD-Png/150/150/AvatarHeadshot/Webp/noFilter" onerror="this.src='https://placehold.co/150x150/1a1a2e/8b5cf6?text=KENYOK'"><div class="role-name">kenyok_67</div><div class="role-title">Moderator</div><a href="https://www.roblox.com/id/users/11152318699" target="_blank" class="btn-view-profile">👤 VIEW PROFILE</a></div>
         </div>
         <p style="text-align:center; color:#999; margin-top:20px; font-size:0.8rem;">+ support team aktif setiap hari</p>
@@ -891,7 +795,7 @@
 <script>
 (function(){
     // ============================================
-    // MAINTENANCE MODE CHECK (PALING AWAL)
+    // MAINTENANCE MODE CHECK
     // ============================================
     const maintOverlay = document.getElementById('maintenanceOverlay');
     const mainWebsite = document.getElementById('mainWebsite');
@@ -903,7 +807,6 @@
         const m = CDP_CONFIG.MAINTENANCE;
         if (!m) return;
         
-        // Set judul & pesan
         const mt = document.getElementById('maintTitle');
         const mm = document.getElementById('maintMessage');
         const me = document.getElementById('maintEstimated');
@@ -911,13 +814,11 @@
         if (mm && m.MESSAGE) mm.innerText = m.MESSAGE;
         if (me && m.ESTIMATED) me.innerHTML = '<span class="maint-pulse"></span> ' + m.ESTIMATED;
         
-        // Countdown jika ETA_TIME diisi
         if (m.ETA_TIME) {
             const countdownEl = document.getElementById('maintCountdown');
             if (countdownEl) {
                 countdownEl.style.display = 'flex';
                 const target = new Date(m.ETA_TIME).getTime();
-                
                 function updateCountdown() {
                     const now = new Date().getTime();
                     const diff = target - now;
@@ -928,24 +829,21 @@
                         document.getElementById('cdSecs').innerText = '00';
                         return;
                     }
-                    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const mi = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    const s = Math.floor((diff % (1000 * 60)) / 1000);
-                    document.getElementById('cdDays').innerText = String(d).padStart(2, '0');
-                    document.getElementById('cdHours').innerText = String(h).padStart(2, '0');
-                    document.getElementById('cdMins').innerText = String(mi).padStart(2, '0');
-                    document.getElementById('cdSecs').innerText = String(s).padStart(2, '0');
+                    document.getElementById('cdDays').innerText = String(Math.floor(diff / 86400000)).padStart(2, '0');
+                    document.getElementById('cdHours').innerText = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+                    document.getElementById('cdMins').innerText = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+                    document.getElementById('cdSecs').innerText = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
                 }
                 updateCountdown();
                 setInterval(updateCountdown, 1000);
             }
         }
         
-        // Tombol kontak
         const contactEl = document.getElementById('maintContact');
         if (contactEl) {
             let showContact = false;
+            
+            // Discord button
             if (m.CONTACT_DISCORD !== false && typeof CDP_CONFIG.DISCORD_INVITE !== 'undefined') {
                 const dBtn = document.getElementById('maintDiscordBtn');
                 if (dBtn) { dBtn.href = CDP_CONFIG.DISCORD_INVITE; showContact = true; }
@@ -953,24 +851,28 @@
                 const dBtn = document.getElementById('maintDiscordBtn');
                 if (dBtn) dBtn.style.display = 'none';
             }
-            if (m.CONTACT_WA !== false && typeof CDP_CONFIG.WHATSAPP_NUMBER !== 'undefined') {
+            
+            // WhatsApp button → pakai nomor KHUSUS MAINTENANCE (WA_NUMBER)
+            if (m.CONTACT_WA !== false) {
                 const wBtn = document.getElementById('maintWaBtn');
-                if (wBtn) { wBtn.href = 'https://wa.me/' + CDP_CONFIG.WHATSAPP_NUMBER; showContact = true; }
+                if (wBtn) { 
+                    wBtn.href = getMaintenanceWaUrl('Halo admin, saya mau tanya soal maintenance CDP');
+                    showContact = true; 
+                }
             } else {
                 const wBtn = document.getElementById('maintWaBtn');
                 if (wBtn) wBtn.style.display = 'none';
             }
+            
             if (showContact) contactEl.style.display = 'flex';
         }
     }
     
-    // Cek maintenance
     if (typeof isMaintenance !== 'undefined' && isMaintenance()) {
         activateMaintenance();
-        return; // Stop semua script web normal
+        return;
     }
     
-    // Jika tidak maintenance, tampilkan website
     if (mainWebsite) mainWebsite.style.display = 'block';
     
     // ============================================
@@ -1054,7 +956,7 @@
     renderProducts();
 
     // ============================================
-    // POPUP IKLAN TUTORIAL DAFTAR → DISCORD
+    // POPUP IKLAN
     // ============================================
     (function() {
         const adsOverlay = document.getElementById('adsOverlay');
@@ -1067,9 +969,7 @@
             adsOverlay.classList.add('active');
         }, 3500);
 
-        function closeAds() {
-            adsOverlay.classList.remove('active');
-        }
+        function closeAds() { adsOverlay.classList.remove('active'); }
 
         if (adsCloseBtn) adsCloseBtn.addEventListener('click', closeAds);
 
@@ -1113,7 +1013,7 @@
     })();
 
     // ============================================
-    // HAMBURGER MENU
+    // HAMBURGER
     // ============================================
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
@@ -1138,7 +1038,7 @@
     });
 
     // ============================================
-    // MODAL COLAB & LAGA
+    // MODAL COLAB & LAGA — pakai WHATSAPP_NUMBER
     // ============================================
     const teamNameModal = document.getElementById('teamNameModal');
     const teamNameInput = document.getElementById('teamNameInput');
@@ -1165,10 +1065,10 @@
             let teamName = teamNameInput ? teamNameInput.value.trim() : '';
             if (teamName === '') { alert('Silakan masukkan nama team Anda!'); return; }
             let message = '';
-            const waNumber = '6282154329388';
             if (currentAction === 'colab') message = `assalamualaikum permisi kak saya mau colab saya dari team ${teamName}`;
             else if (currentAction === 'laga') message = `assalamualaikum permisi kak saya mau laga saya dari team ${teamName}`;
-            window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            // Gunakan WHATSAPP_NUMBER (bukan nomor maintenance)
+            window.open(getWhatsAppUrl(message), '_blank');
             closeModal();
         });
     }
