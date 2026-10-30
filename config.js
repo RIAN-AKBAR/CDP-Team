@@ -7,17 +7,18 @@ const CDP_CONFIG = {
     // MAINTENANCE MODE - SET true UNTUK AKTIFKAN
     // ============================================
     MAINTENANCE: {
-        ENABLED: true,                          // ← ganti ke true untuk maintenance
+        ENABLED: false,
         TITLE: '🛠️ SEDANG MAINTENANCE',
         MESSAGE: 'Kami sedang melakukan perbaikan sistem. Silakan kembali lagi nanti.',
         ESTIMATED: 'Akan kembali dalam waktu dekat',
-        ETA_TIME: '',                            // contoh: '2026-12-31T23:59:59' (kosongkan jika tidak perlu countdown)
-        CONTACT_DISCORD: true,                   // tampilkan tombol Discord saat maintenance
-        CONTACT_WA: true                         // tampilkan tombol WhatsApp saat maintenance
+        ETA_TIME: '',
+        CONTACT_DISCORD: true,
+        CONTACT_WA: true,
+        WA_NUMBER: '6285167089251'           // ← NOMOR KHUSUS MAINTENANCE
     },
 
     // ============================================
-    // URL TUNNEL CLOUDFLARE - GANTI DI SINI SAJA
+    // URL TUNNEL CLOUDFLARE
     // ============================================
     TUNNEL_URL: 'https://beaches-adequate-maui-afternoon.trycloudflare.com',
     
@@ -29,7 +30,7 @@ const CDP_CONFIG = {
     CHAT_PATH: '/register_cdp/chat_simple.php',
     
     // ============================================
-    // BASE URL UNTUK GITHUB (INDEX UTAMA)
+    // BASE URL UNTUK GITHUB
     // ============================================
     GITHUB_URL: 'https://cdp-team.github.io',
     
@@ -51,7 +52,7 @@ const CDP_CONFIG = {
     // ============================================
     // WHATSAPP NUMBER UNTUK COLAB & LAGA
     // ============================================
-    WHATSAPP_NUMBER: '6282154329388'
+    WHATSAPP_NUMBER: '6282154329388'         // ← KHUSUS COLAB & LAGA
 };
 
 // ============================================
@@ -59,7 +60,6 @@ const CDP_CONFIG = {
 // ============================================
 
 function getRegisterUrl() {
-    // Pendaftaran sekarang mengarah ke Discord
     return CDP_CONFIG.DISCORD_INVITE;
 }
 
@@ -76,7 +76,16 @@ function getChatUrl() {
 }
 
 function getWhatsAppUrl(message = '') {
+    // Untuk Colab & Laga
     return `https://wa.me/${CDP_CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+function getMaintenanceWaUrl(message = '') {
+    // Khusus tombol WA di halaman maintenance
+    const num = (CDP_CONFIG.MAINTENANCE && CDP_CONFIG.MAINTENANCE.WA_NUMBER) 
+                ? CDP_CONFIG.MAINTENANCE.WA_NUMBER 
+                : CDP_CONFIG.WHATSAPP_NUMBER;
+    return `https://wa.me/${num}${message ? '?text=' + encodeURIComponent(message) : ''}`;
 }
 
 function isMaintenance() {
@@ -84,7 +93,7 @@ function isMaintenance() {
 }
 
 // ============================================
-// EXPOSE KE GLOBAL (agar bisa diakses dari HTML)
+// EXPOSE KE GLOBAL
 // ============================================
 window.CDP_CONFIG = CDP_CONFIG;
 window.getRegisterUrl = getRegisterUrl;
@@ -92,4 +101,5 @@ window.getDiscordUrl = getDiscordUrl;
 window.getAdminUrl = getAdminUrl;
 window.getChatUrl = getChatUrl;
 window.getWhatsAppUrl = getWhatsAppUrl;
+window.getMaintenanceWaUrl = getMaintenanceWaUrl;
 window.isMaintenance = isMaintenance;
