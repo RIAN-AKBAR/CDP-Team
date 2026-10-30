@@ -135,26 +135,72 @@
             .search-box button { padding: 8px 16px; font-size: 0.75rem; }
         }
 
+        /* ============================================
+           REGISTER CHOICE - 2 METODE
+           ============================================ */
         .register-trigger {
             background: #000000; border-radius: 24px; padding: 20px 25px;
-            margin: 15px auto 30px auto; max-width: 520px; text-align: center;
+            margin: 15px auto 30px auto; max-width: 600px; text-align: center;
             cursor: pointer; transition: 0.2s;
-            border: 2px solid rgba(88,101,242,0.4);
+            border: 2px solid rgba(106,13,173,0.4);
             display: flex; align-items: center; justify-content: center;
             gap: 20px; text-decoration: none;
         }
-        .register-trigger:hover { border-color: rgba(88,101,242,0.9); background: #080810; transform: scale(1.02); box-shadow: 0 0 30px rgba(88,101,242,0.3); }
+        .register-trigger:hover { border-color: rgba(168,85,247,0.9); background: #080810; transform: scale(1.02); box-shadow: 0 0 30px rgba(106,13,173,0.3); }
         .register-trigger:active { background: #000000; transform: scale(0.99); }
-        .trigger-logo { width: 80px; height: 80px; object-fit: contain; display: block; border-radius: 12px; }
-        .trigger-text { text-align: left; }
-        .trigger-text h3 { font-size: 1.3rem; color: #ffffff; margin-bottom: 5px; font-weight: 700; }
-        .trigger-text p { color: #aaaaaa; font-size: 0.8rem; }
-        .trigger-badge { background: linear-gradient(135deg, #5865F2, #8b5cf6); padding: 4px 14px; border-radius: 20px; font-size: 0.65rem; color: white; font-weight: 600; display: inline-block; margin-top: 5px; }
+        .trigger-logo { width: 70px; height: 70px; object-fit: contain; display: block; border-radius: 12px; }
+        .trigger-content { text-align: left; flex: 1; }
+        .trigger-content h3 { font-size: 1.3rem; color: #ffffff; margin-bottom: 5px; font-weight: 700; }
+        .trigger-content p { color: #aaaaaa; font-size: 0.8rem; margin-bottom: 10px; }
+        
+        .register-choice-btns {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .choice-btn {
+            flex: 1;
+            min-width: 130px;
+            padding: 10px 16px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .choice-discord {
+            background: linear-gradient(135deg, #5865F2, #4752c4);
+            box-shadow: 0 4px 12px rgba(88,101,242,0.4);
+        }
+        .choice-discord:hover {
+            background: linear-gradient(135deg, #4752c4, #3c45a5);
+            transform: scale(1.05);
+        }
+        .choice-wa {
+            background: linear-gradient(135deg, #25D366, #1da851);
+            box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+        }
+        .choice-wa:hover {
+            background: linear-gradient(135deg, #1da851, #128C7E);
+            transform: scale(1.05);
+        }
+        
         @media (max-width: 550px) {
-            .register-trigger { padding: 15px 18px; gap: 15px; }
-            .trigger-logo { width: 60px; height: 60px; }
-            .trigger-text h3 { font-size: 1rem; }
-            .trigger-text p { font-size: 0.7rem; }
+            .register-trigger { padding: 15px 18px; gap: 12px; flex-direction: column; text-align: center; }
+            .trigger-logo { width: 55px; height: 55px; }
+            .trigger-content { text-align: center; }
+            .trigger-content h3 { font-size: 1rem; }
+            .trigger-content p { font-size: 0.7rem; }
+            .register-choice-btns { width: 100%; }
+            .choice-btn { font-size: 0.75rem; padding: 9px 12px; min-width: 110px; }
         }
 
         .category-tabs { display: flex; justify-content: center; gap: 15px; margin: 20px auto 30px; flex-wrap: wrap; padding: 0 16px; }
@@ -290,13 +336,13 @@
 
         .ads-content {
             background: linear-gradient(135deg, #0d0d1a, #1a0a2e);
-            border: 2px solid #5865F2;
+            border: 2px solid #a855f7;
             border-radius: 30px;
             padding: 35px 25px 28px;
             max-width: 460px;
             width: 100%;
             position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px rgba(88,101,242,0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px rgba(168,85,247,0.3);
             animation: popInAds 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             max-height: 90vh;
             overflow-y: auto;
@@ -335,31 +381,31 @@
         .ads-header { text-align: center; margin-bottom: 22px; }
         .ads-header .ads-logo {
             width: 70px; height: 70px; border-radius: 50%;
-            border: 3px solid #5865F2;
-            box-shadow: 0 0 20px rgba(88,101,242,0.5);
+            border: 3px solid #a855f7;
+            box-shadow: 0 0 20px rgba(168,85,247,0.5);
             margin-bottom: 12px;
         }
         .ads-header h2 {
             font-size: 1.4rem;
-            background: linear-gradient(120deg, #e0e0e0, #c9a5ff, #5865F2);
+            background: linear-gradient(120deg, #e0e0e0, #c9a5ff, #a855f7);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             font-weight: 800;
             margin-bottom: 6px;
         }
-        .ads-header .ads-sub { font-size: 0.8rem; color: #5865F2; font-weight: 600; letter-spacing: 1px; }
+        .ads-header .ads-sub { font-size: 0.8rem; color: #a855f7; font-weight: 600; letter-spacing: 1px; }
 
         .ads-steps { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
         .ads-step {
             display: flex; align-items: flex-start; gap: 12px;
             background: rgba(20,20,30,0.7);
             padding: 12px 14px; border-radius: 18px;
-            border-left: 3px solid #5865F2;
+            border-left: 3px solid #a855f7;
             text-align: left;
         }
         .ads-step .ads-num {
-            background: linear-gradient(135deg, #5865F2, #8b5cf6);
+            background: linear-gradient(135deg, #6a0dad, #a855f7);
             width: 30px; height: 30px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-weight: bold; font-size: 0.85rem; flex-shrink: 0; color: white;
@@ -367,15 +413,41 @@
         .ads-step .ads-text { font-size: 0.85rem; line-height: 1.5; color: #e0e0e0; }
         .ads-step .ads-text strong { color: #c9a5ff; }
 
+        .ads-cta-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
         .ads-cta {
-            display: block; width: 100%;
-            background: linear-gradient(135deg, #5865F2, #8b5cf6);
-            border: none; padding: 14px; border-radius: 50px;
-            color: white; font-weight: bold; font-size: 1rem;
-            cursor: pointer; margin-top: 15px; transition: 0.2s;
+            flex: 1;
+            display: block;
+            border: none;
+            padding: 13px 10px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            text-align: center;
+            text-decoration: none;
+        }
+        .ads-cta-discord {
+            background: linear-gradient(135deg, #5865F2, #4752c4);
             box-shadow: 0 5px 20px rgba(88,101,242,0.5);
         }
-        .ads-cta:hover { transform: scale(1.02); box-shadow: 0 8px 30px rgba(88,101,242,0.7); }
+        .ads-cta-discord:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(88,101,242,0.7);
+        }
+        .ads-cta-wa {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            box-shadow: 0 5px 20px rgba(37,211,102,0.5);
+        }
+        .ads-cta-wa:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(37,211,102,0.7);
+        }
 
         .ads-footer-note { text-align: center; margin-top: 12px; font-size: 0.7rem; color: #888; }
 
@@ -385,6 +457,7 @@
             .ads-header .ads-logo { width: 60px; height: 60px; }
             .ads-step .ads-text { font-size: 0.78rem; }
             .ads-close { width: 34px; height: 34px; font-size: 20px; top: 10px; right: 12px; }
+            .ads-cta { font-size: 0.75rem; padding: 11px 8px; }
         }
 
         /* MAINTENANCE PAGE */
@@ -433,10 +506,7 @@
             animation: maintSpin 3s linear infinite;
             filter: drop-shadow(0 0 20px rgba(168,85,247,0.8));
         }
-        @keyframes maintSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes maintSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .maintenance-title {
             font-size: 1.9rem;
@@ -468,13 +538,7 @@
             margin-bottom: 25px;
         }
 
-        .maintenance-countdown {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin: 25px 0;
-            flex-wrap: wrap;
-        }
+        .maintenance-countdown { display: flex; justify-content: center; gap: 12px; margin: 25px 0; flex-wrap: wrap; }
         .countdown-box {
             background: linear-gradient(135deg, #1a0a2e, #0d0d1a);
             border: 1px solid rgba(168,85,247,0.5);
@@ -483,68 +547,34 @@
             min-width: 70px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.4), 0 0 10px rgba(168,85,247,0.15);
         }
-        .countdown-num {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #c9a5ff;
-            line-height: 1;
-        }
-        .countdown-label {
-            font-size: 0.65rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
-        }
+        .countdown-num { font-size: 1.6rem; font-weight: 800; color: #c9a5ff; line-height: 1; }
+        .countdown-label { font-size: 0.65rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
 
-        .maintenance-contact {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
+        .maintenance-contact { display: flex; justify-content: center; gap: 12px; margin-top: 25px; flex-wrap: wrap; }
         .maint-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 22px;
-            border-radius: 40px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 0.85rem;
-            transition: 0.2s;
-            border: none;
-            cursor: pointer;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 22px; border-radius: 40px;
+            text-decoration: none; color: white; font-weight: bold;
+            font-size: 0.85rem; transition: 0.2s;
+            border: none; cursor: pointer;
         }
         .maint-btn-discord { background: #5865F2; box-shadow: 0 5px 15px rgba(88,101,242,0.4); }
         .maint-btn-discord:hover { background: #4752c4; transform: scale(1.05); }
         .maint-btn-wa { background: #25D366; box-shadow: 0 5px 15px rgba(37,211,102,0.4); }
         .maint-btn-wa:hover { background: #1da851; transform: scale(1.05); }
 
-        .maintenance-footer {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(168,85,247,0.2);
-            font-size: 0.7rem;
-            color: #666;
-        }
+        .maintenance-footer { margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(168,85,247,0.2); font-size: 0.7rem; color: #666; }
 
         .maint-pulse {
             display: inline-block;
-            width: 10px;
-            height: 10px;
+            width: 10px; height: 10px;
             background: #ff0050;
             border-radius: 50%;
             margin-right: 8px;
             animation: pulseDot 1.5s ease-in-out infinite;
             vertical-align: middle;
         }
-        @keyframes pulseDot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.3); }
-        }
+        @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.3); } }
 
         @media (max-width: 550px) {
             .maintenance-content { padding: 35px 20px 30px; border-radius: 24px; }
@@ -606,29 +636,32 @@
     <div class="ads-content">
         <button class="ads-close" id="adsCloseBtn" aria-label="Tutup">&times;</button>
         <div class="ads-header">
-            <img class="ads-logo" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Logo" onerror="this.src='https://placehold.co/70x70/0a0a0a/5865F2?text=CDP'">
+            <img class="ads-logo" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Logo" onerror="this.src='https://placehold.co/70x70/0a0a0a/6a0dad?text=CDP'">
             <h2>📢 CARA MENDAFTAR MEMBER CDP</h2>
-            <div class="ads-sub">⚡ DAFTAR VIA DISCORD ⚡</div>
+            <div class="ads-sub">⚡ PILIH METODE PENDAFTARAN ⚡</div>
         </div>
         <div class="ads-steps">
             <div class="ads-step">
                 <div class="ads-num">1</div>
-                <div class="ads-text"><strong>Klik "DAFTAR MENJADI MEMBER"</strong> di halaman utama atau menu <strong>📝 DAFTAR</strong> di bagian atas.</div>
+                <div class="ads-text"><strong>Pilih salah satu metode</strong>: via <strong>Discord</strong> atau via <strong>Grup WhatsApp CDP</strong>.</div>
             </div>
             <div class="ads-step">
                 <div class="ads-num">2</div>
-                <div class="ads-text">Kamu akan diarahkan ke <strong>server Discord CDP Official</strong>.</div>
+                <div class="ads-text">Klik tombol <strong>"DAFTAR"</strong> di menu atas atau tombol <strong>"DAFTAR MENJADI MEMBER"</strong> di halaman ini.</div>
             </div>
             <div class="ads-step">
                 <div class="ads-num">3</div>
-                <div class="ads-text">Masuk ke channel <strong>#daftar-member</strong> dan ikuti instruksi dari Admin.</div>
+                <div class="ads-text">Ikuti instruksi Admin di dalam grup/komunitas yang kamu pilih.</div>
             </div>
             <div class="ads-step">
                 <div class="ads-num">4</div>
-                <div class="ads-text">Isi data pendaftaran yang diminta, lalu <strong>tunggu konfirmasi Owner</strong> untuk resmi jadi member!</div>
+                <div class="ads-text">Isi data yang diminta, lalu <strong>tunggu konfirmasi Owner</strong> untuk resmi jadi member!</div>
             </div>
         </div>
-        <button class="ads-cta" id="adsCtaBtn">💬 JOIN DISCORD SEKARANG</button>
+        <div class="ads-cta-group">
+            <a id="adsCtaDiscord" href="#" target="_blank" class="ads-cta ads-cta-discord">💬 DISCORD</a>
+            <a id="adsCtaWa" href="#" target="_blank" class="ads-cta ads-cta-wa">📱 GRUP WA</a>
+        </div>
         <div class="ads-footer-note">✨ Tunggu konfirmasi dari Owner setelah mendaftar ✨</div>
     </div>
 </div>
@@ -644,7 +677,7 @@
         <div class="nav-menu" id="navMenu">
             <a href="#shop">✨ BELI BAJU</a>
             <a href="#team">👥 TEAM</a>
-            <a id="navRegisterBtn" target="_blank" class="btn-register-nav" style="background:rgba(88,101,242,0.3);border-radius:40px;padding:8px 20px;border:1px solid rgba(88,101,242,0.5);">📝 DAFTAR</a>
+            <a href="#daftar" class="btn-register-nav" style="background:rgba(106,13,173,0.3);border-radius:40px;padding:8px 20px;border:1px solid rgba(106,13,173,0.5);">📝 DAFTAR</a>
         </div>
     </div>
 </div>
@@ -657,14 +690,20 @@
         </div>
     </div>
 
-    <a id="registerTriggerBlock" target="_blank" class="register-trigger">
-        <img class="trigger-logo" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Logo" onerror="this.src='https://placehold.co/80x80/0a0a0a/5865F2?text=CDP'">
-        <div class="trigger-text">
+    <!-- ============================================
+         REGISTER TRIGGER - 2 METODE
+         ============================================ -->
+    <div id="daftar" class="register-trigger">
+        <img class="trigger-logo" src="https://files.catbox.moe/7thi53.jpg" alt="CDP Logo" onerror="this.src='https://placehold.co/70x70/0a0a0a/6a0dad?text=CDP'">
+        <div class="trigger-content">
             <h3>📝 DAFTAR MENJADI MEMBER</h3>
-            <p>Klik disini untuk daftar via Discord</p>
-            <span class="trigger-badge">💬 JOIN DISCORD</span>
+            <p>Pilih metode pendaftaran: via Discord atau Grup WhatsApp CDP</p>
+            <div class="register-choice-btns">
+                <a id="registerDiscordBtn" target="_blank" class="choice-btn choice-discord">💬 DISCORD</a>
+                <a id="registerWaBtn" target="_blank" class="choice-btn choice-wa">📱 GRUP WA</a>
+            </div>
         </div>
-    </a>
+    </div>
 
     <section id="shop">
         <div class="hero-section-title">
@@ -746,14 +785,14 @@
     </div>
 
     <div class="tutorial-box">
-        <h3>📚 TUTORIAL PENDAFTARAN (VIA DISCORD)</h3>
+        <h3>📚 TUTORIAL PENDAFTARAN (2 METODE)</h3>
         <div class="step-list">
-            <div class="step-item"><span class="step-number">1</span><span class="step-text"><strong>Klik tombol "DAFTAR"</strong> di menu atas atau tombol <strong>"DAFTAR MENJADI MEMBER"</strong> di halaman ini.</span></div>
-            <div class="step-item"><span class="step-number">2</span><span class="step-text">Kamu akan <strong>otomatis diarahkan ke server Discord CDP Official</strong>.</span></div>
-            <div class="step-item"><span class="step-number">3</span><span class="step-text">Masuk ke channel <strong>#daftar-member</strong> dan isi data yang diminta Admin (Nama, Username Roblox, dll).</span></div>
-            <div class="step-item"><span class="step-number">4</span><span class="step-text">Tunggu <strong>konfirmasi dari Owner/Admin</strong> di Discord. Setelah diterima, kamu resmi jadi member CDP Team!</span></div>
+            <div class="step-item"><span class="step-number">1</span><span class="step-text"><strong>Pilih metode</strong>: via <strong>Discord</strong> atau via <strong>Grup WhatsApp CDP</strong>.</span></div>
+            <div class="step-item"><span class="step-number">2</span><span class="step-text">Klik tombol <strong>"DAFTAR"</strong> di menu atas, atau tombol <strong>"DAFTAR MENJADI MEMBER"</strong> di halaman ini.</span></div>
+            <div class="step-item"><span class="step-number">3</span><span class="step-text">Pilih salah satu tombol: <strong>💬 DISCORD</strong> atau <strong>📱 GRUP WA</strong>.</span></div>
+            <div class="step-item"><span class="step-number">4</span><span class="step-text">Ikuti instruksi Admin, isi data yang diminta, lalu <strong>tunggu konfirmasi Owner</strong> untuk resmi jadi member!</span></div>
         </div>
-        <p style="text-align:center; margin-top:18px; font-size:0.75rem; color:#aaa;">✅ Pastikan akun Discord aktif agar mudah dikontak oleh Owner.</p>
+        <p style="text-align:center; margin-top:18px; font-size:0.75rem; color:#aaa;">✅ Pilih salah satu metode yang paling nyaman untukmu.</p>
     </div>
 
     <section id="team">
@@ -843,7 +882,6 @@
         if (contactEl) {
             let showContact = false;
             
-            // Discord button
             if (m.CONTACT_DISCORD !== false && typeof CDP_CONFIG.DISCORD_INVITE !== 'undefined') {
                 const dBtn = document.getElementById('maintDiscordBtn');
                 if (dBtn) { dBtn.href = CDP_CONFIG.DISCORD_INVITE; showContact = true; }
@@ -852,7 +890,6 @@
                 if (dBtn) dBtn.style.display = 'none';
             }
             
-            // WhatsApp button → pakai nomor KHUSUS MAINTENANCE (WA_NUMBER)
             if (m.CONTACT_WA !== false) {
                 const wBtn = document.getElementById('maintWaBtn');
                 if (wBtn) { 
@@ -876,16 +913,20 @@
     if (mainWebsite) mainWebsite.style.display = 'block';
     
     // ============================================
-    // SET LINK DARI CONFIG.JS
+    // SET LINK PENDAFTARAN (2 METODE)
     // ============================================
-    const registerTrigger = document.getElementById('registerTriggerBlock');
-    if (registerTrigger && typeof getRegisterUrl !== 'undefined') {
-        registerTrigger.href = getRegisterUrl();
+    const registerDiscordBtn = document.getElementById('registerDiscordBtn');
+    if (registerDiscordBtn && typeof getDiscordRegisterUrl !== 'undefined') {
+        registerDiscordBtn.href = getDiscordRegisterUrl();
     }
-    const navRegisterBtn = document.getElementById('navRegisterBtn');
-    if (navRegisterBtn && typeof getRegisterUrl !== 'undefined') {
-        navRegisterBtn.href = getRegisterUrl();
+    const registerWaBtn = document.getElementById('registerWaBtn');
+    if (registerWaBtn && typeof getWaGroupRegisterUrl !== 'undefined') {
+        registerWaBtn.href = getWaGroupRegisterUrl();
     }
+    
+    // Nav DAFTAR → scroll ke #daftar (trigger section)
+    const navRegisterBtn = document.querySelector('.nav-menu a[href="#daftar"]');
+    // (sudah otomatis scroll karena href="#daftar")
     
     if (typeof CDP_CONFIG !== 'undefined') {
         const jasaCineLink = document.getElementById('jasaCineLink');
@@ -956,14 +997,23 @@
     renderProducts();
 
     // ============================================
-    // POPUP IKLAN
+    // POPUP IKLAN (2 CTA → DISCORD & WA GROUP)
     // ============================================
     (function() {
         const adsOverlay = document.getElementById('adsOverlay');
         const adsCloseBtn = document.getElementById('adsCloseBtn');
-        const adsCtaBtn = document.getElementById('adsCtaBtn');
+        const adsCtaDiscord = document.getElementById('adsCtaDiscord');
+        const adsCtaWa = document.getElementById('adsCtaWa');
 
         if (!adsOverlay) return;
+
+        // Set link tombol CTA
+        if (adsCtaDiscord && typeof getDiscordRegisterUrl !== 'undefined') {
+            adsCtaDiscord.href = getDiscordRegisterUrl();
+        }
+        if (adsCtaWa && typeof getWaGroupRegisterUrl !== 'undefined') {
+            adsCtaWa.href = getWaGroupRegisterUrl();
+        }
 
         setTimeout(() => {
             adsOverlay.classList.add('active');
@@ -973,18 +1023,13 @@
 
         if (adsCloseBtn) adsCloseBtn.addEventListener('click', closeAds);
 
-        if (adsCtaBtn) {
-            adsCtaBtn.addEventListener('click', () => {
-                closeAds();
-                if (typeof getRegisterUrl !== 'undefined') {
-                    setTimeout(() => { window.open(getRegisterUrl(), '_blank'); }, 300);
-                }
-            });
-        }
-
         adsOverlay.addEventListener('click', (e) => {
             if (e.target === adsOverlay) closeAds();
         });
+
+        // Klik CTA → tutup popup
+        if (adsCtaDiscord) adsCtaDiscord.addEventListener('click', () => setTimeout(closeAds, 300));
+        if (adsCtaWa) adsCtaWa.addEventListener('click', () => setTimeout(closeAds, 300));
     })();
 
     // ============================================
@@ -1038,7 +1083,7 @@
     });
 
     // ============================================
-    // MODAL COLAB & LAGA — pakai WHATSAPP_NUMBER
+    // MODAL COLAB & LAGA
     // ============================================
     const teamNameModal = document.getElementById('teamNameModal');
     const teamNameInput = document.getElementById('teamNameInput');
@@ -1067,7 +1112,6 @@
             let message = '';
             if (currentAction === 'colab') message = `assalamualaikum permisi kak saya mau colab saya dari team ${teamName}`;
             else if (currentAction === 'laga') message = `assalamualaikum permisi kak saya mau laga saya dari team ${teamName}`;
-            // Gunakan WHATSAPP_NUMBER (bukan nomor maintenance)
             window.open(getWhatsAppUrl(message), '_blank');
             closeModal();
         });
