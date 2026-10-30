@@ -35,9 +35,10 @@ const CDP_CONFIG = {
     GITHUB_URL: 'https://cdp-team.vercel.app',
     
     // ============================================
-    // LINK DISCORD UNTUK PENDAFTARAN
+    // LINK PENDAFTARAN (2 METODE)
     // ============================================
     DISCORD_INVITE: 'https://discord.gg/zMVeXV5EZ',
+    GROUP_WA_INVITE: 'https://chat.whatsapp.com/GANTI-DENGAN-LINK-GRUP-WA-CDP',  // ← GANTI LINK GRUP WA
     
     // ============================================
     // LINK EXTERNAL
@@ -45,7 +46,7 @@ const CDP_CONFIG = {
     EXTERNAL_LINKS: {
         JASA_CINE: 'https://jasacinembyanzarcine.netlify.app/',
         TIKTOK: 'https://tiktok.com/@umbu2460',
-        DISCORD: 'https://discord.gg/kEYVZJGdk',
+        DISCORD: 'https://discord.gg/zMVeXV5EZ',
         YOUTUBE: 'https://youtube.com/@teamcdpcircledragpemula?si=vQkfSAEBAx3LtTdE'
     },
     
@@ -60,7 +61,16 @@ const CDP_CONFIG = {
 // ============================================
 
 function getRegisterUrl() {
+    // Default ke Discord (untuk backward compatibility)
     return CDP_CONFIG.DISCORD_INVITE;
+}
+
+function getDiscordRegisterUrl() {
+    return CDP_CONFIG.DISCORD_INVITE;
+}
+
+function getWaGroupRegisterUrl() {
+    return CDP_CONFIG.GROUP_WA_INVITE;
 }
 
 function getDiscordUrl() {
@@ -97,6 +107,8 @@ function isMaintenance() {
 // ============================================
 window.CDP_CONFIG = CDP_CONFIG;
 window.getRegisterUrl = getRegisterUrl;
+window.getDiscordRegisterUrl = getDiscordRegisterUrl;
+window.getWaGroupRegisterUrl = getWaGroupRegisterUrl;
 window.getDiscordUrl = getDiscordUrl;
 window.getAdminUrl = getAdminUrl;
 window.getChatUrl = getChatUrl;
