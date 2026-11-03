@@ -37,8 +37,8 @@ const CDP_CONFIG = {
     // ============================================
     // LINK PENDAFTARAN (2 METODE)
     // ============================================
-    DISCORD_INVITE: 'https://discord.gg/zMVeXV5EZ',
-    GROUP_WA_INVITE: 'https://chat.whatsapp.com/Ca0HtpD0lwFJVEAH2zaiV2?s=cl&p=a&mlu=4&ilr=4&iam=2',  // ← GANTI LINK GRUP WA
+    DISCORD_INVITE: 'https://discord.gg/AnjHMvdND',
+    GROUP_WA_INVITE: 'https://chat.whatsapp.com/KZRCjvmGW8s0xhVZsgDEHl?s=cl&p=a&mlu=4&ilr=4&iam=2',  // ← GANTI LINK GRUP WA
     
     // ============================================
     // LINK EXTERNAL
