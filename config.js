@@ -7,7 +7,7 @@ const CDP_CONFIG = {
     MAINTENANCE: {
         // Ubah ke true untuk mengaktifkan halaman maintenance (menutup web)
         // Ubah ke false untuk membuka web seperti biasa
-        ACTIVE: true, 
+        ACTIVE: false, 
         
         TITLE: "🛠️ SEDANG MAINTENANCE",
         MESSAGE: "Kami sedang melakukan perbaikan sistem untuk meningkatkan kualitas pelayanan. Silakan kembali lagi nanti.",
@@ -23,7 +23,7 @@ const CDP_CONFIG = {
     // 2. PENGATURAN CLOUDFLARED TUNNEL & LINK UTAMA
     LINKS: {
         // Masukkan link Cloudflared Tunnel Anda di sini (untuk game, web admin, dll)
-        CLOUDFLARED_TUNNEL: "https://dana-ericsson-substitute-relaxation.trycloudflare.com/cdp-team", 
+        CLOUDFLARED_TUNNEL: "https://cardiac-automobile-ian-socket.trycloudflare.com/cdp-team", 
         
         // Link web utama (jika ada)
         WEBSITE_UTAMA: "-",
