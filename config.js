@@ -1,117 +1,76 @@
-// ============================================
-// KONFIGURASI CDP - SETING SEMUA DI SINI
-// ============================================
+// ==========================================
+// PUSAT PENGATURAN CDP PORTAL
+// ==========================================
 
 const CDP_CONFIG = {
-    // ============================================
-    // MAINTENANCE MODE - SET true UNTUK AKTIFKAN
-    // ============================================
+    // 1. PENGATURAN MAINTENANCE
     MAINTENANCE: {
-        ENABLED: false,
-        TITLE: '🛠️ SEDANG MAINTENANCE',
-        MESSAGE: 'Kami sedang melakukan perbaikan sistem. Silakan kembali lagi nanti.',
-        ESTIMATED: 'Akan kembali dalam waktu dekat',
-        ETA_TIME: '',
+        // Ubah ke true untuk mengaktifkan halaman maintenance (menutup web)
+        // Ubah ke false untuk membuka web seperti biasa
+        ACTIVE: false, 
+        
+        TITLE: "🛠️ SEDANG MAINTENANCE",
+        MESSAGE: "Kami sedang melakukan perbaikan sistem untuk meningkatkan kualitas pelayanan. Silakan kembali lagi nanti.",
+        ESTIMATED: "Akan kembali dalam waktu dekat",
+        
+        // Format: "YYYY-MM-DDTHH:MM:SS" (Kosongkan "" jika tidak ingin pakai hitung mundur)
+        ETA_TIME: "2026-12-31T23:59:59", 
+        
         CONTACT_DISCORD: true,
-        CONTACT_WA: true,
-        WA_NUMBER: '6285167089251'           // ← NOMOR KHUSUS MAINTENANCE
+        CONTACT_WA: true
     },
 
-    // ============================================
-    // URL TUNNEL CLOUDFLARE
-    // ============================================
-    TUNNEL_URL: 'https://beaches-adequate-maui-afternoon.trycloudflare.com',
-    
-    // ============================================
-    // PATH REGISTER, ADMIN & CHAT
-    // ============================================
-    REGISTER_PATH: '/register_cdp/index.html',
-    ADMIN_PATH: '/register_cdp/admin.php',
-    CHAT_PATH: '/register_cdp/chat_simple.php',
-    
-    // ============================================
-    // BASE URL UNTUK GITHUB
-    // ============================================
-    GITHUB_URL: 'https://cdp-team.vercel.app',
-    
-    // ============================================
-    // LINK PENDAFTARAN (2 METODE)
-    // ============================================
-    DISCORD_INVITE: 'https://discord.gg/AnjHMvdND',
-    GROUP_WA_INVITE: 'https://chat.whatsapp.com/HO7xkaJzWYUCzY938ZEXO9?s=cl&p=a&mlu=4&ilr=4&iam=2',  // ← GANTI LINK GRUP WA
-    
-    // ============================================
-    // LINK EXTERNAL
-    // ============================================
-    EXTERNAL_LINKS: {
-        JASA_CINE: 'https://jasacinembyanzarcine.netlify.app/',
-        TIKTOK: 'https://tiktok.com/@umbu2460',
-        DISCORD: 'https://discord.gg/zMVeXV5EZ',
-        YOUTUBE: 'https://youtube.com/@teamcdpcircledragpemula?si=vQkfSAEBAx3LtTdE'
+    // 2. PENGATURAN CLOUDFLARED TUNNEL & LINK UTAMA
+    LINKS: {
+        // Masukkan link Cloudflared Tunnel Anda di sini (untuk game, web admin, dll)
+        CLOUDFLARED_TUNNEL: "https://game-cdp.trycloudflare.com", 
+        
+        // Link web utama (jika ada)
+        WEBSITE_UTAMA: "https://cdp-official.github.io",
     },
-    
-    // ============================================
-    // WHATSAPP NUMBER UNTUK COLAB & LAGA
-    // ============================================
-    WHATSAPP_NUMBER: '6282154329388'         // ← KHUSUS COLAB & LAGA
+
+    // 3. PENGATURAN PENDAFTARAN
+    REGISTER: {
+        DISCORD_INVITE: "https://discord.gg/SQNWKqRXR",
+        WA_GROUP: "https://chat.whatsapp.com/GPQ52KkDoLLBfZQnThwjn6",
+        WA_ADMIN_NUMBER: "6282154329388" // Format: 62xxx
+    },
+
+    // 4. PENGATURAN SOSMED (Footer & Tombol)
+    SOCIAL_MEDIA: {
+        TIKTOK: "https://tiktok.com/@umbu2460",
+        YOUTUBE: "https://youtube.com/@cdpofficial",
+        WA_CHANNEL: "https://whatsapp.com/channel/0029Vb8kyYABadmYtFb1fu26",
+        JASA_CINE: "https://wa.me/6282154329388?text=Halo%20saya%20mau%20pesan%20jasa%20cinematik"
+    }
 };
 
-// ============================================
-// FUNGSI UNTUK MENDAPATKAN URL LENGKAP
-// ============================================
+// ==========================================
+// FUNGSI BANTUAN (JANGAN DIUBAH)
+// ==========================================
 
-function getRegisterUrl() {
-    // Default ke Discord (untuk backward compatibility)
-    return CDP_CONFIG.DISCORD_INVITE;
-}
-
-function getDiscordRegisterUrl() {
-    return CDP_CONFIG.DISCORD_INVITE;
-}
-
-function getWaGroupRegisterUrl() {
-    return CDP_CONFIG.GROUP_WA_INVITE;
-}
-
-function getDiscordUrl() {
-    return CDP_CONFIG.DISCORD_INVITE;
-}
-
-function getAdminUrl() {
-    return CDP_CONFIG.TUNNEL_URL + CDP_CONFIG.ADMIN_PATH;
-}
-
-function getChatUrl() {
-    return CDP_CONFIG.TUNNEL_URL + CDP_CONFIG.CHAT_PATH;
-}
-
-function getWhatsAppUrl(message = '') {
-    // Untuk Colab & Laga
-    return `https://wa.me/${CDP_CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-}
-
-function getMaintenanceWaUrl(message = '') {
-    // Khusus tombol WA di halaman maintenance
-    const num = (CDP_CONFIG.MAINTENANCE && CDP_CONFIG.MAINTENANCE.WA_NUMBER) 
-                ? CDP_CONFIG.MAINTENANCE.WA_NUMBER 
-                : CDP_CONFIG.WHATSAPP_NUMBER;
-    return `https://wa.me/${num}${message ? '?text=' + encodeURIComponent(message) : ''}`;
-}
-
+// Cek apakah web sedang maintenance
 function isMaintenance() {
-    return CDP_CONFIG.MAINTENANCE && CDP_CONFIG.MAINTENANCE.ENABLED === true;
+    return CDP_CONFIG.MAINTENANCE.ACTIVE === true;
 }
 
-// ============================================
-// EXPOSE KE GLOBAL
-// ============================================
-window.CDP_CONFIG = CDP_CONFIG;
-window.getRegisterUrl = getRegisterUrl;
-window.getDiscordRegisterUrl = getDiscordRegisterUrl;
-window.getWaGroupRegisterUrl = getWaGroupRegisterUrl;
-window.getDiscordUrl = getDiscordUrl;
-window.getAdminUrl = getAdminUrl;
-window.getChatUrl = getChatUrl;
-window.getWhatsAppUrl = getWhatsAppUrl;
-window.getMaintenanceWaUrl = getMaintenanceWaUrl;
-window.isMaintenance = isMaintenance;
+// Dapatkan link Cloudflared
+function getCloudflaredLink() {
+    return CDP_CONFIG.LINKS.CLOUDFLARED_TUNNEL;
+}
+
+// Dapatkan Link Discord
+function getDiscordRegisterUrl() {
+    return CDP_CONFIG.REGISTER.DISCORD_INVITE;
+}
+
+// Dapatkan Link Grup WA
+function getWaGroupRegisterUrl() {
+    return CDP_CONFIG.REGISTER.WA_GROUP;
+}
+
+// Dapatkan Link WA Admin (Untuk pesan otomatis)
+function getWhatsAppUrl(pesan) {
+    const nomor = CDP_CONFIG.REGISTER.WA_ADMIN_NUMBER;
+    return `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+}
