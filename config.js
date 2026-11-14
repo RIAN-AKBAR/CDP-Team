@@ -7,7 +7,7 @@ const CDP_CONFIG = {
     MAINTENANCE: {
         // Ubah ke true untuk mengaktifkan halaman maintenance (menutup web)
         // Ubah ke false untuk membuka web seperti biasa
-        ACTIVE: false, 
+        ACTIVE: true, 
         
         TITLE: "🛠️ SEDANG MAINTENANCE",
         MESSAGE: "Kami sedang melakukan perbaikan sistem untuk meningkatkan kualitas pelayanan. Silakan kembali lagi nanti.",
