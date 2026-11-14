@@ -23,10 +23,10 @@ const CDP_CONFIG = {
     // 2. PENGATURAN CLOUDFLARED TUNNEL & LINK UTAMA
     LINKS: {
         // Masukkan link Cloudflared Tunnel Anda di sini (untuk game, web admin, dll)
-        CLOUDFLARED_TUNNEL: "https://game-cdp.trycloudflare.com", 
+        CLOUDFLARED_TUNNEL: "https://dana-ericsson-substitute-relaxation.trycloudflare.comm", 
         
         // Link web utama (jika ada)
-        WEBSITE_UTAMA: "https://cdp-official.github.io",
+        WEBSITE_UTAMA: "-",
     },
 
     // 3. PENGATURAN PENDAFTARAN
