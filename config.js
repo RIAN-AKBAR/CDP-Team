@@ -14,7 +14,7 @@ const CDP_CONFIG = {
         ESTIMATED: "Akan kembali dalam waktu dekat",
         
         // Format: "YYYY-MM-DDTHH:MM:SS" (Kosongkan "" jika tidak ingin pakai hitung mundur)
-        ETA_TIME: "2026-12-31T23:59:59", 
+        ETA_TIME: "2026-09-14T19:30:00", 
         
         CONTACT_DISCORD: true,
         CONTACT_WA: true
