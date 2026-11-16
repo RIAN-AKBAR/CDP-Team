@@ -23,7 +23,7 @@ const CDP_CONFIG = {
     // 2. PENGATURAN CLOUDFLARED TUNNEL & LINK UTAMA
     LINKS: {
         // Masukkan link Cloudflared Tunnel Anda di sini (untuk game, web admin, dll)
-        CLOUDFLARED_TUNNEL: "https://concert-county-handmade-review.trycloudflare.com/cdp-team", 
+        CLOUDFLARED_TUNNEL: "https://association-dimensional-happened-digest.trycloudflare.com/cdp-team", 
         
         // Link web utama (jika ada)
         WEBSITE_UTAMA: "-",
