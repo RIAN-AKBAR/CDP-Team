@@ -58,15 +58,6 @@
         .maint-pulse { display: inline-block; width: 10px; height: 10px; background: #ff0050; border-radius: 50%; margin-right: 8px; animation: pulseDot 1.5s ease-in-out infinite; vertical-align: middle; }
         @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.3); } }
         @media (max-width: 550px) { .maintenance-content { padding: 35px 20px 30px; border-radius: 24px; } .maintenance-icon { font-size: 3.5rem; } .maintenance-title { font-size: 1.4rem; } .maintenance-message { font-size: 0.9rem; } .maintenance-estimated { font-size: 0.75rem; padding: 6px 16px; } .countdown-box { min-width: 60px; padding: 10px 12px; } .countdown-num { font-size: 1.3rem; } .countdown-label { font-size: 0.55rem; } .maint-btn { padding: 8px 18px; font-size: 0.75rem; } }
-
-        /* ============================================
-           KONTEN REDIRECT FALLBACK
-           ============================================ */
-        .main-website { display: none; padding: 50px 20px; text-align: center; }
-        .hero-title { font-size: 2.5rem; font-weight: 800; letter-spacing: 4px; background: linear-gradient(135deg, #e0e0e0, #c9a5ff, #a855f7); -webkit-background-clip: text; background-clip: text; color: transparent; text-transform: uppercase; margin-bottom: 8px; }
-        .hero-subtitle { font-size: 1rem; color: #c9a5ff; letter-spacing: 3px; font-weight: 500; opacity: 0.9; margin-bottom: 30px; }
-        .btn-cloudflare { background: linear-gradient(135deg, #f48120, #f48120); padding: 15px 40px; border-radius: 40px; font-size: 1.1rem; font-weight: bold; color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; box-shadow: 0 10px 25px rgba(244,129,32,0.4); transition: 0.2s; }
-        .btn-cloudflare:hover { transform: scale(1.05); }
     </style>
 </head>
 <body>
@@ -120,22 +111,11 @@
         </div>
     </div>
 
-    <!-- ============================================
-         3. FALLBACK JIKA REDIRECT GAGAL (MUNCUL SEBENTAR)
-         ============================================ -->
-    <div class="main-website" id="mainWebsite">
-        <div class="hero-title">CDP PORTAL</div>
-        <div class="hero-subtitle">MENGALIHKAN KE CLOUDFLARE TUNNEL...</div>
-        <a href="#" id="cloudflareBtn" target="_blank" class="btn-cloudflare">
-            🚀 KLIK DISINI JIKA TIDAK OTOMATIS PINDAH
-        </a>
-    </div>
-
     <!-- Panggil File Konfigurasi -->
     <script src="config.js"></script>
 
     <!-- ============================================
-         4. LOGIKA UTAMA (MENGATUR SEMUA)
+         3. LOGIKA UTAMA (MENGATUR SEMUA)
          ============================================ -->
     <script>
         (function() {
@@ -154,11 +134,9 @@
 
             // B. CEK MAINTENANCE DARI CONFIG.JS
             const maintOverlay = document.getElementById('maintenanceOverlay');
-            const mainWebsite = document.getElementById('mainWebsite');
 
             if (isMaintenance()) {
                 // AKTIFKAN HALAMAN MAINTENANCE (TIDAK REDIRECT)
-                mainWebsite.style.display = 'none';
                 maintOverlay.classList.add('active');
 
                 const m = CDP_CONFIG.MAINTENANCE;
@@ -202,15 +180,9 @@
                 if (showContact) contactEl.style.display = 'flex';
 
             } else {
-                // C. JIKA TIDAK MAINTENANCE, OTOMATIS REDIRECT KE CLOUDFLARE TUNNEL
-                mainWebsite.style.display = 'block';
-                maintOverlay.classList.remove('active');
-
+                // C. JIKA TIDAK MAINTENANCE, LANGSUNG REDIRECT KE CLOUDFLARE TUNNEL
                 const tunnelLink = getCloudflaredLink();
                 
-                // Set link ke tombol fallback
-                document.getElementById('cloudflareBtn').href = tunnelLink;
-
                 // Redirect Otomatis setelah 1.5 detik (memberi waktu preloader berputar)
                 setTimeout(() => {
                     window.location.href = tunnelLink;
