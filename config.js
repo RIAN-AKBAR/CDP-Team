@@ -23,7 +23,7 @@ const CDP_CONFIG = {
     // 2. PENGATURAN CLOUDFLARED TUNNEL & LINK UTAMA
     LINKS: {
         // Masukkan link Cloudflared Tunnel Anda di sini (untuk game, web admin, dll)
-        CLOUDFLARED_TUNNEL: "silverhold-hosting.web.id/cdp-team", 
+        CLOUDFLARED_TUNNEL: "https://silverhold-hosting.web.id/cdp-team", 
         
         // Link web utama (jika ada)
         WEBSITE_UTAMA: "-",
